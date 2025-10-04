@@ -552,6 +552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f41e2880fc986045b9743d4e9cfc739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 2
 --- !u!54 &209788304
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1362,6 +1363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f41e2880fc986045b9743d4e9cfc739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 1
 --- !u!54 &1325545308
 Rigidbody:
   m_ObjectHideFlags: 0
