@@ -51,7 +51,7 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            Debug.Log(movement.y);
+         //   Debug.Log(movement.y);
             movement.y += worldData.Gravity * Time.deltaTime;
         }
     }
@@ -59,7 +59,7 @@ public class Movement : MonoBehaviour
     private void Move()
     {
         Vector2 input = ControllerScan.Instance.moveInput;
-
+        //Debug.Log(input.x);
         Vector3 inputDir = new Vector3(input.x, 0, input.y);
         Vector3 worldDir = transform.TransformDirection(inputDir);
         worldDir.Normalize();
