@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(CharacterController))]
 public class HandScript : MonoBehaviour
 {
+    //testing
+    [SerializeField] Image LeftUI;
+    [SerializeField] Image RightUI;
     CharacterController controller;
     bool validLeft;
     bool validRight;
@@ -68,6 +72,8 @@ public class HandScript : MonoBehaviour
                 holdingLeft=true;
                 idLeft = hit.transform.gameObject.GetComponent<Item>().getID();
                 Debug.Log("grabbed left");
+                LeftUI.sprite = hit.transform.gameObject.GetComponent<Item>().getItemData().itemIcon;
+
                 hit.transform.gameObject.SetActive(false);
             }
         }
@@ -83,6 +89,7 @@ public class HandScript : MonoBehaviour
                 holdingRight = true;
                 idRight = hit.transform.gameObject.GetComponent<Item>().getID();
                 Debug.Log("grabbed right");
+                RightUI.sprite = hit.transform.gameObject.GetComponent<Item>().getItemData().itemIcon;
                 hit.transform.gameObject.SetActive(false);
             }
         }
