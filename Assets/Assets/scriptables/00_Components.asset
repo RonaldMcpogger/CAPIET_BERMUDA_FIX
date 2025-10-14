@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 818cd84b9c72dc14ca0dc11fe2755bbd, type: 3}
-  m_Name: New Item
+  m_Name: 00_Components
   m_EditorClassIdentifier: 
-  itemID: 1
-  itemName: metals
-  itemIcon: {fileID: 21300000, guid: a10486feaf2b0cc43bcec46f9324deab, type: 3}
+  itemID: 0
+  itemName: Components
+  itemIcon: {fileID: 21300000, guid: dd363456fba504b47aee6ed4f9aeef15, type: 3}
+  isUsable: 0

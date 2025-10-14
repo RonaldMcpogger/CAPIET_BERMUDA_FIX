@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 818cd84b9c72dc14ca0dc11fe2755bbd, type: 3}
-  m_Name: Rocks
+  m_Name: 201_SonarRadar
   m_EditorClassIdentifier: 
-  itemID: 2
-  itemName: Rocks
-  itemIcon: {fileID: 21300000, guid: 195b2e48f9aa7e844955d6ddc2233a36, type: 3}
+  itemID: 201
+  itemName: Sonar Radar
+  itemIcon: {fileID: 0}
+  isUsable: 1
+  isConsumable: 0

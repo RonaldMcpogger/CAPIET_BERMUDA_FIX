@@ -8,6 +8,8 @@ public class ItemManager : MonoBehaviour
     [SerializeField]
     public GameObject HandsUI;
     public GameObject InventoryUI;
+    [SerializeField] public List<ItemScriptables> itemScriptables;
+    [SerializeField] public ItemScriptables heldItem = null; 
 
     public static ItemManager Instance { get; private set; }
 
@@ -25,6 +27,27 @@ public class ItemManager : MonoBehaviour
             // Optionally, make the object persistent across scene loads.
             DontDestroyOnLoad(this);
         }
+    }
+
+    public void addItem(ItemScriptables item)
+    {
+        itemScriptables.Add(item);
+    }
+
+    public void removeItem(ItemScriptables item)
+    {
+        itemScriptables.Remove(item);
+    }
+
+    public void setHeldItem(int index)
+    {
+        if(index < 0 || index >= itemScriptables.Count)
+        {
+            Debug.LogError("Index out of bounds");
+            return;
+        }
+        else
+            heldItem = itemScriptables[index];
     }
 
 }

@@ -8,4 +8,6 @@ public class ItemScriptables : ScriptableObject
     public int itemID;
     public string itemName = "New Item";
     public Sprite itemIcon = null;
+    public bool isUsable = false;
+    public bool isConsumable = false;
 }
