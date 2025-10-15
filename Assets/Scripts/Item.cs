@@ -23,7 +23,7 @@ public class Item : MonoBehaviour
 
     void Start()
     {
-        ItemData.itemID = id;
+        id = ItemData.itemID;
         spriteRenderer.sprite = ItemData.itemIcon;
         Debug.Log("Item ID: " + ItemData.itemID + " Name: " + ItemData.itemName);
     }

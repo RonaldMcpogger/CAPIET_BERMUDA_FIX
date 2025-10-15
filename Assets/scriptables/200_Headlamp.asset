@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 818cd84b9c72dc14ca0dc11fe2755bbd, type: 3}
-  m_Name: 100_Battery
+  m_Name: 200_Headlamp
   m_EditorClassIdentifier: 
-  itemID: 100
-  itemName: Battery
-  itemIcon: {fileID: 0}
+  itemID: 200
+  itemName: Headlamp
+  itemIcon: {fileID: 21300000, guid: 5436b2dd5f1dd374180f12c8aced8b46, type: 3}
   isUsable: 1
-  isConsumable: 1
+  isConsumable: 0
