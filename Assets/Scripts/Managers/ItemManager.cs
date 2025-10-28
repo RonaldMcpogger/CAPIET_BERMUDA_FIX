@@ -1,16 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField]
-    public GameObject HandsUI;
-    public GameObject InventoryUI;
-    [SerializeField] public List<ItemScriptables> itemScriptables;
+    [SerializeField] Image LeftUI;
+    [SerializeField] Image RightUI;
     [SerializeField] public ItemScriptables heldItem = null;
+    [Tooltip("Number of metals collected")]
+    [SerializeField] private int subMetals;
+    [Tooltip("Number of components collected")]
+    [SerializeField] private int subComponents;
+    [Tooltip("Number of Rocks collected")]
+    [SerializeField] private int subRocks;
+
+    //Tools
     [SerializeField] private Light headLight;
+
+    private ItemScriptables leftHeld, Rightheld;
     public static ItemManager Instance { get; private set; }
 
     private void Awake()
@@ -30,80 +39,142 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    public void addItem(ItemScriptables item) // add item to the inventory
-    {
-        itemScriptables.Add(item);
-    }
 
-    public void removeItem(ItemScriptables item)// remove item from inventory
+    public void grabItem(ItemScriptables item, int hand)
     {
-        itemScriptables.Remove(item);
-    }
-
-
-   public int FindItem(int ID)
-    {
-        for (int i = 0; i < itemScriptables.Count; i++)
+        if (hand == 0) // left
         {
-            if (itemScriptables[i].itemID == ID)
-            {
-               Debug.Log("Found item at index: " + i);
-                return i;
-            }
+            LeftUI.sprite = item.itemIcon;
+            leftHeld = item;
         }
-        return -1;
+        else if (hand == 1) // right
+        {
+            RightUI.sprite = item.itemIcon;
+            Rightheld = item;
+        }
     }
 
-    public void setHeldItem(int index)
+
+
+    public void dropItems()
     {
-        if(index < 0 || index >= itemScriptables.Count)
+        LeftUI.sprite = null;
+        RightUI.sprite = null;
+        leftHeld = null;
+        Rightheld = null;
+    }
+    public void useItem(int hand)
+    {
+        switch (hand)
         {
-            Debug.LogError("Index out of bounds");
-            return;
+            case 0:
+                if (leftHeld != null)
+                {
+                    Debug.Log("Used left item: " + leftHeld.itemName);
+                    // Example logic for using an item
+                    if (!leftHeld.isConsumable)
+                    {
+                        if (leftHeld.itemID == 200) // note try to make a meter for battery life 
+                        {
+                            // insert state condition for flashlight
+                            if (headLight.intensity != 1.3f)
+                            {
+                                headLight.intensity = 1.3f;
+                            }
+                            else
+                            {
+                                headLight.intensity = 0f;
+                            }
+
+                        }
+                        else if (leftHeld.itemID == 201)
+                        {
+                            Debug.Log("Used left item: " + leftHeld.itemName);
+
+                        }
+                    }
+                    else
+                    {
+                        if (leftHeld.itemID == 100) // battery
+                        {
+                            Debug.Log("Used left item: " + leftHeld.itemName);
+
+
+                        }
+                        else if (leftHeld.itemID == 101) // pills
+                        {
+                            Debug.Log("Used left item: " + leftHeld.itemName);
+
+                        }
+                        leftHeld = null;
+                        LeftUI.sprite = null;
+
+                    }
+                }
+                break;
+            case 1:
+                if (Rightheld != null)
+                {
+                    Debug.Log("Used left item: " + Rightheld.itemName);
+                    // Example logic for using an item
+                    if (!Rightheld.isConsumable)
+                    {
+                        if (Rightheld.itemID == 200) // note try to make a meter for battery life 
+                        {
+                            if (headLight.intensity != 1.3f)
+                            {
+                                headLight.intensity = 1.3f;
+                            }
+                            else
+                            {
+                                headLight.intensity = 0f;
+                            }
+                        }
+                        else if (Rightheld.itemID == 201)
+                        {
+                            Debug.Log("Used left item: " + Rightheld.itemName);
+
+                        }
+                    }
+                    else
+                    {
+                        if (Rightheld.itemID == 100) // battery
+                        {
+                            Debug.Log("Used left item: " + Rightheld.itemName);
+
+
+
+                        }
+                        else if (Rightheld.itemID == 101) // pills
+                        {
+                            Debug.Log("Used left item: " + Rightheld.itemName);
+
+                        }
+                        Rightheld = null;
+                        RightUI.sprite = null;
+                    }
+                }
+                break;
+        }
+
+
+
+
+    }
+
+    public bool isConsumeable(int hand)
+    {
+        if(hand == 0 && leftHeld != null)
+        {
+            return leftHeld.isConsumable;
+        }
+        else if (hand == 1 && Rightheld != null)
+        {
+            return Rightheld.isConsumable;
         }
         else
-            heldItem = itemScriptables[index];
-    }
-
-  public bool isConsumeable()
-    {
-        return heldItem.isConsumable;
-    }
-
-    public void useItem(int ID)
-    { 
-      
-
-      if(heldItem.isUsable)
         {
-            if (heldItem.isConsumable)
-            {
-                if(heldItem.itemID == 101)
-                {
-                    Debug.Log("Medkit");
-                } 
-                if(heldItem.itemID == 100)
-                {
-                    Debug.Log("Battery Tank");
-                }
-                //remove consumeable
-            
-            }
-            else
-            {
-                if (heldItem.itemID == 200)
-                {
-                    headLight.intensity = 1.3f;
-                    Debug.Log("Toggled Headlight");
-                }
-                if (heldItem.itemID == 201)
-                {
-                    Debug.Log("used sonar");
-                }
-            }
+            return false;
         }
-
-
     }
-
 }
