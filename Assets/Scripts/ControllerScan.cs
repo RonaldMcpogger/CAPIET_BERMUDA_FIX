@@ -19,6 +19,7 @@ public class ControllerScan : MonoBehaviour
     [SerializeField] private string useLeft = "Use Left";
     [SerializeField] private string useRight = "Use Right";
     [SerializeField] private string jump = "Jump";
+    [SerializeField] private string interact = "Interact";
 
     private InputAction moveAction;
     private InputAction camAction;
@@ -27,6 +28,7 @@ public class ControllerScan : MonoBehaviour
     private InputAction useLeftAction;
     private InputAction useRightAction;
     private InputAction jumpAction;
+    private InputAction interactAction;
 
     public Vector2 moveInput { get; private set; }
     public Vector2 camInput { get; private set; }
@@ -35,6 +37,7 @@ public class ControllerScan : MonoBehaviour
     public bool usedLeft { get; private set; }
     public bool usedRight { get; private set; }
     public bool jumped { get; private set; }
+    public bool interacted { get; private set; }
 
     public static ControllerScan Instance { get; private set; }
 
@@ -57,6 +60,7 @@ public class ControllerScan : MonoBehaviour
         useLeftAction = playerControls.FindActionMap(actionMapName).FindAction(useLeft);
         useRightAction = playerControls.FindActionMap(actionMapName).FindAction(useRight);
         jumpAction = playerControls.FindActionMap(actionMapName).FindAction(jump);
+        interactAction = playerControls.FindActionMap(actionMapName).FindAction(interact);
 
         RegisterInputActions();
     }
@@ -80,6 +84,9 @@ public class ControllerScan : MonoBehaviour
 
         jumpAction.performed += context => jumped = true;
         jumpAction.canceled += context => jumped = false;
+
+        interactAction.performed += context => interacted = true;
+        interactAction.canceled += context => interacted = false;
     }
 
     private void OnEnable()
@@ -91,6 +98,7 @@ public class ControllerScan : MonoBehaviour
         useLeftAction.Enable();
         useRightAction.Enable();
         jumpAction.Enable();
+        interactAction.Enable();
     }
 
     private void OnDisable()
@@ -102,6 +110,7 @@ public class ControllerScan : MonoBehaviour
         useLeftAction.Disable();
         useRightAction.Disable();
         jumpAction.Disable();
+        interactAction.Disable();
     }
 
     // Start is called before the first frame update
