@@ -20,6 +20,10 @@ public class ControllerScan : MonoBehaviour
     [SerializeField] private string useRight = "Use Right";
     [SerializeField] private string jump = "Jump";
     [SerializeField] private string interact = "Interact";
+    [SerializeField] private string up = "Up";
+    [SerializeField] private string down = "Down";
+    [SerializeField] private string left = "Left";
+    [SerializeField] private string right = "Right";
 
     private InputAction moveAction;
     private InputAction camAction;
@@ -28,7 +32,11 @@ public class ControllerScan : MonoBehaviour
     private InputAction useLeftAction;
     private InputAction useRightAction;
     private InputAction jumpAction;
-    private InputAction interactAction;
+    public InputAction interactAction;
+    public InputAction upAction;
+    public InputAction downAction;
+    public InputAction leftAction;
+    public InputAction rightAction;
 
     public Vector2 moveInput { get; private set; }
     public Vector2 camInput { get; private set; }
@@ -38,6 +46,10 @@ public class ControllerScan : MonoBehaviour
     public bool usedRight { get; private set; }
     public bool jumped { get; private set; }
     public bool interacted { get; private set; }
+    public bool upPressed { get; private set; }
+    public bool downPressed { get; private set; }
+    public bool leftPressed { get; private set; }
+    public bool rightPressed { get; private set; }
 
     public static ControllerScan Instance { get; private set; }
 
@@ -61,6 +73,10 @@ public class ControllerScan : MonoBehaviour
         useRightAction = playerControls.FindActionMap(actionMapName).FindAction(useRight);
         jumpAction = playerControls.FindActionMap(actionMapName).FindAction(jump);
         interactAction = playerControls.FindActionMap(actionMapName).FindAction(interact);
+        upAction = playerControls.FindActionMap(actionMapName).FindAction(up);
+        downAction = playerControls.FindActionMap(actionMapName).FindAction(down);
+        leftAction = playerControls.FindActionMap(actionMapName).FindAction(left);
+        rightAction = playerControls.FindActionMap(actionMapName).FindAction(right);
 
         RegisterInputActions();
     }
@@ -87,6 +103,15 @@ public class ControllerScan : MonoBehaviour
 
         interactAction.performed += context => interacted = true;
         interactAction.canceled += context => interacted = false;
+
+        upAction.performed += context => upPressed = true;
+        upAction.canceled += context => upPressed = false;
+        downAction.performed += context => downPressed = true;
+        downAction.canceled += context => downPressed = false;
+        leftAction.performed += context => leftPressed = true;
+        leftAction.canceled += context => leftPressed = false;
+        rightAction.performed += context => rightPressed = true;
+        rightAction.canceled += context => rightPressed = false;
     }
 
     private void OnEnable()
@@ -99,6 +124,10 @@ public class ControllerScan : MonoBehaviour
         useRightAction.Enable();
         jumpAction.Enable();
         interactAction.Enable();
+        upAction.Enable();
+        downAction.Enable();
+        leftAction.Enable();
+        rightAction.Enable();
     }
 
     private void OnDisable()
@@ -111,6 +140,10 @@ public class ControllerScan : MonoBehaviour
         useRightAction.Disable();
         jumpAction.Disable();
         interactAction.Disable();
+        upAction.Disable();
+        downAction.Disable();
+        leftAction.Disable();
+        rightAction.Disable();
     }
 
     // Start is called before the first frame update
@@ -124,7 +157,7 @@ public class ControllerScan : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 }

@@ -37,7 +37,7 @@ public class PlayerScanner : MonoBehaviour
         {
             isInside = false;
             Debug.Log("Exit");
-            this.gameObject.GetComponent<HitboxScript>().entered();
+            this.gameObject.GetComponent<HitboxScript>().exited();
         }
     }
 
