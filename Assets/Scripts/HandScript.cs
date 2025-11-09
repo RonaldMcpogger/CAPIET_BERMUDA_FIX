@@ -7,8 +7,7 @@ using UnityEngine.UI;
 public class HandScript : MonoBehaviour
 {
     //testing
-    [SerializeField] Image LeftUI;
-    [SerializeField] Image RightUI;
+  
     CharacterController controller;
     bool validLeft;
     bool validRight;
@@ -74,10 +73,10 @@ public class HandScript : MonoBehaviour
                 if (hit.transform == null) return;
                 holdingLeft = true;
                 idLeft = hit.transform.gameObject.GetComponent<Item>().getID();
-                Debug.Log("grabbed left");
-                LeftUI.sprite = hit.transform.gameObject.GetComponent<Item>().getItemData().itemIcon;
+                Item temp = hit.transform.gameObject.GetComponent<Item>();
 
-                ItemManager.Instance.addItem(hit.transform.gameObject.GetComponent<Item>().getItemData());
+                ItemManager.Instance.grabItem(hit.transform.gameObject.GetComponent<Item>().getItemData(), 0);
+
 
                 hit.transform.gameObject.SetActive(false);
             }
@@ -95,9 +94,9 @@ public class HandScript : MonoBehaviour
                 holdingRight = true;
                 idRight = hit.transform.gameObject.GetComponent<Item>().getID();
                 Debug.Log("grabbed right");
-                RightUI.sprite = hit.transform.gameObject.GetComponent<Item>().getItemData().itemIcon;
 
-                ItemManager.Instance.addItem(hit.transform.gameObject.GetComponent<Item>().getItemData());
+
+                ItemManager.Instance.grabItem(hit.transform.gameObject.GetComponent<Item>().getItemData(), 1);
 
                 hit.transform.gameObject.SetActive(false);
 
@@ -109,37 +108,13 @@ public class HandScript : MonoBehaviour
     {
         if(ControllerScan.Instance.usedLeft == true && holdingLeft)
         {
-            Debug.Log("used left: " + idLeft);
-
-            ItemManager.Instance.setHeldItem(ItemManager.Instance.FindItem(idLeft));
-
-            ItemManager.Instance.useItem(idLeft);
-
-
-            if (ItemManager.Instance.isConsumeable())
+            if (ItemManager.Instance.isConsumeable(0))
             {
                 holdingLeft = false;
                 idLeft = -1;
-                LeftUI.sprite = null;
-
-                ItemManager.Instance.removeItem(ItemManager.Instance.heldItem);
-                if (ItemManager.Instance.itemScriptables.Count > 0)
-                {
-                    /// set to the last object in the list will change later
-                    int tempID = ItemManager.Instance.itemScriptables.Count - 1;
-                    ItemManager.Instance.setHeldItem(tempID);
-                }
-                else
-                {
-                    ItemManager.Instance.heldItem = null;
-                }
-
             }
-
-
-
-
-
+            ItemManager.Instance.useItem(0);
+            
         }
 
     }
@@ -147,33 +122,15 @@ public class HandScript : MonoBehaviour
     {
         if (ControllerScan.Instance.usedRight == true && holdingRight)
         {
-            ItemManager.Instance.setHeldItem(ItemManager.Instance.FindItem(idRight));
-            ItemManager.Instance.useItem(idRight);
-
-            if (ItemManager.Instance.isConsumeable())
+            if (ItemManager.Instance.isConsumeable(1))
             {
-                holdingLeft = false;
+                Debug.Log("used right and consumedAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+                holdingRight = false;
                 idRight = -1;
-                RightUI.sprite = null;
-
-                ItemManager.Instance.removeItem(ItemManager.Instance.heldItem);
-                if(ItemManager.Instance.itemScriptables.Count > 0)
-                {
-                    /// set to the last object in the list will change later
-                    int tempID = ItemManager.Instance.itemScriptables.Count - 1;
-                    ItemManager.Instance.setHeldItem(tempID);
-                }
-                else
-                {
-                    ItemManager.Instance.heldItem = null;
-                }
-               
             }
-          
 
-           
-
-
+            ItemManager.Instance.useItem(1);
+            
         }
     }
 }
