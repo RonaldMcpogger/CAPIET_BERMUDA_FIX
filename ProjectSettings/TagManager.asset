@@ -6,6 +6,7 @@ TagManager:
   tags:
   - UI
   - Screen
+  - Spotlight
   layers:
   - Default
   - TransparentFX
