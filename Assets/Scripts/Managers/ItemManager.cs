@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ItemManager : MonoBehaviour
 {
+
+
     // Start is called before the first frame update
     [SerializeField] Image LeftUI;
     [SerializeField] Image RightUI;
@@ -15,6 +17,15 @@ public class ItemManager : MonoBehaviour
     [SerializeField] private int subComponents;
     [Tooltip("Number of Rocks collected")]
     [SerializeField] private int subRocks;
+
+    bool flashOn = false;
+
+   public bool inSub = false; //if player is in sub
+
+    float BatteryLife = 100f;
+    float drainRate = 5f;
+    float OxygenLife = 100f;
+
 
     //Tools
     [SerializeField] private Light headLight;
@@ -76,13 +87,19 @@ public class ItemManager : MonoBehaviour
                     {
                         if (leftHeld.itemID == 200) // note try to make a meter for battery life 
                         {
-                            // insert state condition for flashlight
-                            if (headLight.intensity != 1.3f)
+                            if(BatteryLife <= 0f) // battery dead
                             {
+                                return;
+                            }
+                            // insert state condition for flashlight
+                           else if (headLight.intensity != 1.3f)
+                            {
+                                flashOn = true;
                                 headLight.intensity = 1.3f;
                             }
                             else
                             {
+                                flashOn = false;
                                 headLight.intensity = 0f;
                             }
 
@@ -93,7 +110,7 @@ public class ItemManager : MonoBehaviour
 
                         }
                     }
-                    else
+                   /* else
                     {
                         if (leftHeld.itemID == 100) // battery
                         {
@@ -110,6 +127,7 @@ public class ItemManager : MonoBehaviour
                         LeftUI.sprite = null;
 
                     }
+                   */
                 }
                 break;
             case 1:
@@ -121,12 +139,19 @@ public class ItemManager : MonoBehaviour
                     {
                         if (Rightheld.itemID == 200) // note try to make a meter for battery life 
                         {
-                            if (headLight.intensity != 1.3f)
+                            if (BatteryLife <= 0f) // battery dead
                             {
+                                return;
+                            }
+                            // insert state condition for flashlight
+                            else if (headLight.intensity != 1.3f)
+                            {
+                                flashOn = true;
                                 headLight.intensity = 1.3f;
                             }
                             else
                             {
+                                flashOn = false;
                                 headLight.intensity = 0f;
                             }
                         }
@@ -175,6 +200,33 @@ public class ItemManager : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+    public float getOxygen()
+    {
+        return OxygenLife;
+    }
+
+
+public float getBattLife()
+    {
+        return BatteryLife;
+    }
+    void Update()
+    {
+        if(flashOn)
+        {
+            BatteryLife -= drainRate * Time.deltaTime;
+            if(BatteryLife <= 0f)
+            {
+                flashOn = false;
+                headLight.intensity = 0f;
+            }
+        }
+        if(inSub == false)
+        {
+            OxygenLife -= (drainRate / 2) * Time.deltaTime;
         }
     }
 }
