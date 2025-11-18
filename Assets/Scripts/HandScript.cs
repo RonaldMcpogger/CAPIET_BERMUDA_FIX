@@ -15,6 +15,9 @@ public class HandScript : MonoBehaviour
     bool holdingLeft;
     bool holdingRight;
 
+    bool cooldownActive = false;
+    float cooldownDuration = .5f; // Cooldown duration in seconds
+
     int idLeft;
     int idRight;
     // Start is called before the first frame update
@@ -52,8 +55,12 @@ public class HandScript : MonoBehaviour
 
         grabLeft(hit);
         grabRight(hit);
-        useLeft();
-        useRight();
+        if (cooldownActive == false)
+        {
+            useLeft();
+            useRight();
+        }
+        
     }
 
     void UIUpdate()
@@ -114,7 +121,7 @@ public class HandScript : MonoBehaviour
                 idLeft = -1;
             }
             ItemManager.Instance.useItem(0);
-            
+            StartCoroutine(startCooldown());
         }
 
     }
@@ -130,7 +137,17 @@ public class HandScript : MonoBehaviour
             }
 
             ItemManager.Instance.useItem(1);
-            
+            StartCoroutine(startCooldown());
+
+
         }
     }
+
+    IEnumerator startCooldown()
+    {
+        cooldownActive = true;
+        yield return new WaitForSeconds(cooldownDuration);
+        cooldownActive = false;
+    }
+
 }

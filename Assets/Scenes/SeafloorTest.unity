@@ -241,7 +241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &183888969
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1533,7 +1533,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &989028860
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2563,6 +2563,7 @@ MonoBehaviour:
   subMetals: 0
   subComponents: 0
   subRocks: 0
+  inSub: 0
   headLight: {fileID: 1136720780}
 --- !u!4 &1851657824
 Transform:
@@ -2694,7 +2695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1898531772
 BoxCollider:
   m_ObjectHideFlags: 0
