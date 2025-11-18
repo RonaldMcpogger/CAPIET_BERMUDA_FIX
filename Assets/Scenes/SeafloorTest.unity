@@ -1958,6 +1958,10 @@ PrefabInstance:
       propertyPath: m_IgnoreReversedGraphics
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1475768945092400987, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
+      propertyPath: defaultSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1871553543039416973, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
       propertyPath: LeftUI
       value: 
@@ -2896,15 +2900,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 085918f0f83504a4a87b5518fa75b25d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1625.0701
+      value: 3300
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 085918f0f83504a4a87b5518fa75b25d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1625.0701
+      value: 3300
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 085918f0f83504a4a87b5518fa75b25d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1625.0701
+      value: 3300
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 085918f0f83504a4a87b5518fa75b25d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3491,6 +3495,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1083422827885596380, guid: 6af47cf32608a6644956f7aae8232e1c, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083422827885596380, guid: 6af47cf32608a6644956f7aae8232e1c, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083422827885596380, guid: 6af47cf32608a6644956f7aae8232e1c, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083422827885596380, guid: 6af47cf32608a6644956f7aae8232e1c, type: 3}
+      propertyPath: m_DrawHalo
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083422827885596380, guid: 6af47cf32608a6644956f7aae8232e1c, type: 3}
+      propertyPath: m_Intensity
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083422827885596380, guid: 6af47cf32608a6644956f7aae8232e1c, type: 3}
+      propertyPath: m_BounceIntensity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2679542616275640415, guid: 6af47cf32608a6644956f7aae8232e1c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.94
@@ -3530,6 +3558,42 @@ PrefabInstance:
     - target: {fileID: 2679542616275640415, guid: 6af47cf32608a6644956f7aae8232e1c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4587736570847604027, guid: 6af47cf32608a6644956f7aae8232e1c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000906383696537941, guid: 6af47cf32608a6644956f7aae8232e1c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000906383696537941, guid: 6af47cf32608a6644956f7aae8232e1c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000906383696537941, guid: 6af47cf32608a6644956f7aae8232e1c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000906383696537941, guid: 6af47cf32608a6644956f7aae8232e1c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000906383696537941, guid: 6af47cf32608a6644956f7aae8232e1c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000906383696537941, guid: 6af47cf32608a6644956f7aae8232e1c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 7263720133820135132, guid: 6af47cf32608a6644956f7aae8232e1c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428771230415589573, guid: 6af47cf32608a6644956f7aae8232e1c, type: 3}
+      propertyPath: speed
+      value: 1.32
       objectReference: {fileID: 0}
     - target: {fileID: 7428771230415589573, guid: 6af47cf32608a6644956f7aae8232e1c, type: 3}
       propertyPath: targetImage

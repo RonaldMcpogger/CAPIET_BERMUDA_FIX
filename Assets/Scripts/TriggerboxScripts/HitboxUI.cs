@@ -33,7 +33,7 @@ public class HitboxUI : MonoBehaviour
     {
         if (introFade && alpha >= 0.05f) {
             alpha = Mathf.Lerp(alpha, 0, Time.deltaTime /2f);
-            Debug.Log(alpha);
+            //Debug.Log(alpha);
             Color c = fader.gameObject.GetComponent<Image>().color;
             c.a = alpha;
             fader.gameObject.GetComponent<Image>().color = c;

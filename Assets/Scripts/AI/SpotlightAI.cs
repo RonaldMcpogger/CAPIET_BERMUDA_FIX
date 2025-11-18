@@ -10,7 +10,7 @@ public class SpotlightAI : MonoBehaviour
     [SerializeField] Image targetImage;
 
     [SerializeField] float detectionRange = 10f;
-    [SerializeField] float speed = 1f;
+    [SerializeField] float speed = 1.32f;
 
 
     [SerializeField] float deathTimer = 3f;
@@ -38,8 +38,18 @@ public class SpotlightAI : MonoBehaviour
                 chase = false;
                 currentIdleTimer = 0f;
 
+                Vector3 direction = transform.position - playerObject.transform.position;
+                Quaternion lookRotation = Quaternion.LookRotation(direction);
+                Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, 1).eulerAngles;
+                transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+
                 if (this.playerObject.GetComponent<Collider>().bounds.Intersects(this.spotLightRadius.GetComponent<Collider>().bounds))
                 {
+
+                    if (currentDeathTimer < deathTimer * 0.75f)
+                        this.transform.position -= this.transform.forward * Time.deltaTime * speed / 2;
+
+                    playerObject.GetComponent<Movement>().speed = 0.66f;
                     currentDeathTimer += Time.deltaTime;
                     targetImage.GetComponent<Image>().color = new Color(1f, 0f, 0f, Mathf.Clamp01(currentDeathTimer / deathTimer));
                     if (currentDeathTimer >= deathTimer)
@@ -49,6 +59,7 @@ public class SpotlightAI : MonoBehaviour
                 }
                 else
                 {
+                    playerObject.GetComponent<Movement>().speed = playerObject.GetComponent<Movement>().defaultSpeed;
                     if (currentDeathTimer > 0f)
                     {
                         currentDeathTimer -= Time.deltaTime;
@@ -60,15 +71,6 @@ public class SpotlightAI : MonoBehaviour
                         targetImage.GetComponent<Image>().color = new Color(1f, 0f, 0f, Mathf.Clamp01(currentDeathTimer / deathTimer));
                     }
 
-                    
-                    Vector3 direction = transform.position - playerObject.transform.position;
-                    Quaternion lookRotation = Quaternion.LookRotation(direction);
-                    Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, 1).eulerAngles;
-                    transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-
-                    if (currentDeathTimer > deathTimer * 0.5f)
-                        this.transform.position -= this.transform.forward * Time.deltaTime * speed/2;
-                    else
                         this.transform.position -= this.transform.forward * Time.deltaTime * speed;
 
 
