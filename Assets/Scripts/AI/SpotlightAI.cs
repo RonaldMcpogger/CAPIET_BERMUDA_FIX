@@ -8,6 +8,7 @@ public class SpotlightAI : MonoBehaviour
     [SerializeField] GameObject playerObject;
     [SerializeField] GameObject spotLightRadius;
     [SerializeField] Image targetImage;
+    [SerializeField] GameObject deathScreen;
 
     [SerializeField] float detectionRange = 10f;
     [SerializeField] float speed = 1.32f;
@@ -24,6 +25,7 @@ public class SpotlightAI : MonoBehaviour
     void Start()
     {
         this.playerObject = GameObject.FindWithTag("Player");
+        this.deathScreen.active = false;
     }
 
     // Update is called once per frame
@@ -55,6 +57,7 @@ public class SpotlightAI : MonoBehaviour
                     if (currentDeathTimer >= deathTimer)
                     {
                         Debug.Log("Player Killed by Spotlight"); //Insert Death Screen Here
+                        this.deathScreen.active = true;
                     }
                 }
                 else
