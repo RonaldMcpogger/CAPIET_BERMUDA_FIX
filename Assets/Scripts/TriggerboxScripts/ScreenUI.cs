@@ -50,7 +50,7 @@ public class ScreenUI : MonoBehaviour
         nums.Add("");
         current = 0;
         xText.text = "X";
-        xText.text = "Y";
+        yText.text = "Y";
         frameBuffer = false;
     }
 
@@ -59,7 +59,7 @@ public class ScreenUI : MonoBehaviour
     {
         if (active && !frameBuffer)
         {
-            Debug.Log(nums.Count);
+            //Debug.Log(x);
             checkDpad();
             checkInput();
         }
@@ -68,7 +68,7 @@ public class ScreenUI : MonoBehaviour
 
     public void toggleScreenOn()
     {
-        if (!active)
+        if (!active && !frameBuffer)
         {
             regularUI.GetComponent<Canvas>().enabled = false;
             screenUI.GetComponent<Canvas>().enabled = true;
@@ -83,6 +83,7 @@ public class ScreenUI : MonoBehaviour
         regularUI.GetComponent<Canvas>().enabled = true;
         screenUI.GetComponent<Canvas>().enabled = false;
         active = false;
+        frameBuffer = true;
     }
 
 
@@ -286,11 +287,14 @@ public class ScreenUI : MonoBehaviour
                             numUpdated = true;
                             break;
                         case 3: // 3,1
-                            if (current < 2)
+                            if (current < 1)
                             {
                                 current++;
                             } else
                             {//set teleport data here
+                                Debug.Log("off");
+                                FindAnyObjectByType<OpenScreen>().GetComponent<OpenScreen>().setScreenActive(false);
+                                WorldTransportManager.Instance.checkLevel(float.Parse(xText.text), float.Parse(yText.text));
                                 toggleScreenOff();
                             }
                             break;

@@ -27,7 +27,7 @@ public class ExitSubmarine : MonoBehaviour, HitboxScript
         {
             Debug.Log("Interact");
             activated = true;
-            player.GetComponentInChildren<HitboxUI>().startFade("SeafloorTest");
+            player.GetComponentInChildren<HitboxUI>().startFade(WorldTransportManager.Instance.getLevelToLoad());
 
         }
     }

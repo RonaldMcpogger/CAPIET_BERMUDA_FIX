@@ -5,6 +5,7 @@ using UnityEngine;
 public class OpenScreen : MonoBehaviour, HitboxScript
 {
     [SerializeField] GameObject player;
+    bool active;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,10 +29,20 @@ public class OpenScreen : MonoBehaviour, HitboxScript
 
     public void interact()
     {
-        player.GetComponentInChildren<ScreenUI>().toggleScreenOn();
+        if (!active)
+        {
+            player.GetComponentInChildren<ScreenUI>().toggleScreenOn();
+            active = true;
+        }
     }
     public void up()
     {
-        Debug.Log("up");
+       // Debug.Log("up");
+    }
+
+    public void setScreenActive(bool a)
+    {
+        Debug.Log(a);
+        active = a;
     }
 }
