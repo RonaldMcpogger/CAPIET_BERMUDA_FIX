@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class ScreenUI : MonoBehaviour
 {
@@ -242,6 +243,7 @@ public class ScreenUI : MonoBehaviour
     {
         if (ControllerScan.Instance.interactAction.WasPressedThisFrame())
         {
+            Gamepad.current.SetMotorSpeeds(0.4f, 0.9f);
             Debug.Log("number entered");
             bool numUpdated = false;
             switch (y)
@@ -263,8 +265,11 @@ public class ScreenUI : MonoBehaviour
                             numUpdated = true;
                             break;
                         case 3: // 3,0
-                            nums[current] = nums[current].Substring(0, nums[current].Length - 1);
-                            numUpdated = true;
+                            if (nums[current].Length > 0)
+                            {
+                                nums[current] = nums[current].Substring(0, nums[current].Length - 1);
+                                numUpdated = true;
+                            }
                             break;
                     }
 
@@ -358,6 +363,7 @@ public class ScreenUI : MonoBehaviour
             }
 
             numUpdated = false;
+            Gamepad.current.SetMotorSpeeds(0, 0);
         }
     }
 }
