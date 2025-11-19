@@ -7,6 +7,7 @@ public class Item : MonoBehaviour
 {
     [SerializeField] int id;
     [SerializeField] ItemScriptables ItemData;
+    public bool is3D = false;
     public SpriteRenderer spriteRenderer;
 
 
@@ -24,7 +25,11 @@ public class Item : MonoBehaviour
     void Start()
     {
         id = ItemData.itemID;
-        spriteRenderer.sprite = ItemData.itemIcon;
+        if ((!is3D))
+        {
+            spriteRenderer.sprite = ItemData.itemIcon;
+        }
+        
         Debug.Log("Item ID: " + ItemData.itemID + " Name: " + ItemData.itemName);
     }
 

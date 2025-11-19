@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 303
   itemName: Coordinate3
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 77ccb7a70e4bf6443815b17890ecfa85, type: 3}
   isUsable: 1
   isConsumable: 0

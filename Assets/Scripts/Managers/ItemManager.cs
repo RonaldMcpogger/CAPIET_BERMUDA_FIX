@@ -20,9 +20,14 @@ public class ItemManager : MonoBehaviour
 
     bool flashOn = false;
 
-   public bool inSub = false; //if player is in sub
+    bool displayOn = false; // for coordinates display
+
+    public bool inSub = false; //if player is in sub
+
+    [SerializeField] public GameObject coordinates;
 
     float BatteryLife = 100f;
+    public float drainDelay = 2f;
     float drainRate = 5f;
     float OxygenLife = 100f;
 
@@ -109,25 +114,56 @@ public class ItemManager : MonoBehaviour
                             Debug.Log("Used left item: " + leftHeld.itemName);
 
                         }
+                       
+                        else if (leftHeld.itemID == 300 ) // coordinates
+                           {
+                            if (displayOn == false)
+                            {
+                                coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "X: 345 Y: 375";
+                                displayOn = true;
+                            }
+                            else
+                            {
+                                coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "";
+                                displayOn = false;
+                            }
+                        }
+                         else if(leftHeld.itemID == 301) // map
+                            {
+                            if (displayOn == false)
+                            {
+                                coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "X: 540 Y: 284";
+                                displayOn = true;
+                            }
+                            else
+                            {
+                                coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "";
+                                displayOn = false;
+                            }
+                        }
+                        
+                         
                     }
-                   /* else
+                    else //revamp to accept a thing inside sub
                     {
                         if (leftHeld.itemID == 100) // battery
                         {
                             Debug.Log("Used left item: " + leftHeld.itemName);
+                            BatteryLife += 25f;
 
 
                         }
                         else if (leftHeld.itemID == 101) // pills
                         {
                             Debug.Log("Used left item: " + leftHeld.itemName);
+                            OxygenLife += 25f;
 
                         }
                         leftHeld = null;
                         LeftUI.sprite = null;
 
                     }
-                   */
+                   
                 }
                 break;
             case 1:
@@ -166,6 +202,7 @@ public class ItemManager : MonoBehaviour
                         if (Rightheld.itemID == 100) // battery
                         {
                             Debug.Log("Used left item: " + Rightheld.itemName);
+                            BatteryLife += 25f;
 
 
 
@@ -173,6 +210,7 @@ public class ItemManager : MonoBehaviour
                         else if (Rightheld.itemID == 101) // pills
                         {
                             Debug.Log("Used left item: " + Rightheld.itemName);
+                            OxygenLife += 25f;
 
                         }
                         Rightheld = null;
@@ -226,7 +264,12 @@ public float getBattLife()
         }
         if(inSub == false)
         {
-            OxygenLife -= (drainRate / 2) * Time.deltaTime;
+            OxygenLife -= (drainRate / drainDelay) * Time.deltaTime;
         }
+    }
+   
+   public void depositItems() // check hand if metal 
+    {
+
     }
 }
