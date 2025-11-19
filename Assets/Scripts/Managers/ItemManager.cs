@@ -267,8 +267,15 @@ public float getBattLife()
             OxygenLife -= (drainRate / drainDelay) * Time.deltaTime;
         }
     }
-   
-   public void depositItems() // check hand if metal 
+   public void DamageOxygen(float damage)
+    {
+        OxygenLife -= damage;
+    }
+    public void DamageBattery(float damage)
+    {
+        BatteryLife -= damage;
+    }
+    public void depositItems() // check hand if metal 
     {
 
     }
