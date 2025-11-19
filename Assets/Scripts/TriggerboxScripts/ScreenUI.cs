@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class ScreenUI : MonoBehaviour
 {
@@ -50,7 +51,7 @@ public class ScreenUI : MonoBehaviour
         nums.Add("");
         current = 0;
         xText.text = "X";
-        xText.text = "Y";
+        yText.text = "Y";
         frameBuffer = false;
     }
 
@@ -59,7 +60,7 @@ public class ScreenUI : MonoBehaviour
     {
         if (active && !frameBuffer)
         {
-            Debug.Log(nums.Count);
+            //Debug.Log(x);
             checkDpad();
             checkInput();
         }
@@ -68,7 +69,7 @@ public class ScreenUI : MonoBehaviour
 
     public void toggleScreenOn()
     {
-        if (!active)
+        if (!active && !frameBuffer)
         {
             regularUI.GetComponent<Canvas>().enabled = false;
             screenUI.GetComponent<Canvas>().enabled = true;
@@ -83,6 +84,7 @@ public class ScreenUI : MonoBehaviour
         regularUI.GetComponent<Canvas>().enabled = true;
         screenUI.GetComponent<Canvas>().enabled = false;
         active = false;
+        frameBuffer = true;
     }
 
 
@@ -241,6 +243,7 @@ public class ScreenUI : MonoBehaviour
     {
         if (ControllerScan.Instance.interactAction.WasPressedThisFrame())
         {
+            Gamepad.current.SetMotorSpeeds(0.4f, 0.9f);
             Debug.Log("number entered");
             bool numUpdated = false;
             switch (y)
@@ -262,8 +265,11 @@ public class ScreenUI : MonoBehaviour
                             numUpdated = true;
                             break;
                         case 3: // 3,0
-                            nums[current] = nums[current].Substring(0, nums[current].Length - 1);
-                            numUpdated = true;
+                            if (nums[current].Length > 0)
+                            {
+                                nums[current] = nums[current].Substring(0, nums[current].Length - 1);
+                                numUpdated = true;
+                            }
                             break;
                     }
 
@@ -286,11 +292,14 @@ public class ScreenUI : MonoBehaviour
                             numUpdated = true;
                             break;
                         case 3: // 3,1
-                            if (current < 2)
+                            if (current < 1)
                             {
                                 current++;
                             } else
                             {//set teleport data here
+                                Debug.Log("off");
+                                FindAnyObjectByType<OpenScreen>().GetComponent<OpenScreen>().setScreenActive(false);
+                                WorldTransportManager.Instance.checkLevel(float.Parse(xText.text), float.Parse(yText.text));
                                 toggleScreenOff();
                             }
                             break;
@@ -354,6 +363,7 @@ public class ScreenUI : MonoBehaviour
             }
 
             numUpdated = false;
+            Gamepad.current.SetMotorSpeeds(0, 0);
         }
     }
 }

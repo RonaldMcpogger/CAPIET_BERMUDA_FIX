@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1475768945092400987}
   - component: {fileID: 1377359409006017333}
   - component: {fileID: 1871553543039416973}
+  - component: {fileID: 5708274091144482186}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -128,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSpeed: 1
+  speed: 0
   lookSpeed: 0.4
 --- !u!143 &1377359409006017333
 CharacterController:
@@ -165,6 +167,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f705da0302dda64f8fad508678d18b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5708274091144482186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52909804750533460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba660ff462a487b4fb9115a4739ec021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &384809592232051712

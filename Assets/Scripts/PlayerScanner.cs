@@ -43,7 +43,7 @@ public class PlayerScanner : MonoBehaviour
 
     public void interact()
     {
-        if (ControllerScan.Instance.interacted == true && isInside == true)
+        if (ControllerScan.Instance.interactAction.WasPressedThisFrame() == true && isInside == true)
         {
             
             this.gameObject.GetComponent<HitboxScript>().interact();
