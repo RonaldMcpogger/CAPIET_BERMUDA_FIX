@@ -1036,6 +1036,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 441272, guid: 85f4229977c9ee247bc4425710c5b0c4, type: 3}
   m_PrefabInstance: {fileID: 1236070605}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &489055651 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6411384976659473657, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
+  m_PrefabInstance: {fileID: 1363062548}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &516267564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2676,11 +2681,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5927608084914749258, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927608084914749258, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
+      propertyPath: volumeLayer.m_Bits
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 7947180926137022693, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
       propertyPath: field of view
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7947180926137022693, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
+      propertyPath: m_AllowDynamicResolution
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654284662046894757, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654284662046894757, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654284662046894757, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654284662046894757, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654284662046894757, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9079611114465321319, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
       propertyPath: m_IsActive
@@ -3198,11 +3231,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 925376349752855357, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
   m_PrefabInstance: {fileID: 1363062548}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1541801397 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9193711073749534044, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
-  m_PrefabInstance: {fileID: 1363062548}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1541801400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3215,13 +3243,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeTrigger: {fileID: 1541801397}
+  volumeTrigger: {fileID: 489055651}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   stopNaNPropagation: 1
-  finalBlitToCameraTarget: 0
-  antialiasingMode: 0
+  finalBlitToCameraTarget: 1
+  antialiasingMode: 3
   temporalAntialiasing:
     jitterSpread: 0.75
     sharpness: 0.25
@@ -4819,6 +4847,10 @@ PrefabInstance:
     - target: {fileID: 6495288471822563996, guid: 23ddf25a1a7dacc46af660ac5c8f4e82, type: 3}
       propertyPath: m_Name
       value: Post-Processing Volume
+      objectReference: {fileID: 0}
+    - target: {fileID: 6495288471822563996, guid: 23ddf25a1a7dacc46af660ac5c8f4e82, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6495288471822563996, guid: 23ddf25a1a7dacc46af660ac5c8f4e82, type: 3}
       propertyPath: m_IsActive
