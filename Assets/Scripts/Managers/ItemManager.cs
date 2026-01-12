@@ -275,6 +275,8 @@ public float getBattLife()
     {
         BatteryLife -= damage;
     }
+
+
     public void depositItems() // check hand if metal 
     {
 
