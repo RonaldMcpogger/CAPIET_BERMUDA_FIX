@@ -8,8 +8,10 @@ using UnityEngine.Animations;
 public class Movement : MonoBehaviour
 {
     CharacterController controller;
-    [SerializeField] private float defaultSpeed = 1.0f;
+    [SerializeField] public float defaultSpeed = 2.0f;
+    [SerializeField] public float speed;
     [SerializeField] private float lookSpeed = 0.2f;
+    
 
     Vector3 movement;
     float curRot;
@@ -19,12 +21,13 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        this.speed = defaultSpeed;
         controller = GetComponent<CharacterController>();
         worldData = FindAnyObjectByType<WorldData>();
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         Move();
 

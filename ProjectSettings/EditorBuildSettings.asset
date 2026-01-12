@@ -4,5 +4,15 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/SeafloorTest.unity
+    guid: 39d5d17475ba6154890f993741d15283
+  - enabled: 1
+    path: Assets/Scenes/SubmarineTest.unity
+    guid: e6694deff7a6a104e8db98243505bb9e
+  - enabled: 1
+    path: Assets/Scenes/MovementTest.unity
+    guid: 81a13153c7d83d14cb3c957455909ccf
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ItemManager : MonoBehaviour
 {
+
+
     // Start is called before the first frame update
     [SerializeField] Image LeftUI;
     [SerializeField] Image RightUI;
@@ -15,6 +17,20 @@ public class ItemManager : MonoBehaviour
     [SerializeField] private int subComponents;
     [Tooltip("Number of Rocks collected")]
     [SerializeField] private int subRocks;
+
+    bool flashOn = false;
+
+    bool displayOn = false; // for coordinates display
+
+    public bool inSub = false; //if player is in sub
+
+    [SerializeField] public GameObject coordinates;
+
+    float BatteryLife = 100f;
+    public float drainDelay = 2f;
+    float drainRate = 5f;
+    float OxygenLife = 100f;
+
 
     //Tools
     [SerializeField] private Light headLight;
@@ -76,13 +92,19 @@ public class ItemManager : MonoBehaviour
                     {
                         if (leftHeld.itemID == 200) // note try to make a meter for battery life 
                         {
-                            // insert state condition for flashlight
-                            if (headLight.intensity != 1.3f)
+                            if(BatteryLife <= 0f) // battery dead
                             {
+                                return;
+                            }
+                            // insert state condition for flashlight
+                           else if (headLight.intensity != 1.3f)
+                            {
+                                flashOn = true;
                                 headLight.intensity = 1.3f;
                             }
                             else
                             {
+                                flashOn = false;
                                 headLight.intensity = 0f;
                             }
 
@@ -92,24 +114,56 @@ public class ItemManager : MonoBehaviour
                             Debug.Log("Used left item: " + leftHeld.itemName);
 
                         }
+                       
+                        else if (leftHeld.itemID == 300 ) // coordinates
+                           {
+                            if (displayOn == false)
+                            {
+                                coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "X: 345 Y: 375";
+                                displayOn = true;
+                            }
+                            else
+                            {
+                                coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "";
+                                displayOn = false;
+                            }
+                        }
+                         else if(leftHeld.itemID == 301) // map
+                            {
+                            if (displayOn == false)
+                            {
+                                coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "X: 540 Y: 284";
+                                displayOn = true;
+                            }
+                            else
+                            {
+                                coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "";
+                                displayOn = false;
+                            }
+                        }
+                        
+                         
                     }
-                    else
+                    else //revamp to accept a thing inside sub
                     {
                         if (leftHeld.itemID == 100) // battery
                         {
                             Debug.Log("Used left item: " + leftHeld.itemName);
+                            BatteryLife += 25f;
 
 
                         }
                         else if (leftHeld.itemID == 101) // pills
                         {
                             Debug.Log("Used left item: " + leftHeld.itemName);
+                            OxygenLife += 25f;
 
                         }
                         leftHeld = null;
                         LeftUI.sprite = null;
 
                     }
+                   
                 }
                 break;
             case 1:
@@ -121,12 +175,19 @@ public class ItemManager : MonoBehaviour
                     {
                         if (Rightheld.itemID == 200) // note try to make a meter for battery life 
                         {
-                            if (headLight.intensity != 1.3f)
+                            if (BatteryLife <= 0f) // battery dead
                             {
+                                return;
+                            }
+                            // insert state condition for flashlight
+                            else if (headLight.intensity != 1.3f)
+                            {
+                                flashOn = true;
                                 headLight.intensity = 1.3f;
                             }
                             else
                             {
+                                flashOn = false;
                                 headLight.intensity = 0f;
                             }
                         }
@@ -141,6 +202,7 @@ public class ItemManager : MonoBehaviour
                         if (Rightheld.itemID == 100) // battery
                         {
                             Debug.Log("Used left item: " + Rightheld.itemName);
+                            BatteryLife += 25f;
 
 
 
@@ -148,6 +210,7 @@ public class ItemManager : MonoBehaviour
                         else if (Rightheld.itemID == 101) // pills
                         {
                             Debug.Log("Used left item: " + Rightheld.itemName);
+                            OxygenLife += 25f;
 
                         }
                         Rightheld = null;
@@ -176,5 +239,44 @@ public class ItemManager : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public float getOxygen()
+    {
+        return OxygenLife;
+    }
+
+
+public float getBattLife()
+    {
+        return BatteryLife;
+    }
+    void Update()
+    {
+        if(flashOn)
+        {
+            BatteryLife -= drainRate * Time.deltaTime;
+            if(BatteryLife <= 0f)
+            {
+                flashOn = false;
+                headLight.intensity = 0f;
+            }
+        }
+        if(inSub == false)
+        {
+            OxygenLife -= (drainRate / drainDelay) * Time.deltaTime;
+        }
+    }
+   public void DamageOxygen(float damage)
+    {
+        OxygenLife -= damage;
+    }
+    public void DamageBattery(float damage)
+    {
+        BatteryLife -= damage;
+    }
+    public void depositItems() // check hand if metal 
+    {
+
     }
 }
