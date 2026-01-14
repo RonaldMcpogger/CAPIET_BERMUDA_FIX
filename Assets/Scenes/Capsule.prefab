@@ -2044,7 +2044,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: QUIT
+  m_text: BACK
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e0c8c4f9b384bb64d9adfc7b92e9df3c, type: 2}
   m_sharedMaterial: {fileID: -8827613302894608122, guid: e0c8c4f9b384bb64d9adfc7b92e9df3c, type: 2}
@@ -4678,7 +4678,7 @@ GameObject:
   - component: {fileID: 7282093546212823948}
   - component: {fileID: 6993864517522162650}
   m_Layer: 0
-  m_Name: QUIT
+  m_Name: back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5956,7 +5956,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: INFO
+  m_text: FISHDEX
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e0c8c4f9b384bb64d9adfc7b92e9df3c, type: 2}
   m_sharedMaterial: {fileID: -8827613302894608122, guid: e0c8c4f9b384bb64d9adfc7b92e9df3c, type: 2}
