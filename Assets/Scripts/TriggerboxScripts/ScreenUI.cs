@@ -38,6 +38,9 @@ public class ScreenUI : MonoBehaviour
     int current;
 
     bool frameBuffer;
+    bool ignoreInputs;
+
+    float fade;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +56,8 @@ public class ScreenUI : MonoBehaviour
         xText.text = "X";
         yText.text = "Y";
         frameBuffer = false;
+        ignoreInputs = false;
+        fade = .2f;
     }
 
     // Update is called once per frame
@@ -71,9 +76,11 @@ public class ScreenUI : MonoBehaviour
     {
         if (!active && !frameBuffer)
         {
+            x = 0;
+            y = 0;
             regularUI.GetComponent<Canvas>().enabled = false;
             screenUI.GetComponent<Canvas>().enabled = true;
-            changeColor(topLeft.gameObject.GetComponent<Button>(), .5f);
+            changeColor(topLeft.gameObject.GetComponent<Button>(), fade);
             active = true;
             frameBuffer = true;
         }
@@ -86,132 +93,152 @@ public class ScreenUI : MonoBehaviour
         active = false;
         frameBuffer = true;
     }
-
-
     void checkDpad()
     {
-        if (ControllerScan.Instance.upAction.WasPressedThisFrame() == true)
+        if (!ignoreInputs)
         {
-            if (y > 0)
+            if (ControllerScan.Instance.upAction.WasPressedThisFrame() == true)
             {
-                y--;
-                pressed = true;
+                if (y > 0)
+                {
+                    y--;
+                    pressed = true;
+                }
             }
-        }
-        if (ControllerScan.Instance.downAction.WasPressedThisFrame() == true)
-        {
-            if (y < 3)
+            if (ControllerScan.Instance.downAction.WasPressedThisFrame() == true)
             {
-                y++;
-                pressed = true;
+                if (y < 3)
+                {
+                    y++;
+                    pressed = true;
+                }
             }
-        }
-        if (ControllerScan.Instance.leftAction.WasPressedThisFrame() == true)
-        {
-            if (x > 0)
+            if (ControllerScan.Instance.leftAction.WasPressedThisFrame() == true)
             {
-                x--;
-                pressed = true;
+                if (x > 0)
+                {
+                    x--;
+                    pressed = true;
+                }
+                else if (x == 0) //tb into the other column
+                {
+                    x = -1;
+                    y = -1;
+                    ignoreInputs = true;
+                    FindFirstObjectByType<TabUI>().resetNums();
+                    resetCol();
+                }
             }
-        }
-        if (ControllerScan.Instance.rightAction.WasPressedThisFrame() == true)
-        {
-            if (x < 4)
+            if (ControllerScan.Instance.rightAction.WasPressedThisFrame() == true)
             {
-                x++;
-                pressed = true;
+                if (x < 4)
+                {
+                    x++;
+                    pressed = true;
+                }
             }
-        }
 
-        if (pressed)
-        {
-            resetCol();
-            switch (y)
+            if (pressed)
             {
-                case 0:
-                    switch (x)
-                    {
+                resetCol();
+                switch (y)
+                {
+                    case 0:
+                        switch (x)
+                        {
 
-                        case 0: //0, 0 top left
-                            changeColor(topLeft.gameObject.GetComponent<Button>(), .5f);
-                            break;
-                        case 1: //1, 0
-                            changeColor(topMid.gameObject.GetComponent<Button>(), .5f);
-                            break;
-                        case 2: // 2,0
-                            changeColor(topRight.gameObject.GetComponent<Button>(), .5f);
-                            break;
-                        case 3: // 3,0
-                            changeColor(back.gameObject.GetComponent<Button>(), .5f);
-                            break;
-                    }
+                            case 0: //0, 0 top left
+                                changeColor(topLeft.gameObject.GetComponent<Button>(), fade);
+                                break;
+                            case 1: //1, 0
+                                changeColor(topMid.gameObject.GetComponent<Button>(), fade);
+                                break;
+                            case 2: // 2,0
+                                changeColor(topRight.gameObject.GetComponent<Button>(), fade);
+                                break;
+                            case 3: // 3,0
+                                changeColor(back.gameObject.GetComponent<Button>(), fade);
+                                break;
+                        }
 
-                    break;
+                        break;
 
-                case 1:
-                    switch (x)
-                    {
+                    case 1:
+                        switch (x)
+                        {
 
-                        case 0: //0, 1
-                            changeColor(midLeft.gameObject.GetComponent<Button>(), .5f);
-                            break;
-                        case 1: //1, 1
-                            changeColor(midMid.gameObject.GetComponent<Button>(), .5f);
-                            break;
-                        case 2: // 2,1
-                            changeColor(midRight.gameObject.GetComponent<Button>(), .5f);
-                            break;
-                        case 3: // 3,1
-                            changeColor(enter.gameObject.GetComponent<Button>(), .5f);
-                            break;
-                    }
+                            case 0: //0, 1
+                                changeColor(midLeft.gameObject.GetComponent<Button>(), fade);
+                                break;
+                            case 1: //1, 1
+                                changeColor(midMid.gameObject.GetComponent<Button>(), fade);
+                                break;
+                            case 2: // 2,1
+                                changeColor(midRight.gameObject.GetComponent<Button>(), fade);
+                                break;
+                            case 3: // 3,1
+                                changeColor(enter.gameObject.GetComponent<Button>(), fade);
+                                break;
+                        }
 
-                    break;
+                        break;
 
-                case 2:
-                    switch (x)
-                    {
+                    case 2:
+                        switch (x)
+                        {
 
-                        case 0: //0, 2
-                            changeColor(botLeft.gameObject.GetComponent<Button>(), .5f);
-                            break;
-                        case 1: //1, 2
-                            changeColor(botMid.gameObject.GetComponent<Button>(), .5f);
-                            break;
-                        case 2: // 2,2
-                            changeColor(botRight.gameObject.GetComponent<Button>(), .5f);
-                            break;
-                        case 3: // 3,2
-                            x = 2;
-                            changeColor(botRight.gameObject.GetComponent<Button>(), .5f);
-                            break;
-                    }
+                            case 0: //0, 2
+                                changeColor(botLeft.gameObject.GetComponent<Button>(), fade);
+                                break;
+                            case 1: //1, 2
+                                changeColor(botMid.gameObject.GetComponent<Button>(), fade);
+                                break;
+                            case 2: // 2,2
+                                changeColor(botRight.gameObject.GetComponent<Button>(), fade);
+                                break;
+                            case 3: // 3,2
+                                x = 2;
+                                changeColor(botRight.gameObject.GetComponent<Button>(), fade);
+                                break;
+                        }
 
-                    break;
+                        break;
 
-                case 3:
-                    switch (x)
-                    {
+                    case 3:
+                        switch (x)
+                        {
 
-                        case 0: //0, 3
-                            changeColor(botbotLeft.gameObject.GetComponent<Button>(), .5f);
-                            break;
-                        case 1: //1, 3
-                            changeColor(botbotMid.gameObject.GetComponent<Button>(), .5f);
-                            break;
-                        case 2: // 2,3
-                            changeColor(botbotRight.gameObject.GetComponent<Button>(), .5f);
-                            break;
-                        case 3: // 3,3
-                            x = 2;
-                            changeColor(botbotRight.gameObject.GetComponent<Button>(), .5f);
-                            break;
-                    }
+                            case 0: //0, 3
+                                changeColor(botbotLeft.gameObject.GetComponent<Button>(), fade);
+                                break;
+                            case 1: //1, 3
+                                changeColor(botbotMid.gameObject.GetComponent<Button>(), fade);
+                                break;
+                            case 2: // 2,3
+                                changeColor(botbotRight.gameObject.GetComponent<Button>(), fade);
+                                break;
+                            case 3: // 3,3
+                                x = 2;
+                                changeColor(botbotRight.gameObject.GetComponent<Button>(), fade);
+                                break;
+                        }
 
-                    break;
+                        break;
+                }
+                pressed = false;
             }
-            pressed = false;
-        }
+        } //none of this is done if ignoring inputs
+    }
+    public bool getIgnoreInputs()
+    {
+        return ignoreInputs;
+    }
+    public void startAcceptingInputs()
+    {
+        ignoreInputs = false;
+        x = 0;
+        y = 0;
+        changeColor(topLeft.gameObject.GetComponent<Button>(), fade);
     }
     void resetCol()
     {
