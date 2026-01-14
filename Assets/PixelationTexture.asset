@@ -13,7 +13,7 @@ CustomRenderTexture:
   m_IsAlphaChannelOptional: 0
   serializedVersion: 6
   m_Width: 256
-  m_Height: 256
+  m_Height: 144
   m_AntiAliasing: 1
   m_MipCount: -1
   m_DepthStencilFormat: 0
@@ -40,7 +40,7 @@ CustomRenderTexture:
   m_Material: {fileID: 0}
   m_InitSource: 0
   m_InitMaterial: {fileID: 0}
-  m_InitColor: {r: 1, g: 1, b: 1, a: 1}
+  m_InitColor: {r: 0.25872195, g: 0.48694918, b: 0.9622642, a: 1}
   m_InitTexture: {fileID: 0}
   m_UpdateMode: 0
   m_InitializationMode: 2

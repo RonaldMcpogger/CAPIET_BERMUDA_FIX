@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour
     CharacterController controller;
     [SerializeField] public float defaultSpeed = 2.0f;
     [SerializeField] public float speed;
-    [SerializeField] private float lookSpeed = 0.2f;
+    [SerializeField] private float lookSpeed = 0.8f;
     
 
     Vector3 movement;
