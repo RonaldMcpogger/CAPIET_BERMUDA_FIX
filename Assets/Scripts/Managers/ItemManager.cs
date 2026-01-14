@@ -266,6 +266,11 @@ public float getBattLife()
         {
             OxygenLife -= (drainRate / drainDelay) * Time.deltaTime;
         }
+        if(OxygenLife <= 0f)
+        {
+            OxygenLife = 0f;
+            HealthManager.Instance.setO2Status(true);
+        }
     }
    public void DamageOxygen(float damage)
     {

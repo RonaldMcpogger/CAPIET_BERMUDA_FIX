@@ -30,7 +30,7 @@ public class Item : MonoBehaviour
             spriteRenderer.sprite = ItemData.itemIcon;
         }
         
-        Debug.Log("Item ID: " + ItemData.itemID + " Name: " + ItemData.itemName);
+    //    Debug.Log("Item ID: " + ItemData.itemID + " Name: " + ItemData.itemName);
     }
 
     // Update is called once per frame
