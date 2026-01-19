@@ -27,6 +27,7 @@ public class ExitSubmarine : MonoBehaviour, HitboxScript
         {
             Debug.Log("Interact");
             activated = true;
+            ItemManager.Instance.inSub = false;
             player.GetComponentInChildren<HitboxUI>().startFade(WorldTransportManager.Instance.getLevelToLoad());
 
         }

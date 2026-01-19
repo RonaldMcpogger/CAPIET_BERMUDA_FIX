@@ -63,10 +63,10 @@ public class WorldTransportManager : MonoBehaviour
             switch (levelCheck)
             {
                 case 1:
-                    sceneToLoad = "SeafloorTest";
+                    sceneToLoad = "Level2";
                     break;
                 case 2:
-                    sceneToLoad = "MovementTest";
+                    sceneToLoad = "Level1-Tutorial";
                     break;
                 default: break;
             }

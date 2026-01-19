@@ -53,10 +53,11 @@ public class HandScript : MonoBehaviour
         //update ui based on previous
         UIUpdate();
 
-        grabLeft(hit);
-        grabRight(hit);
+        
         if (cooldownActive == false)
         {
+            grabLeft(hit);
+            grabRight(hit);
             useLeft();
             useRight();
         }
@@ -86,6 +87,16 @@ public class HandScript : MonoBehaviour
 
 
                 hit.transform.gameObject.SetActive(false);
+                StartCoroutine(startCooldown());
+
+            }
+            else
+            {
+                holdingLeft= false;
+                idLeft = -1;
+                ItemManager.Instance.dropItem(0);
+                StartCoroutine(startCooldown());
+
             }
         }
     }
@@ -106,6 +117,15 @@ public class HandScript : MonoBehaviour
                 ItemManager.Instance.grabItem(hit.transform.gameObject.GetComponent<Item>().getItemData(), 1);
 
                 hit.transform.gameObject.SetActive(false);
+                StartCoroutine(startCooldown());
+
+            }
+            else
+            {
+                holdingRight = false;
+                idRight = -1;
+                ItemManager.Instance.dropItem(1);
+                StartCoroutine(startCooldown());
 
             }
         }
