@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GlobalScreenShake : MonoBehaviour
 {
-    GlobalScreenShake Instance;
+    
     // Start is called before the first frame update
     [SerializeField] Camera cam;
     public AnimationCurve ShakeStr;
@@ -13,6 +13,9 @@ public class GlobalScreenShake : MonoBehaviour
 
     private Vector3 originalPos;
     private float magnitude = 0.1f;
+
+
+    public static GlobalScreenShake Instance { get; private set; }
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -62,7 +65,8 @@ public class GlobalScreenShake : MonoBehaviour
         {
             float x = Random.Range(-1f, 1f) * magnitude;
             float y = Random.Range(-1f, 1f) * magnitude;
-            cam.transform.localPosition = new Vector3(x, y, originalPos.z);
+            float strength = ShakeStr.Evaluate(elapsed / duration);
+            cam.transform.localPosition = new Vector3(x, y, originalPos.z) * strength;
             elapsed += Time.deltaTime;
             yield return null;
         }
