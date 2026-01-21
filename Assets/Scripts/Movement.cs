@@ -79,7 +79,7 @@ public class Movement : MonoBehaviour
     private void Look()
     {
         Vector2 input = ControllerScan.Instance.camInput;
-
+       // Debug.Log(input.x +  " " + input.y);
         transform.Rotate(0, input.x*lookSpeed, 0);
 
         curRot += input.y * -lookSpeed;

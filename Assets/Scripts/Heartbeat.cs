@@ -19,7 +19,7 @@ public class Heartbeat : MonoBehaviour
     void Update()
     {
         timeSinceLastBeat += Time.deltaTime;
-        Debug.Log(BPM);
+       // Debug.Log(BPM);
         if(timeSinceLastBeat > (60 / BPM))
         {
             timeSinceLastBeat = 0;
