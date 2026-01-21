@@ -301,12 +301,17 @@ public float getBattLife()
         if(inSub == false)
         {
             OxygenLife -= (drainRate / drainDelay) * Time.deltaTime;
-        
+            HealthManager.Instance.setO2Status(false);
+
         }
-        if(OxygenLife <= 0f)
+        if (OxygenLife <= 0f) // if oxygen meter is now 0
         {
             OxygenLife = 0f;
-            HealthManager.Instance.setO2Status(true);
+            HealthManager.Instance.setO2Status(true); // set o2 damage status to true
+        }
+        else
+        {
+            HealthManager.Instance.setO2Status(false);
         }
     }
    public void DamageOxygen(float damage)

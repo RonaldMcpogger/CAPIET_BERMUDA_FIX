@@ -115,6 +115,7 @@ public class HealthManager : MonoBehaviour
             
 
             takeDamage(10f);
+        GlobalScreenShake.Instance.TriggerShake(0.3f, 0.3f);
 
         cooldownDmg = false;
     }
