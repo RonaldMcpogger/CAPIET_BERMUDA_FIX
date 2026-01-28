@@ -7,6 +7,7 @@ public class SeapouchAI : MonoBehaviour
     public GameObject player;
     public GameObject pullRadiusSphere;
     public GameObject deathRadiusSphere;
+    public GameObject particleSystem;
     public CharacterController characterController;
 
     public float pullStrength = 5;
@@ -24,14 +25,15 @@ public class SeapouchAI : MonoBehaviour
     void Update()
     {
         Pull();
-
         if(!cooldown)
         {
             Vector3 direction = transform.position - player.transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, 1).eulerAngles;
             transform.rotation = Quaternion.Euler(-90, 0, 180 + rotation.y);
-        }    
+        }
+        else
+            particleSystem.SetActive(false);
 
         if (player.GetComponent<Collider>().bounds.Intersects(deathRadiusSphere.GetComponent<Collider>().bounds))
         {
@@ -44,6 +46,11 @@ public class SeapouchAI : MonoBehaviour
     {
         if (pullRadiusSphere.GetComponent<Collider>().bounds.Intersects(player.GetComponent<Collider>().bounds) && pullTime < maxPullTime && !cooldown)
         {
+            if (particleSystem.activeSelf == false)
+            {
+                particleSystem.SetActive(true);
+                particleSystem.GetComponent<ParticleReverse>().startPull();
+            }
 
             Debug.Log("Pulling!");
             GlobalScreenShake.Instance.TriggerShake(1.0f, 3.0f);
