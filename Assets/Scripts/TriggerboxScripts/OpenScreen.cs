@@ -6,16 +6,22 @@ public class OpenScreen : MonoBehaviour, HitboxScript
 {
     [SerializeField] GameObject player;
     bool active;
+    float timesinceLastOpen;
     // Start is called before the first frame update
     void Start()
     {
-        
+        timesinceLastOpen = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(timesinceLastOpen < 1f)
+        {
+            timesinceLastOpen += Time.deltaTime;
+           
+        }
+        Debug.Log(timesinceLastOpen);
     }
     public void entered()
     {
@@ -29,11 +35,17 @@ public class OpenScreen : MonoBehaviour, HitboxScript
 
     public void interact()
     {
-        if (!active)
+        if (!active && timesinceLastOpen >=1f)
         {
             player.GetComponentInChildren<ScreenUI>().toggleScreenOn();
             active = true;
         }
+    }
+
+    public void resetActive()
+    {
+        active = false;
+        timesinceLastOpen = 0;
     }
     public void up()
     {

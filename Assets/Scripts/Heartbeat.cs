@@ -19,26 +19,17 @@ public class Heartbeat : MonoBehaviour
     void Update()
     {
         timeSinceLastBeat += Time.deltaTime;
-        Debug.Log(BPM);
-        if (ItemManager.Instance.getOxygen() > 30 && ItemManager.Instance.getOxygen() < 60)
-        {
-            setBPM();
-        }
-        else if (ItemManager.Instance.getOxygen() <= 30)
-        {
-            setBPM();
-        }
-        if (timeSinceLastBeat > (60 / BPM))
+       // Debug.Log(BPM);
+        if(timeSinceLastBeat > (60 / BPM))
         {
             timeSinceLastBeat = 0;
-            //StartCoroutine(beat());
+            StartCoroutine(beat());
         }
-       
     }
     
     void setBPM()
     {                   //2 - (current/max)
-        BPM = baseBPM * (2.0f - (ItemManager.Instance.getOxygen() / 100f));
+        BPM = baseBPM * (2.0f - (10f / 100f));
     }
     private IEnumerator beat()
     {

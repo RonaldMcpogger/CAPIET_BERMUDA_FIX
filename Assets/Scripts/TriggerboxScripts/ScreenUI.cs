@@ -40,7 +40,7 @@ public class ScreenUI : MonoBehaviour
     bool frameBuffer;
     bool ignoreInputs;
 
-    float fade;
+    [SerializeField] float fade = 0.2f;
 
     // Start is called before the first frame update
     void Start()
@@ -77,12 +77,21 @@ public class ScreenUI : MonoBehaviour
         if (!active && !frameBuffer)
         {
             x = 0;
+            
             y = 0;
             regularUI.GetComponent<Canvas>().enabled = false;
             screenUI.GetComponent<Canvas>().enabled = true;
+            resetCol();
             changeColor(topLeft.gameObject.GetComponent<Button>(), fade);
             active = true;
             frameBuffer = true;
+
+            //reset inputfields
+            current = 0;
+            nums[0] = "";
+            nums[1] = "";
+            xText.text = "X";
+            yText.text = "Y";
         }
     }
 
@@ -91,7 +100,8 @@ public class ScreenUI : MonoBehaviour
         regularUI.GetComponent<Canvas>().enabled = true;
         screenUI.GetComponent<Canvas>().enabled = false;
         active = false;
-        frameBuffer = true;
+        //frameBuffer = true;
+        FindAnyObjectByType<OpenScreen>().resetActive();
     }
     void checkDpad()
     {
@@ -236,6 +246,7 @@ public class ScreenUI : MonoBehaviour
     public void startAcceptingInputs()
     {
         ignoreInputs = false;
+        frameBuffer = true;
         x = 0;
         y = 0;
         changeColor(topLeft.gameObject.GetComponent<Button>(), fade);
@@ -324,7 +335,7 @@ public class ScreenUI : MonoBehaviour
                                 current++;
                             } else
                             {//set teleport data here
-                                Debug.Log("off");
+                                //Debug.Log("off");
                                 FindAnyObjectByType<OpenScreen>().GetComponent<OpenScreen>().setScreenActive(false);
                                 WorldTransportManager.Instance.checkLevel(float.Parse(xText.text), float.Parse(yText.text));
                                 toggleScreenOff();
