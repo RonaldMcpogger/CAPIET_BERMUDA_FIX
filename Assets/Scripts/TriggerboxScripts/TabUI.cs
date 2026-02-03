@@ -60,13 +60,14 @@ public class TabUI : MonoBehaviour
             if (ControllerScan.Instance.rightAction.WasPressedThisFrame() == true) //do other stuff not on tabs
             {
                 //check which tab and return input there, tab 0 is navi, tab 1 is mission screen (should have no available inputs), tab 2 is endemic life info tab
-
+                
                 switch (y)
                 {
                     case 0:
                         FindFirstObjectByType<ScreenUI>().startAcceptingInputs();
                         break;
                     case 2:
+                        Debug.Log("passing");
                         FindFirstObjectByType<DexUI>().enableDex();
                         tabEnabled = false;
                         break;
@@ -96,6 +97,7 @@ public class TabUI : MonoBehaviour
                         changeColor(bot.gameObject.GetComponent<Button>(), fade);
                         missionUI.SetActive(false);
                         dexUI.SetActive(true);
+                        dexUI.GetComponent<DexUI>().onShow();
                         break;
                     case 3:
                         changeColor(quit.gameObject.GetComponent<Button>(), fade);
