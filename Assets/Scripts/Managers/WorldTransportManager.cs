@@ -26,7 +26,7 @@ public class WorldTransportManager : MonoBehaviour
     Vector2 lvl1Code;
     Vector2 lvl2Code;
     List<Vector2> levels = new List<Vector2>();
-    string sceneToLoad = "SeafloorTest";
+    string sceneToLoad = "Level1-Tutorial";
     private void Start()
     {
         lvl1Code = new Vector2(345, 375);
@@ -63,10 +63,10 @@ public class WorldTransportManager : MonoBehaviour
             switch (levelCheck)
             {
                 case 1:
-                    sceneToLoad = "Level2";
+                    sceneToLoad = "Level1-Tutorial";
                     break;
                 case 2:
-                    sceneToLoad = "Level1-Tutorial";
+                    sceneToLoad = "Level2";
                     break;
                 default: break;
             }

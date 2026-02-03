@@ -9,39 +9,47 @@ public class DexHeaderText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void changeText(int y)
     {
-        string text = "NAME: ";
-        switch (y)
+        string text;
+        if (KeyManager.Instance.getKey(y))
         {
-            case 0:
-                text += "TEST 0";
-                break;
-            case 1:
-                text += "TEST 1";
-                break;
-            case 2:
-                text += "TEST 2";
-                break;
-            case 3:
-                text += "TEST 3";
-                break;
-            case 4:
-                text += "TEST 4";
-                break;
-            case 5:
-                text += "TEST 5";
-                break;
+            text = "NAME: ";
+            switch (y)
+            {
+                case 0:
+                    text += "ISOPOD";
+                    break;
+                case 1:
+                    text += "SEA ANGEL";
+                    break;
+                case 2:
+                    text += "BARRELEYE";
+                    break;
+                case 3:
+                    text += "SPOTLIGHT";
+                    break;
+                case 4:
+                    text += "SEAPOUCH";
+                    break;
+                case 5:
+                    text += "FIREWORK";
+                    break;
 
+            }
+        }
+        else
+        {
+            text = "FILE ENCRYPTED";
         }
 
         this.gameObject.GetComponent<TextMeshProUGUI>().text = text;

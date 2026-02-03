@@ -21,7 +21,7 @@ public class OpenScreen : MonoBehaviour, HitboxScript
             timesinceLastOpen += Time.deltaTime;
            
         }
-        Debug.Log(timesinceLastOpen);
+        //Debug.Log(timesinceLastOpen);
     }
     public void entered()
     {
@@ -54,7 +54,7 @@ public class OpenScreen : MonoBehaviour, HitboxScript
 
     public void setScreenActive(bool a)
     {
-        Debug.Log(a);
+        //Debug.Log(a);
         active = a;
     }
 }
