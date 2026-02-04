@@ -134,6 +134,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Start"",
+                    ""type"": ""Button"",
+                    ""id"": ""5016d288-cb9b-4755-8288-25e0e9473bc3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -444,6 +453,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Left"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""08f923f3-958c-4cd5-abc1-30833c5f31f4"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""42d0355e-226e-4083-9599-201527235bc5"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -464,6 +495,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Gameplay_Right = m_Gameplay.FindAction("Right", throwIfNotFound: true);
         m_Gameplay_Down = m_Gameplay.FindAction("Down", throwIfNotFound: true);
         m_Gameplay_Left = m_Gameplay.FindAction("Left", throwIfNotFound: true);
+        m_Gameplay_Start = m_Gameplay.FindAction("Start", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -537,6 +569,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Right;
     private readonly InputAction m_Gameplay_Down;
     private readonly InputAction m_Gameplay_Left;
+    private readonly InputAction m_Gameplay_Start;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
@@ -553,6 +586,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Right => m_Wrapper.m_Gameplay_Right;
         public InputAction @Down => m_Wrapper.m_Gameplay_Down;
         public InputAction @Left => m_Wrapper.m_Gameplay_Left;
+        public InputAction @Start => m_Wrapper.m_Gameplay_Start;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -598,6 +632,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Left.started += instance.OnLeft;
             @Left.performed += instance.OnLeft;
             @Left.canceled += instance.OnLeft;
+            @Start.started += instance.OnStart;
+            @Start.performed += instance.OnStart;
+            @Start.canceled += instance.OnStart;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -638,6 +675,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Left.started -= instance.OnLeft;
             @Left.performed -= instance.OnLeft;
             @Left.canceled -= instance.OnLeft;
+            @Start.started -= instance.OnStart;
+            @Start.performed -= instance.OnStart;
+            @Start.canceled -= instance.OnStart;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -669,5 +709,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnRight(InputAction.CallbackContext context);
         void OnDown(InputAction.CallbackContext context);
         void OnLeft(InputAction.CallbackContext context);
+        void OnStart(InputAction.CallbackContext context);
     }
 }
