@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Presets;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,7 +11,10 @@ public class MainMenu : MonoBehaviour
     bool pressed;
     int index;
     float fade;
+    bool outroFade;
     [SerializeField] List<GameObject> boxes;
+    [SerializeField] GameObject fader;
+    float alpha = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +22,12 @@ public class MainMenu : MonoBehaviour
         index = 0;
         fade = 0.2f;
         changeColor(boxes[index].gameObject.GetComponent<Button>(), fade);
+        alpha = 0;
+        outroFade = false;
+
+        Color c = fader.gameObject.GetComponent<Image>().color;
+        c.a = alpha;
+        fader.gameObject.GetComponent<Image>().color = c;
     }
 
     // Update is called once per frame
@@ -50,6 +60,21 @@ public class MainMenu : MonoBehaviour
         }
 
         checkInput();
+
+        if (outroFade && alpha <= 1f)
+        {
+            alpha = Mathf.Lerp(alpha, 1.2f, Time.deltaTime * .99f);
+            Color c = fader.gameObject.GetComponent<Image>().color;
+            c.a = alpha;
+            fader.gameObject.GetComponent<Image>().color = c;
+        }
+        else if (outroFade && alpha > 0.99f) //on completion after alpha flag changes
+        {
+            Color c = fader.gameObject.GetComponent<Image>().color;
+            c.a = 1;
+            fader.gameObject.GetComponent<Image>().color = c;
+            SceneManager.LoadScene("Level1-Tutorial");
+        }
     }
 
     void resetCol()
@@ -76,7 +101,7 @@ public class MainMenu : MonoBehaviour
             switch (index)
             {
                 case 0://start
-                    SceneManager.LoadScene("Level1-Tutorial");
+                    outroFade = true;
                     break;
                 case 1: //quit
                     Application.Quit();
