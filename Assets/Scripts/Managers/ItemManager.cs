@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class ItemManager : MonoBehaviour
 {
+    /// <summary>
+    /// RAM NOTE: if free time, implement the Interface functions so that its not cluttered in item manager
 
+    /// </summary>
 
     // Start is called before the first frame update
     [SerializeField] Image LeftUI;
@@ -18,20 +21,22 @@ public class ItemManager : MonoBehaviour
     [Tooltip("Number of Rocks collected")]
     [SerializeField] private int subRocks;
     [SerializeField] public GameObject coordinates;
+
+    [SerializeField] private GameObject scanFunc;
     bool flashOn = false;
 
     bool displayOn = false; // for coordinates display
 
     public bool inSub = false; //if player is in sub
 
-  
 
-    float BatteryLife = 100f;
-    public float drainDelay = 2f;
-   
-    
-    float drainRate = 5f;
-    float OxygenLife = 100f;
+    [SerializeField] public float BatteryLife = 100f;
+    [SerializeField] float OxygenLife = 100f;
+    // public float drainDelay = 1f;
+
+    [Tooltip("Rate at which battery and oxygen drain when in use or outside of sub, respectively")]
+   [SerializeField] private float OxydrainRate = 1f;
+   [SerializeField]  private float BattDrainRate = 3f;
 
 
     //Tools
@@ -55,6 +60,13 @@ public class ItemManager : MonoBehaviour
             // Optionally, make the object persistent across scene loads.
             DontDestroyOnLoad(this);
         }
+    }
+
+    private void Start()
+    {
+       scanFunc.SetActive(false);
+
+
     }
 
 
@@ -101,29 +113,31 @@ public class ItemManager : MonoBehaviour
                     {
                         if (leftHeld.itemID == 200) // note try to make a meter for battery life 
                         {
-                            if(BatteryLife <= 0f) // battery dead
+                            if(BatteryLife > 0f) // battery dead
                             {
-                                return;
+                                 if (headLight.intensity != 1.3f)
+                                {
+                                    flashOn = true;
+                                    headLight.intensity = 1.3f;
+                                }
+                                else
+                                {
+                                    flashOn = false;
+                                    headLight.intensity = 0f;
+                                }
                             }
                             // insert state condition for flashlight
-                           else if (headLight.intensity != 1.3f)
-                            {
-                                flashOn = true;
-                                headLight.intensity = 1.3f;
-                            }
-                            else
-                            {
-                                flashOn = false;
-                                headLight.intensity = 0f;
-                            }
+                         
 
                         }
-                        else if (leftHeld.itemID == 201)
+                        else if (leftHeld.itemID == 201 &&BatteryLife>24)
                         {
-                            Debug.Log("Used left item: " + leftHeld.itemName);
+                            
+                            scanFunc.SetActive(true);
+                            scanFunc.GetComponent<Scanner>().StartScanning();
 
                         }
-                       
+                       //mayhaps will create a seperate script later
                         else if (leftHeld.itemID == 300 ) // coordinates
                            {
                             if (displayOn == false)
@@ -291,7 +305,7 @@ public float getBattLife()
     {
         if(flashOn)
         {
-            BatteryLife -= drainRate * Time.deltaTime;
+            BatteryLife -= BattDrainRate * Time.deltaTime;
             if(BatteryLife <= 0f)
             {
                 flashOn = false;
@@ -300,7 +314,7 @@ public float getBattLife()
         }
         if(inSub == false)
         {
-            OxygenLife -= (drainRate / drainDelay) * Time.deltaTime;
+            OxygenLife -= (OxydrainRate) * Time.deltaTime;
             HealthManager.Instance.setO2Status(false);
 
         }
@@ -322,6 +336,10 @@ public float getBattLife()
     {
         BatteryLife -= damage;
     }
+
+
+
+
 
 
     public void depositItems() // check hand if metal 
