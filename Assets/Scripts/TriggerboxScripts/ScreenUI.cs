@@ -92,6 +92,8 @@ public class ScreenUI : MonoBehaviour
             nums[1] = "";
             xText.text = "X";
             yText.text = "Y";
+
+            FindAnyObjectByType<PauseMenu>().setCanPause(false);
         }
     }
 
@@ -102,6 +104,7 @@ public class ScreenUI : MonoBehaviour
         active = false;
         //frameBuffer = true;
         FindAnyObjectByType<OpenScreen>().resetActive();
+        FindAnyObjectByType<PauseMenu>().setCanPause(true);
     }
     void checkDpad()
     {
@@ -282,7 +285,7 @@ public class ScreenUI : MonoBehaviour
         if (ControllerScan.Instance.interactAction.WasPressedThisFrame())
         {
             Gamepad.current.SetMotorSpeeds(0.4f, 0.9f);
-            Debug.Log("number entered");
+           // Debug.Log("number entered");
             bool numUpdated = false;
             switch (y)
             {

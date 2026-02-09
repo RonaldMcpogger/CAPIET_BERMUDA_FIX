@@ -21,7 +21,7 @@ public class HitboxUI : MonoBehaviour
         button.gameObject.SetActive(false);
         text.gameObject.SetActive(false);
         Color c = fader.gameObject.GetComponent<Image>().color;
-        c.a = 0.0f;
+        c.a = 1.0f;
         fader.gameObject.GetComponent<Image>().color = c;
         alpha = 1.0f;
         introFade = true;
@@ -43,7 +43,7 @@ public class HitboxUI : MonoBehaviour
             Color c = fader.gameObject.GetComponent<Image>().color;
             c.a = 0;
             fader.gameObject.GetComponent<Image>().color = c;
-        } else if (outroFade && alpha <= 0.99f)
+        } else if (outroFade && alpha <= 1f)
         {
             alpha = Mathf.Lerp(alpha, 1.2f, Time.deltaTime *.99f);
             Debug.Log(alpha);

@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour
     CharacterController controller;
     [SerializeField] public float defaultSpeed = 2.0f;
     [SerializeField] public float speed;
-    [SerializeField] private float lookSpeed = 0.8f;
+    [SerializeField] private float lookSpeed = 88.8f;
     
 
     Vector3 movement;
@@ -24,6 +24,8 @@ public class Movement : MonoBehaviour
         this.speed = defaultSpeed;
         controller = GetComponent<CharacterController>();
         worldData = FindAnyObjectByType<WorldData>();
+        lookSpeed = 88.8f;
+        defaultSpeed = 2.0f;
     }
 
     // Update is called once per frame
@@ -80,9 +82,9 @@ public class Movement : MonoBehaviour
     {
         Vector2 input = ControllerScan.Instance.camInput;
        // Debug.Log(input.x +  " " + input.y);
-        transform.Rotate(0, input.x*lookSpeed, 0);
+        transform.Rotate(0, input.x*lookSpeed* Time.deltaTime, 0);
 
-        curRot += input.y * -lookSpeed;
+        curRot += input.y * -lookSpeed*Time.deltaTime;
         curRot = Mathf.Clamp(curRot, -70, 70);
        Camera.main.transform.localRotation = Quaternion.Euler(curRot,0,0);
     }
