@@ -26,7 +26,7 @@ public class PlayerScanner : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             isInside = true;
-            Debug.Log("Enter");
+            //Debug.Log("Enter");
             this.gameObject.GetComponent<HitboxScript>().entered();
         }
     }
@@ -36,7 +36,7 @@ public class PlayerScanner : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             isInside = false;
-            Debug.Log("Exit");
+            //Debug.Log("Exit");
             this.gameObject.GetComponent<HitboxScript>().exited();
         }
     }
