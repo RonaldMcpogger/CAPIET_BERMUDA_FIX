@@ -7,6 +7,9 @@ TagManager:
   - UI
   - Screen
   - Spotlight
+  - Items
+  - Walls
+  - Scanner
   layers:
   - Default
   - TransparentFX
@@ -16,7 +19,7 @@ TagManager:
   - UI
   - Item
   - PP
-  - 
+  - Wall
   - 
   - 
   - 

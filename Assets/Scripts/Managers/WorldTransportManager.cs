@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class WorldTransportManager : MonoBehaviour
 {
+    // ram note: make error handling where if character has no coordinate, load the current level they are in 
     public static WorldTransportManager Instance { get; private set; }
 
     void Awake()

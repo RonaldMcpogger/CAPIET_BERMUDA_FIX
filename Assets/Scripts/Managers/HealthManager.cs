@@ -9,10 +9,9 @@ public class HealthManager : MonoBehaviour
     [SerializeField] Image Vignette;
     [SerializeField]private float Health = 100f;
     [SerializeField]private bool isOutofO2 = false;
-    private Color vec4 = new Color(0f, 0f, 0f, 0f);
+   
     private bool cooldownDmg = false;
     private bool cooldownHeal = false;
-    HealthStatus currentHealthStatus;
     enum  HealthStatus
     {
         Healthy,
@@ -26,23 +25,19 @@ public class HealthManager : MonoBehaviour
     {
         if(health > 70f)
         {
-            currentHealthStatus = HealthStatus.Healthy;
-            Vignette.color = Color.Lerp(Vignette.color, new Color(0f, 0f, 0f, 0.0f), Time.deltaTime*2);
+            Vignette.color = Color.Lerp(Vignette.color, new Color(Vignette.color.r, Vignette.color.g, Vignette.color.b, 0.0f), Time.deltaTime*2);
         }
         else if (health <= 70 && health > 50f)
         {
-            currentHealthStatus = HealthStatus.Injured1;
-            Vignette.color = Color.Lerp(Vignette.color, new Color(0f, 0f, 0f, 0.50f), Time.deltaTime * 2);
+            Vignette.color = Color.Lerp(Vignette.color, new Color(Vignette.color.r, Vignette.color.g,Vignette.color.b, 0.10f), Time.deltaTime * 2);
         }
         else if(health <= 50 && health > 30f)
         {
-            currentHealthStatus = HealthStatus.Injured1;
-            Vignette.color = Color.Lerp(Vignette.color, new Color(0f, 0f, 0f, 0.70f), Time.deltaTime*2);
+            Vignette.color = Color.Lerp(Vignette.color, new Color(Vignette.color.r, Vignette.color.g, Vignette.color.b, 0.20f), Time.deltaTime*2);
         }
         else if(health <= 30f)
         {
-            currentHealthStatus = HealthStatus.Critical;
-            Vignette.color = Color.Lerp(Vignette.color, new Color(0f, 0f, 0f, 0.95f), Time.deltaTime * 2);
+            Vignette.color = Color.Lerp(Vignette.color, new Color(Vignette.color.r, Vignette.color.g, Vignette.color.b, 0.95f), Time.deltaTime * 2);
         }
     }
 
@@ -52,7 +47,7 @@ public class HealthManager : MonoBehaviour
 
     void Start()
     {
-        
+        Vignette = GameObject.Find("HealthVignette").GetComponent<Image>();
     }
     void Update()
     {
@@ -63,7 +58,7 @@ public class HealthManager : MonoBehaviour
         else if(cooldownDmg == false && !isOutofO2)
         {
             StopCoroutine(DamageTimer());
-            Debug.Log("02 recovirng");
+           
          
                 Health = 100f;
             
@@ -114,8 +109,8 @@ public class HealthManager : MonoBehaviour
 
             
 
-            takeDamage(10f);
         GlobalScreenShake.Instance.TriggerShake(0.3f, 0.3f);
+        takeDamage(15f);
 
         cooldownDmg = false;
     }
