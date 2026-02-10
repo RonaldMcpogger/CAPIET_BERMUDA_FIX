@@ -23,7 +23,7 @@ public class Heartbeat : MonoBehaviour
         if(timeSinceLastBeat > (60 / BPM))
         {
             timeSinceLastBeat = 0;
-            StartCoroutine(beat());
+            //StartCoroutine(beat());
         }
     }
     

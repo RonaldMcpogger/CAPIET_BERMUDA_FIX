@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class SeapouchAI : MonoBehaviour
 {
-    public GameObject player;
-    public GameObject pullRadiusSphere;
-    public GameObject deathRadiusSphere;
-    public GameObject particleSystem;
-    public CharacterController characterController;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject pullRadiusSphere;
+    [SerializeField] private GameObject deathRadiusSphere;
+    [SerializeField] private GameObject particleSystem;
+    [SerializeField] private CharacterController characterController;
 
-    public float pullStrength = 5;
-    public float maxPullTime = 5;
-    public float pullTime = 0;
-    public float extraRestTime = 3.5f;
-    public bool cooldown = false;
+    [SerializeField] private float pullStrength = 5;
+    [SerializeField] private float maxPullTime = 5;
+    [SerializeField] private float pullTime = 0;
+    [SerializeField] private float extraRestTime = 3.5f;
+    [SerializeField] private bool cooldown = false;
     // Start is called before the first frame update
     void Start()
     {
