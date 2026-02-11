@@ -64,9 +64,7 @@ public class ItemManager : MonoBehaviour
 
     private void Start()
     {
-       scanFunc.SetActive(false);
-
-
+       //scanFunc.SetActive(false);
     }
 
 
