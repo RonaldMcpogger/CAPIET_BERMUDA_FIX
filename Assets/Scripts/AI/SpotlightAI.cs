@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class SpotlightAI : MonoBehaviour
@@ -58,6 +59,8 @@ public class SpotlightAI : MonoBehaviour
                     {
                         Debug.Log("Player Killed by Spotlight"); //Insert Death Screen Here
                         this.deathScreen.active = true;
+                        Gamepad.current.SetMotorSpeeds(0f, 2f);
+                        Gamepad.current.SetMotorSpeeds(0, 0);
                     }
                 }
                 else

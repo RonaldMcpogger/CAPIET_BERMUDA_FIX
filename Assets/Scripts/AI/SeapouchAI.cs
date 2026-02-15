@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SeapouchAI : MonoBehaviour
 {
@@ -40,6 +41,8 @@ public class SeapouchAI : MonoBehaviour
         if (player.GetComponent<Collider>().bounds.Intersects(deathRadiusSphere.GetComponent<Collider>().bounds))
         {
             Debug.Log("Player Dead!");
+            Gamepad.current.SetMotorSpeeds(0f, 2f);
+            Gamepad.current.SetMotorSpeeds(0, 0);
         }
 
     }
@@ -55,6 +58,7 @@ public class SeapouchAI : MonoBehaviour
             }
 
             //Put Vibration Stuff Here:
+            Gamepad.current.SetMotorSpeeds(0, 0.4f * pullTime);
 
             //Screen Shake
             GlobalScreenShake.Instance.TriggerShake(1.0f, 3.0f);
@@ -77,6 +81,8 @@ public class SeapouchAI : MonoBehaviour
             {
                 pullTime = 0;
                 cooldown = false;
+
+                Gamepad.current.SetMotorSpeeds(0, 0);
             }
         }
 
