@@ -13,14 +13,8 @@ public class Item : MonoBehaviour
 
     // Start is called before the first frame update
 
-    void awake()
-    {
-        if (ItemData == null)
-        {
-            Debug.LogError("ItemData is not assigned in the inspector for " + gameObject.name);
-        }
-     
-    }
+    
+    
 
     void Start()
     {

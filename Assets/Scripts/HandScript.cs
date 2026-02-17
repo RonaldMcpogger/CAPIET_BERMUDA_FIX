@@ -18,6 +18,8 @@ public class HandScript : MonoBehaviour
     bool cooldownActive = false;
     float cooldownDuration = .5f; // Cooldown duration in seconds
 
+
+
     int idLeft;
     int idRight;
     // Start is called before the first frame update
@@ -37,11 +39,11 @@ public class HandScript : MonoBehaviour
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2.0f, LayerMask.GetMask("Item")))
         {
             //Debug.Log(hit.transform.gameObject.name);
-            if(!holdingLeft)
+            if(!holdingLeft && ItemManager.Instance.getItemInHand(0)==null)
             {
                 validLeft=true; 
             }
-            if(!holdingRight)
+            if(!holdingRight && ItemManager.Instance.getItemInHand(1) == null)
             {
                 validRight=true;
             }
@@ -74,9 +76,9 @@ public class HandScript : MonoBehaviour
     }
     void grabLeft(RaycastHit hit)
     {
-        if (ControllerScan.Instance.grabbedLeft == true)
+        if (ControllerScan.Instance.grabbedLeft == true )
         {
-            if (!holdingLeft)
+            if (!holdingLeft && ItemManager.Instance.getItemInHand(0) == null)
             {
                 if (hit.transform == null) return;
                 holdingLeft = true;
@@ -106,7 +108,7 @@ public class HandScript : MonoBehaviour
         if(ControllerScan.Instance.grabbedRight == true)
         {
 
-            if (!holdingRight)
+            if (!holdingRight && ItemManager.Instance.getItemInHand(1) == null)
             {
                 if (hit.transform == null) return;
                 holdingRight = true;
@@ -151,7 +153,6 @@ public class HandScript : MonoBehaviour
         {
             if (ItemManager.Instance.isConsumeable(1))
             {
-                Debug.Log("used right and consumedAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                 holdingRight = false;
                 idRight = -1;
             }

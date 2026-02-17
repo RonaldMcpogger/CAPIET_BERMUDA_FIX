@@ -32,6 +32,8 @@ public class EnterSubmarine : MonoBehaviour, HitboxScript
             activated = true;
             ItemManager.Instance.inSub = true; // set the trigger to true meaning player is inside submarine
            player.GetComponentInChildren<HitboxUI>().startFade("SubmarineTest");
+      
+
 
         }
     }

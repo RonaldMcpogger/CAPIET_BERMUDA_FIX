@@ -47,11 +47,21 @@ public class HealthManager : MonoBehaviour
 
     void Start()
     {
-        Vignette = GameObject.Find("HealthVignette").GetComponent<Image>();
+        if(Vignette == null)
+        {
+            Vignette = GameObject.Find("HealthVignette").GetComponent<Image>();
+        }
+           
     }
     void Update()
     {
-        if(cooldownDmg == false && isOutofO2)
+
+        if (Vignette == null)
+        {
+            Vignette = GameObject.Find("HealthVignette").GetComponent<Image>();
+        }
+
+        if (cooldownDmg == false && isOutofO2)
         {
             StartCoroutine(DamageTimer());
         }
