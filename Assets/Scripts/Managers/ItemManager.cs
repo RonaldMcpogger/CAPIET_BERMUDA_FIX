@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,27 +12,18 @@ public class ItemManager : MonoBehaviour
     /// </summary>
 
     // Start is called before the first frame update
-    [SerializeField] Image LeftUI;
-    [SerializeField] Image RightUI;
-    [SerializeField] public ItemScriptables heldItem = null;
-    [Tooltip("Number of metals collected")]
-    [SerializeField] private int subMetals;
-    [Tooltip("Number of components collected")]
-    [SerializeField] private int subComponents;
-    [Tooltip("Number of Rocks collected")]
-    [SerializeField] private int subRocks;
-    [SerializeField] public GameObject coordinates;
 
-    [SerializeField] private GameObject scanFunc;
-    bool flashOn = false;
+  
 
-    bool displayOn = false; // for coordinates display
 
-    public bool inSub = false; //if player is in sub
+
+
+    [SerializeField] private ItemScriptables leftHeld, Rightheld;
 
 
     [SerializeField] public float BatteryLife = 100f;
     [SerializeField] float OxygenLife = 100f;
+    [SerializeField] private float shipIntegrity;
     // public float drainDelay = 1f;
 
     [Tooltip("Rate at which battery and oxygen drain when in use or outside of sub, respectively")]
@@ -39,10 +31,27 @@ public class ItemManager : MonoBehaviour
    [SerializeField]  private float BattDrainRate = 3f;
 
 
+
+
     //Tools
     [SerializeField] private Light headLight;
 
-    private ItemScriptables leftHeld, Rightheld;
+    [SerializeField] public GameObject coordinates;
+
+    [SerializeField] private GameObject scanFunc;
+
+
+    bool flashOn = false;
+
+    bool displayOn = false; // for coordinates display
+
+    public bool inSub = false; //if player is in sub
+
+
+
+    /// <summary>
+    /// /SINGLETON
+    /// </summary>
     public static ItemManager Instance { get; private set; }
 
     private void Awake()
@@ -59,28 +68,54 @@ public class ItemManager : MonoBehaviour
             Instance = this;
             // Optionally, make the object persistent across scene loads.
             DontDestroyOnLoad(this);
+
+        }
+        //finding the necessary items
+
+    }
+
+    private  void Refresh()
+    {
+     
+        if (headLight == null)
+            {
+                headLight = GameObject.Find("LightArea").GetComponent<Light>();
+            }
+            if (coordinates == null)
+            {
+                coordinates = GameObject.Find("Coords Display");
+            }
+            if (scanFunc == null)
+            {
+                scanFunc = GameObject.Find("ScanArea");
         }
     }
+    
+ 
 
     private void Start()
     {
-       scanFunc.SetActive(false);
+        Refresh();
+        scanFunc.SetActive(false);
+
 
 
     }
+   
+
+
 
 
     public void grabItem(ItemScriptables item, int hand)
     {
-        if (hand == 0) // left
+       switch(hand)
         {
-            LeftUI.sprite = item.itemIcon;
-            leftHeld = item;
-        }
-        else if (hand == 1) // right
-        {
-            RightUI.sprite = item.itemIcon;
-            Rightheld = item;
+            case 0:
+                leftHeld = item;
+                break;
+            case 1:
+                Rightheld = item;
+                break;
         }
     }
 
@@ -92,11 +127,9 @@ public class ItemManager : MonoBehaviour
         {
             case 0:
                 leftHeld = null;
-                LeftUI.sprite = null;
                 break;
             case 1:
                 Rightheld = null;
-                RightUI.sprite = null;
                 break;
         }
     }
@@ -111,7 +144,7 @@ public class ItemManager : MonoBehaviour
                     // Example logic for using an item
                     if (!leftHeld.isConsumable)
                     {
-                        if (leftHeld.itemID == 200) // note try to make a meter for battery life 
+                        if (leftHeld.itemID == 200) 
                         {
                             if(BatteryLife > 0f) // battery dead
                             {
@@ -126,7 +159,6 @@ public class ItemManager : MonoBehaviour
                                     headLight.intensity = 0f;
                                 }
                             }
-                            // insert state condition for flashlight
                          
 
                         }
@@ -167,7 +199,7 @@ public class ItemManager : MonoBehaviour
                         
                          
                     }
-                    else //revamp to accept a thing inside sub
+                    else 
                     {
                         if (leftHeld.itemID == 100) // battery
                         {
@@ -183,7 +215,6 @@ public class ItemManager : MonoBehaviour
 
                         }
                         leftHeld = null;
-                        LeftUI.sprite = null;
 
                     }
                    
@@ -192,7 +223,6 @@ public class ItemManager : MonoBehaviour
             case 1:
                 if (Rightheld != null)
                 {
-                    Debug.Log("Used left item: " + Rightheld.itemName);
                     // Example logic for using an item
                     if (!Rightheld.isConsumable)
                     {
@@ -216,10 +246,11 @@ public class ItemManager : MonoBehaviour
                         }
                         else if (Rightheld.itemID == 201)
                         {
-                            Debug.Log("Used left item: " + Rightheld.itemName);
 
+                            scanFunc.SetActive(true);
+                            scanFunc.GetComponent<Scanner>().StartScanning();
                         }
-
+                        /////////////////////////////////////////////////////////////// COOOOOOOOOOOOOOORDS //////////////////////////////////////////////////////////////////////////////////
                         else if (Rightheld.itemID == 300) // coordinates
                         {
                             if (displayOn == false)
@@ -264,7 +295,6 @@ public class ItemManager : MonoBehaviour
 
                         }
                         Rightheld = null;
-                        RightUI.sprite = null;
                     }
                 }
                 break;
@@ -301,9 +331,40 @@ public float getBattLife()
     {
         return BatteryLife;
     }
+
+public float getShipIntegrity()
+    {
+               return shipIntegrity;
+    }
+ public void updateShipIntegrity(float integrity)
+    {
+        shipIntegrity += integrity;
+        shipIntegrity = Mathf.Clamp(shipIntegrity, 0f, 100f);
+    }
+
+
+
+    public ItemScriptables getItemInHand(int hand)
+    {
+        if (hand == 0)
+        {
+            return leftHeld;
+        }
+        else if (hand == 1)
+        {
+            return Rightheld;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     void Update()
     {
-        if(flashOn)
+        Refresh();
+
+        if (flashOn)
         {
             BatteryLife -= BattDrainRate * Time.deltaTime;
             if(BatteryLife <= 0f)
@@ -339,11 +400,50 @@ public float getBattLife()
 
 
 
+    
 
 
-
-    public void depositItems() // check hand if metal 
+    public int depositItems(int hand) // check hand if metal 
     {
+        int tag;
+        if(hand == 0 && leftHeld != null)
+        {
 
+             tag = leftHeld.itemID;
+            leftHeld = null;
+
+
+        }
+        else if (hand == 1 && Rightheld != null)
+        {
+            tag = Rightheld.itemID;
+            Rightheld = null;
+        }
+        else
+        {
+            tag= -1; // no item in hand
+        }
+        return tag;
+    }
+
+    public bool checkHand()
+    {
+        if(leftHeld != null ||Rightheld !=null)
+        {
+            if ((leftHeld.itemID >= 0 && leftHeld.itemID < 3) || (Rightheld.itemID >= 0 && Rightheld.itemID < 43))
+            {
+                Debug.Log("Hand has resources");
+                return true;
+            }
+            else return false;
+        }
+        else return false;
+    }
+
+
+    public void rechargeAll(float value)
+    {
+               OxygenLife = value;
+        BatteryLife = value;
     }
 }

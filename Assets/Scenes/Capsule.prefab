@@ -40,8 +40,8 @@ Transform:
   - {fileID: 4307441781071676657}
   - {fileID: 7465334675687706845}
   - {fileID: 4402311015127671797}
-  - {fileID: 7622711886129933296}
   - {fileID: 6411384976659473657}
+  - {fileID: 7622711886129933296}
   - {fileID: 2410093809788677897}
   - {fileID: 7095893049687533670}
   - {fileID: 8559803869540710408}
@@ -3951,9 +3951,10 @@ GameObject:
   - component: {fileID: 7510370677351021135}
   - component: {fileID: 1422586113674796537}
   - component: {fileID: 5074563725734356050}
+  - component: {fileID: 9178863874072034459}
   m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
+  m_Name: RightUI
+  m_TagString: RightUi
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4015,6 +4016,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9178863874072034459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2718676645077093100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c689f82f92dcc9148b9ec7db029dfa53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handImg: {fileID: 0}
+  hand: 1
 --- !u!1 &2755142008166414404
 GameObject:
   m_ObjectHideFlags: 0
@@ -6739,9 +6754,10 @@ GameObject:
   - component: {fileID: 8745036847565557036}
   - component: {fileID: 275036340532543645}
   - component: {fileID: 3233668080645784289}
+  - component: {fileID: 4510691435514128540}
   m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
+  m_Name: LeftUI
+  m_TagString: LeftUi
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6803,6 +6819,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4510691435514128540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4830056077156210536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c689f82f92dcc9148b9ec7db029dfa53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handImg: {fileID: 0}
+  hand: 0
 --- !u!1 &5000371401329907662
 GameObject:
   m_ObjectHideFlags: 0
@@ -7618,7 +7648,7 @@ GameObject:
   - component: {fileID: 8820964040619117238}
   m_Layer: 0
   m_Name: Coords Display
-  m_TagString: Untagged
+  m_TagString: CoordDisplay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8078,7 +8108,7 @@ GameObject:
   - component: {fileID: 6375225555479974305}
   m_Layer: 0
   m_Name: ScanArea
-  m_TagString: Untagged
+  m_TagString: Scanner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8148,7 +8178,7 @@ GameObject:
   - component: {fileID: 2624754495639616006}
   m_Layer: 0
   m_Name: LightArea
-  m_TagString: Untagged
+  m_TagString: Flashlight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

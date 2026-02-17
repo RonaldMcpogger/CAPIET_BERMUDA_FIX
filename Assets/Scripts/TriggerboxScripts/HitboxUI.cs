@@ -46,7 +46,7 @@ public class HitboxUI : MonoBehaviour
         } else if (outroFade && alpha <= 1f)
         {
             alpha = Mathf.Lerp(alpha, 1.2f, Time.deltaTime *.99f);
-            Debug.Log(alpha);
+         //   Debug.Log(alpha);
             Color c = fader.gameObject.GetComponent<Image>().color;
             c.a = alpha;
             fader.gameObject.GetComponent<Image>().color = c;
@@ -56,7 +56,11 @@ public class HitboxUI : MonoBehaviour
             Color c = fader.gameObject.GetComponent<Image>().color;
             c.a =1;
             fader.gameObject.GetComponent<Image>().color = c;
+
+           
             SceneManager.LoadScene(scene);
+         
+
         }
     }
 

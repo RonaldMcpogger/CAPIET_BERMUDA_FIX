@@ -35,7 +35,7 @@ public class GlobalScreenShake : MonoBehaviour
     {
         if (cam == null)
         {
-            cam = Camera.main;
+            cam = GameObject.Find("TexCam").GetComponent<Camera>();
         }
         originalPos = cam.transform.localPosition;
     }
@@ -48,6 +48,10 @@ public class GlobalScreenShake : MonoBehaviour
             start = false;
           StartCoroutine(Shake(duration, magnitude));
 
+        }
+        if(cam == null)
+        {
+            cam = GameObject.Find("TexCam").GetComponent<Camera>();
         }
     }
 

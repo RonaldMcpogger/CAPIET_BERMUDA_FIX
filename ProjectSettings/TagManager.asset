@@ -10,6 +10,11 @@ TagManager:
   - Items
   - Walls
   - Scanner
+  - Flashlight
+  - LeftUi
+  - RightUi
+  - CoordDisplay
+  - HVignette
   layers:
   - Default
   - TransparentFX
