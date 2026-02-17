@@ -9,6 +9,101 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: BodyMaterial
     second: {fileID: 2100000, guid: a58831b1f4ce5554f8670b8fbacc74ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Capsule_Exterior
+    second: {fileID: 2100000, guid: fabefd853fcc4034fa0db969a22be81e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Capsule_Interior
+    second: {fileID: 2100000, guid: 976d76ceb84eb6e49bc759a0e43f07c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Capsule_Window
+    second: {fileID: 2100000, guid: 2a1a5e358106f8c4895a105059832429, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DivingSuit
+    second: {fileID: 2100000, guid: 7b57c0f5995929b409c257db742a6c98, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LampLight
+    second: {fileID: 2100000, guid: 9c99d63919ef27d4fabf81f6c28a471b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Navigator
+    second: {fileID: 2100000, guid: 7d4684d75cd09ab4484ff08225940080, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pipe1
+    second: {fileID: 2100000, guid: e43b09549ed10694f8a4fbf94ba288bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pipe10
+    second: {fileID: 2100000, guid: aa15006c3c52e4841a54aea91cc32570, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pipe2
+    second: {fileID: 2100000, guid: 551d939d0b727ae47929309dcef9a2f2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pipe3
+    second: {fileID: 2100000, guid: b4c4e760ad957c349bf27a63d859c609, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pipe4
+    second: {fileID: 2100000, guid: 39dd950d0bb02504f9d299b0ab880d43, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pipe5
+    second: {fileID: 2100000, guid: e99b70b65e50f13439fca9d2ce40b1d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pipe6
+    second: {fileID: 2100000, guid: 7ff38fa82cbcb1443a2909d3b0788cfa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pipe7
+    second: {fileID: 2100000, guid: d10f73a1b2fd1cd4abc88697708012e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pipe8
+    second: {fileID: 2100000, guid: 328fd34d90be3ff438eb4bfe56d22c06, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pipe9
+    second: {fileID: 2100000, guid: 6de46b6ad2cf2664eb1526a618c2ed4f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Platform
+    second: {fileID: 2100000, guid: a5d77bea46e8ebc4d844c21df9757793, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sonar
+    second: {fileID: 2100000, guid: d8a56260c5af8ee45ac6964cb3e39834, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sub_Window
+    second: {fileID: 2100000, guid: 0c82be76d1a3fd74996cbfa35f3e8c43, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
