@@ -9,13 +9,20 @@ public class SeapouchAI : MonoBehaviour
     [SerializeField] private GameObject pullRadiusSphere;
     [SerializeField] private GameObject deathRadiusSphere;
     [SerializeField] private GameObject particleSystem;
+    [SerializeField] private GameObject seaUrchinRadius;
+    [SerializeField] private GameObject seaUrchin;
     [SerializeField] private CharacterController characterController;
 
     [SerializeField] private float pullStrength = 5;
     [SerializeField] private float maxPullTime = 5;
     [SerializeField] private float pullTime = 0;
+
+    [SerializeField] private bool final = false;
     [SerializeField] private float extraRestTime = 3.5f;
     [SerializeField] private bool cooldown = false;
+
+    [SerializeField] private float seaUrchinStuckTime = 5;
+    [SerializeField] private float seaUrchinPullStrengthMultiplier = 4;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +51,13 @@ public class SeapouchAI : MonoBehaviour
             Gamepad.current.SetMotorSpeeds(0f, 2f);
             Gamepad.current.SetMotorSpeeds(0, 0);
         }
+        if (final && seaUrchin.GetComponent<Collider>().bounds.Intersects(deathRadiusSphere.GetComponent<Collider>().bounds))
+        {
+            pullTime = maxPullTime * 2 + extraRestTime;
+            cooldown = true;
+            seaUrchin.SetActive(false);
+            final = false;
+        }
 
     }
 
@@ -57,10 +71,14 @@ public class SeapouchAI : MonoBehaviour
                 particleSystem.GetComponent<ParticleReverse>().startPull();
             }
 
+            if (final && pullTime >= seaUrchinStuckTime && seaUrchinRadius.GetComponent<Collider>().bounds.Intersects(seaUrchin.GetComponent<Collider>().bounds))
+            {
+                seaUrchin.transform.position += (seaUrchinPullStrengthMultiplier * pullStrength * Vector3.Normalize((deathRadiusSphere.transform.position - seaUrchin.transform.position)) * Time.deltaTime);
+            }
             //Put Vibration Stuff Here:
             Gamepad.current.SetMotorSpeeds(0, 0.4f * pullTime);
 
-            //Screen Shake
+                //Screen Shake
             GlobalScreenShake.Instance.TriggerShake(1.0f, 3.0f);
 
             //Actual Pulling

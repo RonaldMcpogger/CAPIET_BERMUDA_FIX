@@ -11,13 +11,11 @@ public class EnterSubmarine : MonoBehaviour, HitboxScript
     void Awake()
     {
         activated = false;
-       
     }
 
 
     public void entered()
     {
-       
         player.GetComponentInChildren<HitboxUI>().setUIActive("Enter Ship");
     }
     public void exited()
