@@ -14,6 +14,7 @@ public class EnterSubmarine : MonoBehaviour, HitboxScript
        
     }
 
+
     public void entered()
     {
        

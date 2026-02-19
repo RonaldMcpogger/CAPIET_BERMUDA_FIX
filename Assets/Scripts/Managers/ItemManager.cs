@@ -123,8 +123,14 @@ public class ItemManager : MonoBehaviour
 
     public void dropItem(int hand)
     {
-        switch(hand)
+        if (leftHeld.itemID == 200 || Rightheld.itemID == 200)
         {
+            flashOn = false;
+            headLight.intensity = 0f;
+        }
+        switch (hand)
+        {
+           
             case 0:
                 leftHeld = null;
                 break;
