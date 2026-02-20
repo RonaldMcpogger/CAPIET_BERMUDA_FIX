@@ -2,16 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnSeapouch : MonoBehaviour
+public class SpawnSpotlight2 : MonoBehaviour
 {
-    [SerializeField] private GameObject seapouchEnemy;
+    [SerializeField] private GameObject spotlightEnemy;
     [SerializeField] private GameObject spawnTrigger;
     [SerializeField] private GameObject despawnTrigger;
     [SerializeField] private GameObject player;
-    [SerializeField] private GameObject coordinates;
-
-    [SerializeField] private bool special = false;
-
     bool spawned = false;
 
 
@@ -19,25 +15,23 @@ public class SpawnSeapouch : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        seapouchEnemy.SetActive(false);
+        spotlightEnemy.SetActive(false);
         spawned = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (special && coordinates.activeSelf == false)
-            special = false;
 
-        if (!special && !spawned && spawnTrigger.GetComponent<Collider>().bounds.Intersects(player.GetComponent<Collider>().bounds))
+        if (!spawned && spawnTrigger.GetComponent<Collider>().bounds.Intersects(player.GetComponent<Collider>().bounds))
         {
-            seapouchEnemy.SetActive(true);
+            spotlightEnemy.SetActive(true);
             spawned = true;
         }
 
         if (spawned && despawnTrigger.GetComponent<Collider>().bounds.Intersects(player.GetComponent<Collider>().bounds))
         {
-            seapouchEnemy.SetActive(false);
+            spotlightEnemy.SetActive(false);
         }
 
     }

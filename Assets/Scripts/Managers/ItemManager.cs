@@ -13,10 +13,10 @@ public class ItemManager : MonoBehaviour
 
     // Start is called before the first frame update
 
-  
 
 
 
+    [SerializeField] private bool debug = false;
 
     [SerializeField] private ItemScriptables leftHeld, Rightheld;
 
@@ -373,21 +373,25 @@ public float getShipIntegrity()
                 headLight.intensity = 0f;
             }
         }
-        if(inSub == false)
+        if (!debug)
         {
-            OxygenLife -= (OxydrainRate) * Time.deltaTime;
-            HealthManager.Instance.setO2Status(false);
+            if (inSub == false)
+            {
+                OxygenLife -= (OxydrainRate) * Time.deltaTime;
+                HealthManager.Instance.setO2Status(false);
 
+            }
+            if (OxygenLife <= 0f) // if oxygen meter is now 0
+            {
+                OxygenLife = 0f;
+                HealthManager.Instance.setO2Status(true); // set o2 damage status to true
+            }
+            else
+            {
+                HealthManager.Instance.setO2Status(false);
+            }
         }
-        if (OxygenLife <= 0f) // if oxygen meter is now 0
-        {
-            OxygenLife = 0f;
-            HealthManager.Instance.setO2Status(true); // set o2 damage status to true
-        }
-        else
-        {
-            HealthManager.Instance.setO2Status(false);
-        }
+
     }
    public void DamageOxygen(float damage)
     {

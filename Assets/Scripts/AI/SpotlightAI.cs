@@ -6,12 +6,15 @@ using UnityEngine.UI;
 
 public class SpotlightAI : MonoBehaviour
 {
+    [SerializeField] bool debug = false;
+    [SerializeField] bool lastLevel = false;
+    [SerializeField] Collider stopObject;
     [SerializeField] GameObject playerObject;
     [SerializeField] GameObject spotLightRadius;
     [SerializeField] Image targetImage;
     [SerializeField] GameObject deathScreen;
 
-    [SerializeField] float detectionRange = 10f;
+    [SerializeField] float detectionRange = 1000f;
     [SerializeField] float speed = 1.32f;
 
 
@@ -32,6 +35,9 @@ public class SpotlightAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerObject != null && lastLevel && stopObject.GetComponent<Collider>().bounds.Intersects(playerObject.GetComponent<Collider>().bounds))
+            playerObject = null;
+
         if (playerObject != null) 
         {
             float distanceToPlayer = Vector3.Distance(transform.position, playerObject.transform.position);
@@ -59,8 +65,13 @@ public class SpotlightAI : MonoBehaviour
                     {
                         Debug.Log("Player Killed by Spotlight"); //Insert Death Screen Here
                         this.deathScreen.active = true;
-                        Gamepad.current.SetMotorSpeeds(0f, 2f);
-                        Gamepad.current.SetMotorSpeeds(0, 0);
+
+                        if (!debug)
+                        {
+                            Gamepad.current.SetMotorSpeeds(0f, 2f);
+                            Gamepad.current.SetMotorSpeeds(0, 0);
+                        }
+
                     }
                 }
                 else
