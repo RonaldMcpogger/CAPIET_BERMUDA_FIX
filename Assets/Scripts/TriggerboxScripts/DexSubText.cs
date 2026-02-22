@@ -37,18 +37,20 @@ public class DexSubText : MonoBehaviour
                         "which it uses to hunt creatures above it that block the light above. No reports of bioluminescense in said eyes in any accounts of pre-fallout specimen.";
                     break;
                 case 3: //SPOTLIGHT
-                    this.gameObject.GetComponent<TextMeshProUGUI>().text = "LOG ▓▓▓:\nThis is ▓▓▓▓▓▓▓▓▓▓, captain of submersible ▓▓▓-▓▓ reporting sightings of what seems to be an Anglerfish. " +
+                    this.gameObject.GetComponent<TextMeshProUGUI>().text = "LOG ▓:\nThis is ▓▓▓▓▓▓▓▓▓▓, captain of submersible ▓▓▓-▓▓ reporting sightings of what seems to be an Anglerfish. " +
                         "There's something wrong with it.. It's nothing like what any of our logs have on this species! " +
                         "It's been circling us for the past ten minutes, and- shit, it's getting closer- ARGH! That light... it's coming from the" +
                         " damn thing??? AGHHHHH [Recording End]";
                     break;
                 case 4:
-                    this.gameObject.GetComponent<TextMeshProUGUI>().text = "LOG ▓▓▓:\nReporting for arrival on site ▓▓▓▓▓▓. The damn ship's been torn to shreds by that fish, " +
+                    this.gameObject.GetComponent<TextMeshProUGUI>().text = "LOG ▓▓:\nReporting for arrival on site ▓▓▓▓▓▓. The damn ship's been torn to shreds by that fish, " +
                         "it's hard to believe there'll be anything recoverable in this mess. Woah, are those pieces... moving? They're whole chunks of metal, how can it-" +
                         "What is that??? Full thrusters away from it! God- it's not doing anything, we're still losing speed, it's almost like we're trapped- [CRACKLING AND CRUSHING NOISES]\n[Recording End]";
                     break;
                 case 5:
-                    this.gameObject.GetComponent<TextMeshProUGUI>().text = "test 5";
+                    this.gameObject.GetComponent<TextMeshProUGUI>().text = "LOG ▓▓▓:\nIt's fascinating. There's these sort of lights fluttering around the area where the last crash "+
+                        "happened. Makes the area look alive.. On the bright side, it feels a lot easier to get around the area, almost like they're guiding me " +
+                        "to where I need to go. Ship's been running worse, though. Been rumbling like it's about to give up on me. Hang on- are the lights coming towards me? [FILE CORRUPTED]";
                     break;
             }
 
