@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class HealthManager : MonoBehaviour
 {
@@ -55,6 +56,14 @@ public class HealthManager : MonoBehaviour
     }
     void Update()
     {
+        if(Health <= 0)
+        {
+            Health = 100;
+            ItemManager.Instance.rechargeAll(100);
+
+            WorldTransportManager.Instance.setDiedScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("DeathMenu");
+        }
 
         if (Vignette == null)
         {

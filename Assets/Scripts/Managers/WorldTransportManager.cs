@@ -8,6 +8,7 @@ public class WorldTransportManager : MonoBehaviour
 {
     // ram note: make error handling where if character has no coordinate, load the current level they are in 
     public static WorldTransportManager Instance { get; private set; }
+    [SerializeField] private string diedScene;
 
     void Awake()
     {
@@ -79,5 +80,15 @@ public class WorldTransportManager : MonoBehaviour
     public string getLevelToLoad()
     {
         return sceneToLoad;
+    }
+
+    public void setDiedScene(string died)
+    {
+        this.diedScene = died;
+    }
+
+    public string getDiedScene()
+    {
+        return this.diedScene;
     }
 }

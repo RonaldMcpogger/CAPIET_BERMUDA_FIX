@@ -49,6 +49,7 @@ public class SeapouchAI : MonoBehaviour
         if (player.GetComponent<Collider>().bounds.Intersects(deathRadiusSphere.GetComponent<Collider>().bounds))
         {
             Debug.Log("Player Dead!");
+            HealthManager.Instance.takeDamage(666);
             Gamepad.current.SetMotorSpeeds(0f, 2f);
             Gamepad.current.SetMotorSpeeds(0, 0);
         }
