@@ -8,7 +8,7 @@ public class Scanner : MonoBehaviour
     [SerializeField] private float timer = 10f;
     [SerializeField] public Material highlight;
     [SerializeField] public Material NonScannable;
-    [SerializeField] private bool isScanning = false; // scan currently ongoing
+    [SerializeField] public bool isScanning = false; // scan currently ongoing I am lazy to make another getfunction
     [SerializeField] private Collider ScanArea;
 
     //originMaterial store
@@ -100,7 +100,7 @@ public class Scanner : MonoBehaviour
             Renderer objRenderer = other.gameObject.GetComponent<Renderer>();
             if (objRenderer != null)
             {
-                Debug.Log("Item in Library" + other.gameObject);
+              
                 // Store original materials if not already stored
                 if (!originalMaterials.ContainsKey(other.gameObject))
                 {

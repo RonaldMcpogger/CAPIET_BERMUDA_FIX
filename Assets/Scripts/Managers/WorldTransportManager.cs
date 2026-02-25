@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class WorldTransportManager : MonoBehaviour
 {
-    // ram note: make error handling where if character has no coordinate, load the current level they are in 
+    // ram note: this is the current lvel manager, 
     public static WorldTransportManager Instance { get; private set; }
     [SerializeField] private string diedScene;
 
@@ -28,9 +28,11 @@ public class WorldTransportManager : MonoBehaviour
     Vector2 lvl1Code;
     Vector2 lvl2Code;
     List<Vector2> levels = new List<Vector2>();
+
     string sceneToLoad = "Level1-Tutorial";
     private void Start()
     {
+        //FOR THE LEVELS
         lvl1Code = new Vector2(345, 375);
         lvl2Code = new Vector2(540, 284);
 
@@ -69,6 +71,9 @@ public class WorldTransportManager : MonoBehaviour
                     break;
                 case 2:
                     sceneToLoad = "Level2";
+                    break;
+                case 3:
+                    sceneToLoad = "Level3";
                     break;
                 default: break;
             }
