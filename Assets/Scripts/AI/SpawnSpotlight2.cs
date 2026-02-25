@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnSpotlight2 : MonoBehaviour
 {
     [SerializeField] private GameObject spotlightEnemy;
+    [SerializeField] private GameObject fireworksEnemy;
     [SerializeField] private GameObject spawnTrigger;
     [SerializeField] private GameObject despawnTrigger;
     [SerializeField] private GameObject player;
@@ -15,6 +16,7 @@ public class SpawnSpotlight2 : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        fireworksEnemy.SetActive(true);
         spotlightEnemy.SetActive(false);
         spawned = false;
     }
@@ -32,6 +34,7 @@ public class SpawnSpotlight2 : MonoBehaviour
         if (spawned && despawnTrigger.GetComponent<Collider>().bounds.Intersects(player.GetComponent<Collider>().bounds))
         {
             spotlightEnemy.SetActive(false);
+            fireworksEnemy.SetActive(false);
         }
 
     }

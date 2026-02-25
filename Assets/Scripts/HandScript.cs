@@ -73,6 +73,8 @@ public class HandScript : MonoBehaviour
             this.gameObject.GetComponentInChildren<HandUI>().toggleLeft(validLeft);
             this.gameObject.GetComponentInChildren<HandUI>().toggleRight(validRight);
         }
+        
+
     }
     void grabLeft(RaycastHit hit)
     {

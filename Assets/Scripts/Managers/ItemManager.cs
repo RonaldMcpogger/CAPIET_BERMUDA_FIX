@@ -28,7 +28,7 @@ public class ItemManager : MonoBehaviour
 
     [Tooltip("Rate at which battery and oxygen drain when in use or outside of sub, respectively")]
    [SerializeField] private float OxydrainRate = 1f;
-   [SerializeField]  private float BattDrainRate = 3f;
+   [SerializeField]  private float BattDrainRate = 2f;
 
 
 
@@ -88,6 +88,10 @@ public class ItemManager : MonoBehaviour
             if (scanFunc == null)
             {
                 scanFunc = GameObject.Find("ScanArea");
+            scanFunc.GetComponent<Scanner>().isScanning=false;
+
+            scanFunc.SetActive(false);
+
         }
     }
     
@@ -123,21 +127,38 @@ public class ItemManager : MonoBehaviour
 
     public void dropItem(int hand)
     {
-        if (leftHeld.itemID == 200 || Rightheld.itemID == 200)
-        {
-            flashOn = false;
-            headLight.intensity = 0f;
-        }
+       
         switch (hand)
         {
            
             case 0:
-                leftHeld = null;
+                if(leftHeld.itemID ==200)
+                {
+                                       flashOn = false;
+                    headLight.intensity = 0f;
+                    leftHeld = null;
+                }
+                else
+                {
+                    leftHeld = null;
+
+                }
                 break;
             case 1:
-                Rightheld = null;
+                if (Rightheld.itemID == 200)
+                {
+                    flashOn = false;
+                    headLight.intensity = 0f;
+                    Rightheld = null;
+                }
+                else
+                {
+                    Rightheld = null;
+
+                }
                 break;
         }
+  
     }
     public void useItem(int hand)
     {
@@ -176,21 +197,8 @@ public class ItemManager : MonoBehaviour
 
                         }
                        //mayhaps will create a seperate script later
-                        else if (leftHeld.itemID == 300 ) // coordinates
+                        else if (leftHeld.itemID == 300 ) // coordinates // lvl1 to lvl2
                            {
-                            if (displayOn == false)
-                            {
-                                coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "X: 345 Y: 375";
-                                displayOn = true;
-                            }
-                            else
-                            {
-                                coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "";
-                                displayOn = false;
-                            }
-                        }
-                         else if(leftHeld.itemID == 301) // map
-                            {
                             if (displayOn == false)
                             {
                                 coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "X: 540 Y: 284";
@@ -202,8 +210,35 @@ public class ItemManager : MonoBehaviour
                                 displayOn = false;
                             }
                         }
-                        
                          
+                        else if(leftHeld.itemID == 301) // map // lvl2 to lvl3
+                        {
+                            if (displayOn == false)
+                            {
+                                coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "X:721  Y:186 ";
+                                displayOn = true;
+                            }
+                            else
+                            {
+                                coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "";
+                                displayOn = false;
+                            }
+                        }
+                        else if (leftHeld.itemID == 301) // map // lvl2 to lvl3
+                        {
+                            if (displayOn == false)
+                            {
+                                coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "X:721  Y:186 ";
+                                displayOn = true;
+                            }
+                            else
+                            {
+                                coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "";
+                                displayOn = false;
+                            }
+                        }
+
+
                     }
                     else 
                     {

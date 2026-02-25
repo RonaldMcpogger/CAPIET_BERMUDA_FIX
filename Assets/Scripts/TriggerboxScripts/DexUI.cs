@@ -29,7 +29,7 @@ public class DexUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(dexEnabled);
+        //Debug.Log(dexEnabled);
         if (dexEnabled)
         {
             

@@ -24,8 +24,6 @@ public class Movement : MonoBehaviour
         this.speed = defaultSpeed;
         controller = GetComponent<CharacterController>();
         worldData = FindAnyObjectByType<WorldData>();
-        lookSpeed = 88.8f;
-        defaultSpeed = 2.0f;
     }
 
     // Update is called once per frame
