@@ -1,9 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Presets;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
+
 using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
@@ -122,5 +119,19 @@ public class PauseMenu : MonoBehaviour
 
             }
         }
+    }
+
+    public void resume()
+    {
+        Time.timeScale = 1;
+        pauseMenu.SetActive(false);
+        AudioListener.pause = false;
+    }
+    public void quit()
+    {
+        Application.Quit();
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 }

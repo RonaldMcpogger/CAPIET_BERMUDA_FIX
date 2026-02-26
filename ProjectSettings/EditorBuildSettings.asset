@@ -6,14 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SeafloorTest.unity
-    guid: 39d5d17475ba6154890f993741d15283
+    path: Assets/Scenes/MainMenu 2.unity
+    guid: 9d2199fdb8e0074499cd2e34a12c7627
   - enabled: 1
     path: Assets/Scenes/SubmarineTest.unity
     guid: e6694deff7a6a104e8db98243505bb9e
-  - enabled: 1
-    path: Assets/Scenes/MovementTest.unity
-    guid: 81a13153c7d83d14cb3c957455909ccf
   - enabled: 1
     path: Assets/Scenes/Level1-Tutorial.unity
     guid: ecb452a99272c07408e36293ddbe631c
@@ -26,9 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelFinal.unity
     guid: 18b6658d36feaf44fbb38c42bb1929ab
-  - enabled: 1
-    path: Assets/Scenes/MainMenu 2.unity
-    guid: 9d2199fdb8e0074499cd2e34a12c7627
   - enabled: 1
     path: Assets/Scenes/DeathMenu.unity
     guid: df5bb1088c3261e48abf33cd2ff7ca03
