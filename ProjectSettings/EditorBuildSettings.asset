@@ -20,5 +20,20 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level2.unity
     guid: 778b8f582161b284282aeb312d280dbb
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: b1ccbba7ecd60d8449761b045464b2cc
+  - enabled: 1
+    path: Assets/Scenes/LevelFinal.unity
+    guid: 18b6658d36feaf44fbb38c42bb1929ab
+  - enabled: 1
+    path: Assets/Scenes/MainMenu 2.unity
+    guid: 9d2199fdb8e0074499cd2e34a12c7627
+  - enabled: 1
+    path: Assets/Scenes/DeathMenu.unity
+    guid: df5bb1088c3261e48abf33cd2ff7ca03
+  - enabled: 1
+    path: Assets/Scenes/Win Screen.unity
+    guid: cf9cf0376cfaaf94ca8dae6262c9db29
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

@@ -37,6 +37,7 @@ public class SpotlightAI : MonoBehaviour
     {
         if (playerObject != null && lastLevel && stopObject.GetComponent<Collider>().bounds.Intersects(playerObject.GetComponent<Collider>().bounds))
             playerObject = null;
+       
 
         if (playerObject != null) 
         {

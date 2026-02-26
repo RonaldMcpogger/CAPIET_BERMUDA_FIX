@@ -88,7 +88,10 @@ public class ItemManager : MonoBehaviour
             if (scanFunc == null)
             {
                 scanFunc = GameObject.Find("ScanArea");
-            scanFunc.GetComponent<Scanner>().isScanning=false;
+            if (scanFunc.GetComponent<Scanner>().isScanning == true)
+            {
+                scanFunc.GetComponent<Scanner>().StopScanning();
+            }
 
             scanFunc.SetActive(false);
 
@@ -224,11 +227,11 @@ public class ItemManager : MonoBehaviour
                                 displayOn = false;
                             }
                         }
-                        else if (leftHeld.itemID == 301) // map // lvl2 to lvl3
+                        else if (leftHeld.itemID == 302) // map // lvl3 to final
                         {
                             if (displayOn == false)
                             {
-                                coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "X:721  Y:186 ";
+                                coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "X:890  Y:086 ";
                                 displayOn = true;
                             }
                             else
@@ -237,6 +240,8 @@ public class ItemManager : MonoBehaviour
                                 displayOn = false;
                             }
                         }
+
+                  
 
 
                     }
@@ -309,7 +314,21 @@ public class ItemManager : MonoBehaviour
                         {
                             if (displayOn == false)
                             {
-                                coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "X: 540 Y: 284";
+                                coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "X:721  Y:186 ";
+                                displayOn = true;
+                            }
+                            else
+                            {
+                                coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "";
+                                displayOn = false;
+                            }
+                        }
+                        else if (Rightheld.itemID == 302) // map
+                        {
+
+                            if (displayOn == false)
+                            {
+                                coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "X:890  Y:086 ";
                                 displayOn = true;
                             }
                             else
