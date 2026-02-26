@@ -7300,6 +7300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66af5fdcd10f0c74fb28e22969ca2a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diedScene: 
 --- !u!4 &1891312904
 Transform:
   m_ObjectHideFlags: 0

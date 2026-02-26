@@ -58,11 +58,17 @@ public class HealthManager : MonoBehaviour
     {
         if(Health <= 0)
         {
+            Debug.Log(SceneManager.GetActiveScene().name);
+            GameObject fader = GameObject.FindGameObjectWithTag("Player");
+            fader.GetComponentInChildren<HitboxUI>().startFade("DeathMenu");
+
+            WorldTransportManager.Instance.setDiedScene(SceneManager.GetActiveScene().name);
+          
+          //  SceneManager.LoadScene("DeathMenu");
             Health = 100;
             ItemManager.Instance.rechargeAll(100);
 
-            WorldTransportManager.Instance.setDiedScene(SceneManager.GetActiveScene().name);
-            SceneManager.LoadScene("DeathMenu");
+           
         }
 
         if (Vignette == null)

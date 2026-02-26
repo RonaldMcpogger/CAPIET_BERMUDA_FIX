@@ -1752,7 +1752,7 @@ MonoBehaviour:
   spawnTrigger: {fileID: 948300471}
   despawnTrigger: {fileID: 786735472}
   player: {fileID: 1932372414}
-  coordinates: {fileID: 0}
+  coordinates: {fileID: 309430402}
   special: 0
 --- !u!4 &151542335
 Transform:
@@ -2481,7 +2481,7 @@ PrefabInstance:
     - target: {fileID: 59485872364097657, guid: 346d2af863bf4e64a9dbc4cf68b971f2, type: 3}
       propertyPath: ItemData
       value: 
-      objectReference: {fileID: 11400000, guid: 3aef28bcf07e0cb41a851a705d768626, type: 2}
+      objectReference: {fileID: 11400000, guid: f5aaa264bff89ff4b8b94881be9f55de, type: 2}
     - target: {fileID: 561087998556376368, guid: 346d2af863bf4e64a9dbc4cf68b971f2, type: 3}
       propertyPath: m_LocalScale.x
       value: -28.582
@@ -2538,6 +2538,11 @@ PrefabInstance:
 --- !u!4 &309430401 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 561087998556376368, guid: 346d2af863bf4e64a9dbc4cf68b971f2, type: 3}
+  m_PrefabInstance: {fileID: 309430400}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &309430402 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 901478739945215882, guid: 346d2af863bf4e64a9dbc4cf68b971f2, type: 3}
   m_PrefabInstance: {fileID: 309430400}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &317645881 stripped
@@ -31169,7 +31174,7 @@ MonoBehaviour:
   spawnTrigger: {fileID: 1941473516}
   despawnTrigger: {fileID: 957146600}
   player: {fileID: 1932372414}
-  coordinates: {fileID: 0}
+  coordinates: {fileID: 309430402}
   special: 0
 --- !u!1001 &1829748679
 PrefabInstance:

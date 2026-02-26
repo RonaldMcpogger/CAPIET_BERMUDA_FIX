@@ -30,8 +30,15 @@ public class EnterSubmarine : MonoBehaviour, HitboxScript
             Debug.Log("Interact");
             activated = true;
             ItemManager.Instance.inSub = true; // set the trigger to true meaning player is inside submarine
-           player.GetComponentInChildren<HitboxUI>().startFade("SubmarineTest");
-      
+            if ((ItemManager.Instance.getItemInHand(0) != null && ItemManager.Instance.getItemInHand(0).itemID == 400) ||
+                (ItemManager.Instance.getItemInHand(1) != null && ItemManager.Instance.getItemInHand(1).itemID == 400))
+            {
+                player.GetComponentInChildren<HitboxUI>().startFade("Win Screen");
+            }
+            else
+            {
+                player.GetComponentInChildren<HitboxUI>().startFade("SubmarineTest");
+            }
 
 
         }

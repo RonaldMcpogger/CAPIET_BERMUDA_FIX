@@ -27,6 +27,9 @@ public class WorldTransportManager : MonoBehaviour
     int currentLevel = 1;
     Vector2 lvl1Code;
     Vector2 lvl2Code;
+    Vector2 lvl3Code;
+    Vector2 lvl4Code;
+
     List<Vector2> levels = new List<Vector2>();
 
     string sceneToLoad = "Level1-Tutorial";
@@ -35,9 +38,13 @@ public class WorldTransportManager : MonoBehaviour
         //FOR THE LEVELS
         lvl1Code = new Vector2(345, 375);
         lvl2Code = new Vector2(540, 284);
+        lvl3Code = new Vector2(721, 186);
+        lvl4Code = new Vector2(890, 086);
 
         levels.Add(lvl1Code);
         levels.Add(lvl2Code);
+        levels.Add(lvl3Code);
+        levels.Add(lvl4Code);
     }
 
     // Update is called once per frame
@@ -74,6 +81,9 @@ public class WorldTransportManager : MonoBehaviour
                     break;
                 case 3:
                     sceneToLoad = "Level3";
+                    break;
+                case 4:
+                    sceneToLoad = "LevelFinal";
                     break;
                 default: break;
             }

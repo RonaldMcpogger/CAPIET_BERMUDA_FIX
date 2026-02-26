@@ -18,6 +18,10 @@ public class SpawnFireworks : MonoBehaviour
     void Update()
     {
         if (coordinates.activeSelf == false)
+        {
             fireworksEnemy.SetActive(true);
+            GlobalScreenShake.Instance.TriggerShake(1f, 4);
+
+        }
     }
 }
