@@ -135,30 +135,35 @@ public class ItemManager : MonoBehaviour
         {
            
             case 0:
-                if(leftHeld.itemID ==200)
+               if(leftHeld.itemID !=400)// DO NOT DROP THE SPECIAL PACKAGE
+                switch(leftHeld.itemID)
                 {
-                                       flashOn = false;
-                    headLight.intensity = 0f;
-                    leftHeld = null;
-                }
-                else
-                {
-                    leftHeld = null;
-
+                    case 200:
+                        flashOn = false;
+                        headLight.intensity = 0f;
+                        leftHeld = null;
+                        break;
+                  
+                    default:
+                        leftHeld = null;
+                        break;
                 }
                 break;
             case 1:
-                if (Rightheld.itemID == 200)
-                {
-                    flashOn = false;
-                    headLight.intensity = 0f;
-                    Rightheld = null;
-                }
-                else
-                {
-                    Rightheld = null;
+                if (Rightheld.itemID != 400)// DO NOT DROP THE SPECIAL PACKAGE
+                    switch (Rightheld.itemID)
+                    {
+                        case 200:
+                            flashOn = false;
+                            headLight.intensity = 0f;
+                            Rightheld = null;
+                            break;
 
-                }
+                        default:
+                            Rightheld = null;
+                            break;
+                    }
+               
                 break;
         }
   
