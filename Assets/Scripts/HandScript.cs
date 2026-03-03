@@ -96,9 +96,13 @@ public class HandScript : MonoBehaviour
             }
             else
             {
-                holdingLeft= false;
-                idLeft = -1;
-                ItemManager.Instance.dropItem(0);
+                ItemScriptables temp = ItemManager.Instance.getItemInHand(0);
+                if (temp.itemID != 400)// DO NOT DROP THE SPECIAL 
+                {
+                    holdingLeft = false;
+                    idLeft = -1;
+                    ItemManager.Instance.dropItem(0);
+                }
                 StartCoroutine(startCooldown());
 
             }
@@ -124,11 +128,16 @@ public class HandScript : MonoBehaviour
                 StartCoroutine(startCooldown());
 
             }
-            else
+            else//drop
             {
-                holdingRight = false;
-                idRight = -1;
-                ItemManager.Instance.dropItem(1);
+                ItemScriptables temp = ItemManager.Instance.getItemInHand(1);
+                if (temp.itemID != 400 && temp.itemID != 300 && temp.itemID != 301 && temp.itemID != 302)// DO NOT DROP THE SPECIAL 
+                {
+                    ItemManager.Instance.dropItem(1);
+                    holdingRight = false;
+                    idRight = -1;
+                }
+               
                 StartCoroutine(startCooldown());
 
             }

@@ -4243,6 +4243,22 @@ PrefabInstance:
       propertyPath: m_ProvidesContacts
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8624584035940355533, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 19.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 8624584035940355533, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10.232128
+      objectReference: {fileID: 0}
+    - target: {fileID: 8624584035940355533, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8624584035940355533, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8654284662046894757, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -7382,8 +7398,8 @@ MonoBehaviour:
   BatteryLife: 100
   OxygenLife: 100
   shipIntegrity: 0
-  OxydrainRate: 1
-  BattDrainRate: 3
+  OxydrainRate: 0.75
+  BattDrainRate: 1.5
   headLight: {fileID: 0}
   coordinates: {fileID: 1720206948}
   scanFunc: {fileID: 0}

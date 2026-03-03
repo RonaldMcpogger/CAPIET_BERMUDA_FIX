@@ -54,21 +54,26 @@ public class HealthManager : MonoBehaviour
         }
            
     }
+    public void die()
+    {
+        Debug.Log(SceneManager.GetActiveScene().name);
+        GameObject fader = GameObject.FindGameObjectWithTag("Player");
+      
+
+        WorldTransportManager.Instance.setDiedScene(SceneManager.GetActiveScene().name);
+
+        //  SceneManager.LoadScene("DeathMenu");
+        fader.GetComponentInChildren<HitboxUI>().startFade("DeathMenu");
+        Health = 100;
+        ItemManager.Instance.rechargeAll(100);
+    }
     void Update()
     {
         if(Health <= 0)
         {
-            Debug.Log(SceneManager.GetActiveScene().name);
-            GameObject fader = GameObject.FindGameObjectWithTag("Player");
-            fader.GetComponentInChildren<HitboxUI>().startFade("DeathMenu");
+       
+            die();
 
-            WorldTransportManager.Instance.setDiedScene(SceneManager.GetActiveScene().name);
-          
-          //  SceneManager.LoadScene("DeathMenu");
-            Health = 100;
-            ItemManager.Instance.rechargeAll(100);
-
-           
         }
 
         if (Vignette == null)
@@ -85,8 +90,12 @@ public class HealthManager : MonoBehaviour
             StopCoroutine(DamageTimer());
            
          
-                Health = 100f;
-            
+              
+            if(Health < 100)
+            {
+                Health += 1f * Time.deltaTime;
+            }
+
         }
         ConditionHealth(this.Health);
     }

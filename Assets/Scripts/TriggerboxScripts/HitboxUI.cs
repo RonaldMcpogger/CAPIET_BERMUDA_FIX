@@ -13,8 +13,8 @@ public class HitboxUI : MonoBehaviour
     float alpha;
     float alphaGoal;
     string scene;
-    bool introFade;
-    bool outroFade;
+  public  bool introFade;
+ public   bool outroFade;
     // Start is called before the first frame update
     void Start()
     {

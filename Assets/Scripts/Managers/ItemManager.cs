@@ -27,7 +27,7 @@ public class ItemManager : MonoBehaviour
     // public float drainDelay = 1f;
 
     [Tooltip("Rate at which battery and oxygen drain when in use or outside of sub, respectively")]
-   [SerializeField] private float OxydrainRate = 1f;
+   [SerializeField] private float OxydrainRate = .5f;
    [SerializeField]  private float BattDrainRate = 2f;
 
 
@@ -135,8 +135,12 @@ public class ItemManager : MonoBehaviour
         {
            
             case 0:
-               if(leftHeld.itemID !=400)// DO NOT DROP THE SPECIAL PACKAGE
-                switch(leftHeld.itemID)
+                if (leftHeld.itemID == 300 || leftHeld.itemID == 301 || leftHeld.itemID == 302)// DO NOT DROP THE SPECIAL PACKAGE
+                {
+                    coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "";
+
+                }
+                switch (leftHeld.itemID)
                 {
                     case 200:
                         flashOn = false;
@@ -150,8 +154,8 @@ public class ItemManager : MonoBehaviour
                 }
                 break;
             case 1:
-                if (Rightheld.itemID != 400)// DO NOT DROP THE SPECIAL PACKAGE
-                    switch (Rightheld.itemID)
+               
+                switch (Rightheld.itemID)
                     {
                         case 200:
                             flashOn = false;
@@ -306,7 +310,7 @@ public class ItemManager : MonoBehaviour
                         {
                             if (displayOn == false)
                             {
-                                coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "X: 345 Y: 375";
+                                coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "X: 540 Y: 284";
                                 displayOn = true;
                             }
                             else

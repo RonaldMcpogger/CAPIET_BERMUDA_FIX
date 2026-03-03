@@ -115,10 +115,8 @@ public class MainMenu : MonoBehaviour
 
     public void  mouseStart()
     {
-        Color c = fader.gameObject.GetComponent<Image>().color;
-        c.a = 1;
-        fader.gameObject.GetComponent<Image>().color = c;
-        SceneManager.LoadScene("Level1-Tutorial");
+        outroFade =true;
+       
     }
     public void mouseQuit()
     {

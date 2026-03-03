@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
-
 using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
@@ -129,9 +129,11 @@ public class PauseMenu : MonoBehaviour
     }
     public void quit()
     {
-        Application.Quit();
-        #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
+        Time.timeScale = 1;
+        pauseMenu.SetActive(false);
+        AudioListener.pause = false;
+        GameObject fader = GameObject.FindGameObjectWithTag("Player");
+        fader.GetComponentInChildren<HitboxUI>().startFade("MainMenu 2");
+        
     }
 }

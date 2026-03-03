@@ -2527,6 +2527,8 @@ MonoBehaviour:
   button: {fileID: 943560947424214581}
   text: {fileID: 3451381051717298328}
   fader: {fileID: 4088820698499753997}
+  introFade: 0
+  outroFade: 0
 --- !u!1 &2211937657681041975
 GameObject:
   m_ObjectHideFlags: 0
@@ -7888,7 +7890,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1297500053881563239
 Transform:
   m_ObjectHideFlags: 0

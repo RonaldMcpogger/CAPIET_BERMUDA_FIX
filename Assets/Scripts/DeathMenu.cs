@@ -109,4 +109,13 @@ public class DeathMenu : MonoBehaviour
             }
         }
     }
+
+    public void RestartGame()
+    {
+        outroFade = true;
+    }
+    public void mainMenuGame()
+    {
+        SceneManager.LoadScene("MainMenu 2");
+    }
 }

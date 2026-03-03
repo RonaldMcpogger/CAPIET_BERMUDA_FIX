@@ -66,7 +66,8 @@ public class SpotlightAI : MonoBehaviour
                     {
                         Debug.Log("Player Killed by Spotlight"); //Insert Death Screen Here
                         HealthManager.Instance.takeDamage(666);
-                        this.deathScreen.active = true;
+                        HealthManager.Instance.die();
+                    
 
                         if (!debug)
                         {

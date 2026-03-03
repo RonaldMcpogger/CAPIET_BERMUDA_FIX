@@ -8,7 +8,7 @@ public class Scanner : MonoBehaviour
     [SerializeField] private float timer = 10f;
     [SerializeField] public Material highlight;
     [SerializeField] public Material NonScannable;
-    [SerializeField] public bool isScanning = false; // scan currently ongoing I am lazy to make another getfunction
+    [SerializeField] public bool isScanning = false;
     [SerializeField] private Collider ScanArea;
 
     //originMaterial store
