@@ -24,6 +24,7 @@ public class SpotlightAI : MonoBehaviour
     [SerializeField] float idleTimer = 10f;
     float currentIdleTimer = 0.0f;
     bool chase = false;
+    [SerializeField] bool playerDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -62,8 +63,9 @@ public class SpotlightAI : MonoBehaviour
                     playerObject.GetComponent<Movement>().speed = 0.66f;
                     currentDeathTimer += Time.deltaTime;
                     targetImage.GetComponent<Image>().color = new Color(1f, 0f, 0f, Mathf.Clamp01(currentDeathTimer / deathTimer));
-                    if (currentDeathTimer >= deathTimer)
+                    if (currentDeathTimer >= deathTimer && !playerDead)
                     {
+                        playerDead = true;
                         Debug.Log("Player Killed by Spotlight"); //Insert Death Screen Here
                         HealthManager.Instance.takeDamage(666);
                         HealthManager.Instance.die();
