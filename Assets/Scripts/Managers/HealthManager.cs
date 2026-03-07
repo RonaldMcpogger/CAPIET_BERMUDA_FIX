@@ -83,7 +83,10 @@ public class HealthManager : MonoBehaviour
 
         if (cooldownDmg == false && isOutofO2)
         {
-            StartCoroutine(DamageTimer());
+            if (ItemManager.Instance.inSub == false)
+            {
+                StartCoroutine(DamageTimer());
+            }
         }
         else if(cooldownDmg == false && !isOutofO2)
         {
