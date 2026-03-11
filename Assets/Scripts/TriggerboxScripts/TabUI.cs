@@ -70,7 +70,8 @@ public class TabUI : MonoBehaviour
                         tabEnabled = false;
                         break;
                     default:
-                        Gamepad.current.SetMotorSpeeds(0.4f, 0.9f); //motor rumble on unavailable input
+                        if (Gamepad.current != null)
+                            Gamepad.current.SetMotorSpeeds(0.4f, 0.9f); //motor rumble on unavailable input
                         break;
                 }
 
@@ -144,7 +145,8 @@ public class TabUI : MonoBehaviour
             switch (y) //so far only quit button needs an input check, but this function is here should that functionality change
             {
                 case 3:
-                    Gamepad.current.SetMotorSpeeds(0.4f, 0.9f);
+                    if (Gamepad.current != null)
+                        Gamepad.current.SetMotorSpeeds(0.4f, 0.9f);
                     FindAnyObjectByType<OpenScreen>().GetComponent<OpenScreen>().setScreenActive(false);
                     y = 0;
                     resetCol();

@@ -73,8 +73,11 @@ public class SpotlightAI : MonoBehaviour
 
                         if (!debug)
                         {
-                            Gamepad.current.SetMotorSpeeds(0f, 2f);
-                            Gamepad.current.SetMotorSpeeds(0, 0);
+                            if (Gamepad.current != null)
+                            {
+                                Gamepad.current.SetMotorSpeeds(0f, 2f);
+                                Gamepad.current.SetMotorSpeeds(0, 0);
+                            }
                         }
 
                     }

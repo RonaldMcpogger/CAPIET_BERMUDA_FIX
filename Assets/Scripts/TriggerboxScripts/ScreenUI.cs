@@ -284,7 +284,8 @@ public class ScreenUI : MonoBehaviour
     {
         if (ControllerScan.Instance.interactAction.WasPressedThisFrame())
         {
-            Gamepad.current.SetMotorSpeeds(0.4f, 0.9f);
+            if (Gamepad.current != null)
+                Gamepad.current.SetMotorSpeeds(0.4f, 0.9f);
            // Debug.Log("number entered");
             bool numUpdated = false;
             switch (y)
@@ -404,7 +405,8 @@ public class ScreenUI : MonoBehaviour
             }
 
             numUpdated = false;
-            Gamepad.current.SetMotorSpeeds(0, 0);
+            if (Gamepad.current != null)
+                Gamepad.current.SetMotorSpeeds(0, 0);
         }
     }
 }

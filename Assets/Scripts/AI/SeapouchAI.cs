@@ -36,7 +36,7 @@ public class SeapouchAI : MonoBehaviour
         //Tries to pull the player in
         Pull();
 
-        if(!cooldown) //While the player is being pulled in, have the gulper eel face the player.
+        if (!cooldown) //While the player is being pulled in, have the gulper eel face the player.
         {
             Vector3 direction = transform.position - player.transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
@@ -50,8 +50,11 @@ public class SeapouchAI : MonoBehaviour
         {
             Debug.Log("Player Dead!");
             HealthManager.Instance.takeDamage(666);
-            Gamepad.current.SetMotorSpeeds(0f, 2f);
-            Gamepad.current.SetMotorSpeeds(0, 0);
+            if (Gamepad.current != null)
+            {
+                Gamepad.current.SetMotorSpeeds(0f, 2f);
+                Gamepad.current.SetMotorSpeeds(0, 0);
+            }
         }
         if (final && seaUrchin.GetComponent<Collider>().bounds.Intersects(deathRadiusSphere.GetComponent<Collider>().bounds))
         {
@@ -78,9 +81,10 @@ public class SeapouchAI : MonoBehaviour
                 seaUrchin.transform.position += (seaUrchinPullStrengthMultiplier * pullStrength * Vector3.Normalize((deathRadiusSphere.transform.position - seaUrchin.transform.position)) * Time.deltaTime);
             }
             //Put Vibration Stuff Here:
-            Gamepad.current.SetMotorSpeeds(0, 0.4f * pullTime);
+            if (Gamepad.current != null)
+                Gamepad.current.SetMotorSpeeds(0, 0.4f * pullTime);
 
-                //Screen Shake
+            //Screen Shake
             GlobalScreenShake.Instance.TriggerShake(1.0f, 3.0f);
 
             //Actual Pulling
@@ -101,8 +105,8 @@ public class SeapouchAI : MonoBehaviour
             {
                 pullTime = 0;
                 cooldown = false;
-
-                Gamepad.current.SetMotorSpeeds(0, 0);
+                if (Gamepad.current != null)
+                    Gamepad.current.SetMotorSpeeds(0, 0);
             }
         }
 
