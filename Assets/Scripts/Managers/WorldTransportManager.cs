@@ -1,6 +1,7 @@
 using System.Collections.Generic;
-
+using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WorldTransportManager : MonoBehaviour
 {
@@ -69,6 +70,12 @@ public class WorldTransportManager : MonoBehaviour
 
         if (found)
         {
+            if (Gamepad.current != null)
+            {
+                Gamepad.current.SetMotorSpeeds(2.0f, 0.0f);
+                Gamepad.current.ResetHaptics();
+            }
+
             switch (levelCheck)
             {
                 case 1:
@@ -104,4 +111,6 @@ public class WorldTransportManager : MonoBehaviour
     {
         return this.diedScene;
     }
+
+    
 }

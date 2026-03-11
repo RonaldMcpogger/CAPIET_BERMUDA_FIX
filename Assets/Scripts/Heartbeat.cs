@@ -42,10 +42,12 @@ public class Heartbeat : MonoBehaviour
     {
         if (Gamepad.current != null)
         {
-            Gamepad.current.SetMotorSpeeds(0f, 1.2f);
+            Gamepad.current.SetMotorSpeeds(1.8f, 0.3f);
+            yield return new WaitForSeconds(0.03f);
             Gamepad.current.SetMotorSpeeds(0, 0);
             yield return new WaitForSeconds(0.15f);
-            Gamepad.current.SetMotorSpeeds(0.2f, 0.8f);
+            Gamepad.current.SetMotorSpeeds(0.4f, 2.8f);
+            yield return new WaitForSeconds(0.03f);
             Gamepad.current.SetMotorSpeeds(0, 0);
         }
     }
