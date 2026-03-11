@@ -295,16 +295,13 @@ public class ScreenUI : MonoBehaviour
                     {
 
                         case 0: //0, 0 top left
-                            nums[current] += 7;
-                            numUpdated = true;
+                            numUpdated = appendNumber('7');
                             break;
                         case 1: //1, 0
-                            nums[current] += 8;
-                            numUpdated = true;
+                            numUpdated = appendNumber('8');
                             break;
                         case 2: // 2,0
-                            nums[current] += 9;
-                            numUpdated = true;
+                            numUpdated = appendNumber('9');
                             break;
                         case 3: // 3,0
                             if (nums[current].Length > 0)
@@ -322,16 +319,13 @@ public class ScreenUI : MonoBehaviour
                     {
 
                         case 0: //0, 1
-                            nums[current] += 4;
-                            numUpdated = true;
+                            numUpdated = appendNumber('4');
                             break;
                         case 1: //1, 1
-                            nums[current] += 5;
-                            numUpdated = true;
+                            numUpdated = appendNumber('5');
                             break;
                         case 2: // 2,1
-                            nums[current] += 6;
-                            numUpdated = true;
+                            numUpdated = appendNumber('6');
                             break;
                         case 3: // 3,1
                             if (current < 1)
@@ -354,16 +348,13 @@ public class ScreenUI : MonoBehaviour
                     {
 
                         case 0: //0, 2
-                            nums[current] += 1;
-                            numUpdated = true;
+                            numUpdated = appendNumber('1');
                             break;
                         case 1: //1, 2
-                            nums[current] += 2;
-                            numUpdated = true;
+                            numUpdated = appendNumber('2');
                             break;
                         case 2: // 2,2
-                            nums[current] += 3;
-                            numUpdated = true;
+                            numUpdated = appendNumber('3');
                             break;
                     }
 
@@ -380,12 +371,10 @@ public class ScreenUI : MonoBehaviour
                             }
                             break;
                         case 1: //1, 3
-                            nums[current] += 0;
-                            numUpdated = true;
+                            numUpdated = appendNumber('0');
                             break;
                         case 2: // 2,3
-                            nums[current] += '.';
-                            numUpdated = true;
+                            numUpdated = appendNumber('.');
                             break;
                     }
 
@@ -408,5 +397,15 @@ public class ScreenUI : MonoBehaviour
             if (Gamepad.current != null)
                 Gamepad.current.SetMotorSpeeds(0, 0);
         }
+    }
+
+    bool appendNumber(char c)
+    {
+        if (nums[current].Length < 5)
+        {
+            nums[current] += c;
+            return true;
+        }
+        else return false;
     }
 }
