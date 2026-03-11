@@ -87,14 +87,18 @@ public class HealthManager : MonoBehaviour
             {
                 StartCoroutine(DamageTimer());
             }
+            else
+            {
+                StopCoroutine(DamageTimer());
+            }
         }
-        else if(cooldownDmg == false && !isOutofO2)
+        else if (cooldownDmg == false && !isOutofO2)
         {
             StopCoroutine(DamageTimer());
-           
-         
-              
-            if(Health < 100)
+
+
+
+            if (Health < 100)
             {
                 Health += 1f * Time.deltaTime;
             }

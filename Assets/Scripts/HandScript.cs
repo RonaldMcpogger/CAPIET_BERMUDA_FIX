@@ -12,8 +12,8 @@ public class HandScript : MonoBehaviour
     bool validLeft;
     bool validRight;
 
-    bool holdingLeft;
-    bool holdingRight;
+    [SerializeField] bool holdingLeft;
+    [SerializeField] bool holdingRight;
 
     bool cooldownActive = false;
     float cooldownDuration = .5f; // Cooldown duration in seconds
@@ -35,6 +35,14 @@ public class HandScript : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
+        if(ItemManager.Instance.getItemInHand(0)!=null)
+        {
+            holdingLeft = true;
+        }
+        if (ItemManager.Instance.getItemInHand(1) != null)
+        {
+            holdingRight = true;
+        }
         //checks if hands are empty when looking at an item for ui updates
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2.0f, LayerMask.GetMask("Item")))
         {
@@ -131,7 +139,7 @@ public class HandScript : MonoBehaviour
             else//drop
             {
                 ItemScriptables temp = ItemManager.Instance.getItemInHand(1);
-                if (temp.itemID != 400 && temp.itemID != 300 && temp.itemID != 301 && temp.itemID != 302)// DO NOT DROP THE SPECIAL 
+                if (temp.itemID != 400)// DO NOT DROP THE SPECIAL 
                 {
                     ItemManager.Instance.dropItem(1);
                     holdingRight = false;

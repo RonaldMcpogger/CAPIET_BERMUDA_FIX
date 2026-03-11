@@ -43,7 +43,7 @@ public class ItemManager : MonoBehaviour
 
     bool flashOn = false;
 
-    bool displayOn = false; // for coordinates display
+    [SerializeField]bool displayOn = false; // for coordinates display
 
     public bool inSub = false; //if player is in sub
 
@@ -84,7 +84,8 @@ public class ItemManager : MonoBehaviour
             if (coordinates == null)
             {
                 coordinates = GameObject.Find("Coords Display");
-            }
+                displayOn = false;
+        }
             if (scanFunc == null)
             {
                 scanFunc = GameObject.Find("ScanArea");
@@ -138,14 +139,16 @@ public class ItemManager : MonoBehaviour
                 if (leftHeld.itemID == 300 || leftHeld.itemID == 301 || leftHeld.itemID == 302)// DO NOT DROP THE SPECIAL PACKAGE
                 {
                     coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "";
+                    leftHeld = null;
 
                 }
                 switch (leftHeld.itemID)
                 {
                     case 200:
                         flashOn = false;
-                        headLight.intensity = 0f;
+                       
                         leftHeld = null;
+                        headLight.intensity = 0f;
                         break;
                   
                     default:
@@ -154,7 +157,12 @@ public class ItemManager : MonoBehaviour
                 }
                 break;
             case 1:
-               
+                if (Rightheld.itemID == 300 || Rightheld.itemID == 301 || Rightheld.itemID == 302)// DO NOT DROP THE SPECIAL PACKAGE
+                {
+                    coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "";
+                    Rightheld = null;
+
+                }
                 switch (Rightheld.itemID)
                     {
                         case 200:
