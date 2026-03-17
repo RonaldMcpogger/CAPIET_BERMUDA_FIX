@@ -14,12 +14,12 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0, g: 0, b: 0.14117648, a: 1}
   m_FogMode: 1
   m_FogDensity: 1
-  m_LinearFogStart: 1
-  m_LinearFogEnd: 4.99
+  m_LinearFogStart: -0.25
+  m_LinearFogEnd: 6.16
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -1854,6 +1854,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3264211219779369312, guid: 23ddf25a1a7dacc46af660ac5c8f4e82, type: 3}
+      propertyPath: sharedProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: aac7f6373ae786048ac0977d85a8546b, type: 2}
     - target: {fileID: 6267101542165888449, guid: 23ddf25a1a7dacc46af660ac5c8f4e82, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4015,6 +4019,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 085918f0f83504a4a87b5518fa75b25d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a3fe856b0eb9c8049a6ceb71adc4ffb2, type: 2}
     - target: {fileID: 919132149155446097, guid: 085918f0f83504a4a87b5518fa75b25d, type: 3}
       propertyPath: m_Name
       value: Seafloor
