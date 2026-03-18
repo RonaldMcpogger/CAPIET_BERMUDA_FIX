@@ -511,16 +511,34 @@ public float getShipIntegrity()
 
     public bool checkHand()
     {
-        if(leftHeld != null ||Rightheld !=null)
+        bool hasResource = false;
+        if (leftHeld != null )
         {
-            if ((leftHeld.itemID >= 0 && leftHeld.itemID < 3) || (Rightheld.itemID >= 0 && Rightheld.itemID < 3))
+            if ((leftHeld.itemID >= 0 && leftHeld.itemID < 3))
             {
                 Debug.Log("Hand has resources");
-                return true;
+                hasResource=true;
             }
-            else return false;
+            else
+            {
+                Debug.Log("Hand does not have resources");
+                
+            }
         }
-        else return false;
+        if ( Rightheld != null)
+        {
+            if ((Rightheld.itemID >= 0 && Rightheld.itemID < 3))
+            {
+                Debug.Log("Hand has resources");
+                hasResource = true;
+            }
+            else
+            {
+                Debug.Log("Hand does not have resources");
+                
+            }
+        }
+         return hasResource;
     }
 
 
