@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
     {
         pressed = false;
         index = 0;
-        fade = 0.8f;
+        fade = 1f;
         changeColor(boxes[index].gameObject.GetComponent<Button>(), fade);
         alpha = 0;
         outroFade = false;

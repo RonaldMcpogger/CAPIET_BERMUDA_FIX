@@ -51,6 +51,7 @@ public class HealthManager : MonoBehaviour
         if(Vignette == null)
         {
             Vignette = GameObject.Find("HealthVignette").GetComponent<Image>();
+            Vignette.color = new Color(Vignette.color.r, Vignette.color.g, Vignette.color.b, 0.0f);
         }
            
     }
