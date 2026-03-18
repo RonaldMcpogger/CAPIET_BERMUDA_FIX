@@ -103,6 +103,7 @@ public class DeathMenu : MonoBehaviour
                     outroFade = true;
                     break;
                 case 1: //quit
+                    HealthManager.Instance.resetHealthAndBattery();
                     SceneManager.LoadScene("MainMenu 2");
                     break;
 
@@ -116,6 +117,7 @@ public class DeathMenu : MonoBehaviour
     }
     public void mainMenuGame()
     {
+        HealthManager.Instance.resetHealthAndBattery();
         SceneManager.LoadScene("MainMenu 2");
     }
 }
