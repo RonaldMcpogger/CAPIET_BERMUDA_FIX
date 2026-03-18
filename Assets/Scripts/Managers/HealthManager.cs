@@ -13,7 +13,7 @@ public class HealthManager : MonoBehaviour
     [SerializeField]private bool isOutofO2 = false;
    
     private bool cooldownDmg = false;
-    private bool cooldownHeal = false;
+   
     enum  HealthStatus
     {
         Healthy,

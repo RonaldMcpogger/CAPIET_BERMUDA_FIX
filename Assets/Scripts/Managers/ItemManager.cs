@@ -74,7 +74,7 @@ public class ItemManager : MonoBehaviour
 
     }
 
-    private  void Refresh()
+    private  void Refresh() // on entering new scenes find game objects to reference and connect
     {
      
         if (headLight == null)
@@ -129,7 +129,7 @@ public class ItemManager : MonoBehaviour
 
 
 
-    public void dropItem(int hand)
+    public void dropItem(int hand) /// make it where it drops objects instead of deleting the data, handscripts sets gameobjects to false find a way that moves them in front of the player and set to true
     {
        
         switch (hand)
@@ -452,20 +452,22 @@ public float getShipIntegrity()
         }
         if (!debug)
         {
+            if (OxygenLife <= 0f) // if oxygen meter is now 0
+            {
+                OxygenLife = 0f;
+                HealthManager.Instance.setO2Status(true); // set o2 damage status to true
+            }
             if (inSub == false)
             {
                 OxygenLife -= (OxydrainRate) * Time.deltaTime;
                 HealthManager.Instance.setO2Status(false);
 
             }
-            if (OxygenLife <= 0f) // if oxygen meter is now 0
-            {
-                OxygenLife = 0f;
-                HealthManager.Instance.setO2Status(true); // set o2 damage status to true
-            }
+         
             else
             {
                 HealthManager.Instance.setO2Status(false);
+                flashOn = false;
             }
         }
 
@@ -484,10 +486,10 @@ public float getShipIntegrity()
     
 
 
-    public int depositItems(int hand) // check hand if metal 
+    public int depositItems(int hand) // check hand if metal  // check if recharge works properly
     {
         int tag;
-        if(hand == 0 && leftHeld != null)
+        if(hand == 0 && leftHeld != null&& (leftHeld.itemID >= 0 && leftHeld.itemID < 3))
         {
 
              tag = leftHeld.itemID;
@@ -495,7 +497,7 @@ public float getShipIntegrity()
 
 
         }
-        else if (hand == 1 && Rightheld != null)
+        else if (hand == 1 && Rightheld != null && (Rightheld.itemID >= 0 && Rightheld.itemID < 3))
         {
             tag = Rightheld.itemID;
             Rightheld = null;
@@ -511,7 +513,7 @@ public float getShipIntegrity()
     {
         if(leftHeld != null ||Rightheld !=null)
         {
-            if ((leftHeld.itemID >= 0 && leftHeld.itemID < 3) || (Rightheld.itemID >= 0 && Rightheld.itemID < 43))
+            if ((leftHeld.itemID >= 0 && leftHeld.itemID < 3) || (Rightheld.itemID >= 0 && Rightheld.itemID < 3))
             {
                 Debug.Log("Hand has resources");
                 return true;
@@ -522,9 +524,11 @@ public float getShipIntegrity()
     }
 
 
-    public void rechargeAll(float value)
+    public void rechargeAll(float value) // test the recharge 
     {
-               OxygenLife = value;
-        BatteryLife = value;
+               OxygenLife += value;
+      OxygenLife=Mathf.Clamp(OxygenLife, 0f, 100f);
+        BatteryLife += value;
+        BatteryLife = Mathf.Clamp(BatteryLife, 0f, 100f);
     }
 }

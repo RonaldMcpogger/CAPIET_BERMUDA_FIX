@@ -53,30 +53,33 @@ public class HitboxRecharge : MonoBehaviour, HitboxScript
             
                 switch (leftId)////////////////////////////// case1: rocks, case2: metal, case3: components
                 {
-                    case 1:
-                       ItemManager.Instance.updateShipIntegrity(5);
+                    case 0:
+                       ItemManager.Instance.updateShipIntegrity(25);
                     break;
-                    case 2:
+                    case 1:
                     ItemManager.Instance.updateShipIntegrity(15);
                     break;
-                    case 3:
-                    ItemManager.Instance.updateShipIntegrity(25);
+                    case 2:
+                    ItemManager.Instance.updateShipIntegrity(5);
                     break;
                 }
+            Debug.Log("left deposit: " + leftId);
+
             int rightId = ItemManager.Instance.depositItems(1); //check righty
             switch (rightId)
                 {
-                case 1:
-                    ItemManager.Instance.updateShipIntegrity(5);
-                    break;
-                case 2:
-                    ItemManager.Instance.updateShipIntegrity(15);
-                    break;
-                case 3:
+                case 0:
                     ItemManager.Instance.updateShipIntegrity(25);
                     break;
+                case 1:
+                    ItemManager.Instance.updateShipIntegrity(15);
+                    break;
+                case 2:
+                    ItemManager.Instance.updateShipIntegrity(5);
+                    break;
             }
-            
+                Debug.Log("right deposit: " + rightId);
+
         }
        else
         {
