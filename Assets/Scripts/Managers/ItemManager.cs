@@ -27,8 +27,8 @@ public class ItemManager : MonoBehaviour
     // public float drainDelay = 1f;
 
     [Tooltip("Rate at which battery and oxygen drain when in use or outside of sub, respectively")]
-   [SerializeField] private float OxydrainRate = .5f;
-   [SerializeField]  private float BattDrainRate = 2f;
+   [SerializeField] private float OxydrainRate = .2f;
+   [SerializeField]  private float BattDrainRate = 1f;
 
 
 

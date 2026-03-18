@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -51,6 +52,7 @@ public class HealthManager : MonoBehaviour
         if(Vignette == null)
         {
             Vignette = GameObject.Find("HealthVignette").GetComponent<Image>();
+            Vignette.color = new Color(Vignette.color.r, Vignette.color.g, Vignette.color.b, 0.0f);
         }
            
     }
@@ -156,6 +158,11 @@ public class HealthManager : MonoBehaviour
             
 
         GlobalScreenShake.Instance.TriggerShake(0.3f, 0.3f);
+        if (Gamepad.current != null)
+        {
+            Gamepad.current.SetMotorSpeeds(0.5f, 0.4f);
+            Gamepad.current.SetMotorSpeeds(0, 0);
+        }
         takeDamage(15f);
 
         cooldownDmg = false;

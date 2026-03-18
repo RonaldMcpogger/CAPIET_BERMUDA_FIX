@@ -71,7 +71,10 @@ public class TabUI : MonoBehaviour
                         break;
                     default:
                         if (Gamepad.current != null)
+                        {
                             Gamepad.current.SetMotorSpeeds(0.4f, 0.9f); //motor rumble on unavailable input
+                            Gamepad.current.SetMotorSpeeds(0.0f, 0.0f);
+                        }
                         break;
                 }
 
@@ -146,8 +149,11 @@ public class TabUI : MonoBehaviour
             {
                 case 3:
                     if (Gamepad.current != null)
+                    {
                         Gamepad.current.SetMotorSpeeds(0.4f, 0.9f);
-                    FindAnyObjectByType<OpenScreen>().GetComponent<OpenScreen>().setScreenActive(false);
+                        Gamepad.current.SetMotorSpeeds(0.0f, 0.0f);
+                    }
+                        FindAnyObjectByType<OpenScreen>().GetComponent<OpenScreen>().setScreenActive(false);
                     y = 0;
                     resetCol();
                     screen.toggleScreenOff();
