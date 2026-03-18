@@ -24061,6 +24061,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Capsule
       objectReference: {fileID: 0}
+    - target: {fileID: 538915457187347978, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 840570913725126244, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
       propertyPath: m_IgnoreReversedGraphics
       value: 0

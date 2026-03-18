@@ -54,6 +54,12 @@ public class HealthManager : MonoBehaviour
         }
            
     }
+
+    public void resetHealthAndBattery()
+    {
+        Health = 100;
+        ItemManager.Instance.rechargeAll(100);
+    }
     public void die()
     {
         Debug.Log(SceneManager.GetActiveScene().name);
@@ -64,8 +70,7 @@ public class HealthManager : MonoBehaviour
 
         //  SceneManager.LoadScene("DeathMenu");
         fader.GetComponentInChildren<HitboxUI>().startFade("DeathMenu");
-        Health = 100;
-        ItemManager.Instance.rechargeAll(100);
+        resetHealthAndBattery();
     }
     void Update()
     {
@@ -136,11 +141,7 @@ public class HealthManager : MonoBehaviour
 
     public void setO2Status(bool status)
     {
- 
-
         isOutofO2 = status;
-
-      
     }
 
 

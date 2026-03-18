@@ -132,6 +132,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
         AudioListener.pause = false;
+        HealthManager.Instance.resetHealthAndBattery();
         GameObject fader = GameObject.FindGameObjectWithTag("Player");
         fader.GetComponentInChildren<HitboxUI>().startFade("MainMenu 2");
         
