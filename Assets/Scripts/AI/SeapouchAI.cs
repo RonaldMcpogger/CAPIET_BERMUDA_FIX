@@ -86,6 +86,11 @@ public class SeapouchAI : MonoBehaviour
 
             //Screen Shake
             GlobalScreenShake.Instance.TriggerShake(1.0f, 3.0f);
+            if (Gamepad.current != null)
+            {
+                Gamepad.current.SetMotorSpeeds(0.5f, 0.4f);
+                Gamepad.current.SetMotorSpeeds(0, 0);
+            }
 
             //Actual Pulling
             characterController.Move(pullStrength * Vector3.Normalize((deathRadiusSphere.transform.position - player.transform.position)) * Time.deltaTime);
