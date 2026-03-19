@@ -16,3 +16,5 @@ MonoBehaviour:
   itemName: Components
   itemIcon: {fileID: 21300000, guid: dd363456fba504b47aee6ed4f9aeef15, type: 3}
   isUsable: 0
+  isConsumable: 0
+  itemPrefab: {fileID: 2778722028566790019, guid: 236765f12b7d3eb4ebab984d8f3db100, type: 3}

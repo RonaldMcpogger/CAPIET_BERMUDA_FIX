@@ -15,3 +15,6 @@ MonoBehaviour:
   itemID: 1
   itemName: metals
   itemIcon: {fileID: 21300000, guid: a10486feaf2b0cc43bcec46f9324deab, type: 3}
+  isUsable: 0
+  isConsumable: 0
+  itemPrefab: {fileID: 9200943285409266721, guid: 32aae230ed205f049a5d8e449dc40598, type: 3}

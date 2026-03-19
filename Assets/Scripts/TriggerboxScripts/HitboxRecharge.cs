@@ -81,7 +81,8 @@ public class HitboxRecharge : MonoBehaviour, HitboxScript
                 Debug.Log("right deposit: " + rightId);
 
         }
-       else
+
+        else// if no resources recharge based on integrity level, higher integrity = more recharge, lower integ
         {
             if(ItemManager.Instance.getShipIntegrity() >=77.5f)
             {

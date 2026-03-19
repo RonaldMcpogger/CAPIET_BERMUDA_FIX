@@ -129,18 +129,19 @@ public class ItemManager : MonoBehaviour
 
 
 
-    public void dropItem(int hand) /// make it where it drops objects instead of deleting the data, handscripts sets gameobjects to false find a way that moves them in front of the player and set to true
+    public void dropItem(int hand)
     {
-       
+       Vector3 dropPos = GameObject.FindGameObjectWithTag("Player").transform.position + GameObject.FindGameObjectWithTag("Player").transform.forward * 1f; // drop item 2 units in front of player
         switch (hand)
         {
            
             case 0:
+                var droppedL = GameObject.Instantiate(leftHeld.itemPrefab, dropPos, Quaternion.identity);
                 if (leftHeld.itemID == 300 || leftHeld.itemID == 301 || leftHeld.itemID == 302)// DO NOT DROP THE SPECIAL PACKAGE
                 {
                     coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "";
                     leftHeld = null;
-
+                    
                 }
                 switch (leftHeld.itemID)
                 {
@@ -149,14 +150,19 @@ public class ItemManager : MonoBehaviour
                        
                         leftHeld = null;
                         headLight.intensity = 0f;
+
+                        
                         break;
                   
                     default:
                         leftHeld = null;
                         break;
                 }
+               
                 break;
             case 1:
+                var droppedR = GameObject.Instantiate(Rightheld.itemPrefab, dropPos, Quaternion.identity);
+
                 if (Rightheld.itemID == 300 || Rightheld.itemID == 301 || Rightheld.itemID == 302)// DO NOT DROP THE SPECIAL PACKAGE
                 {
                     coordinates.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "";

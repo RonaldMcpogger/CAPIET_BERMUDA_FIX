@@ -15,3 +15,6 @@ MonoBehaviour:
   itemID: 2
   itemName: Rocks
   itemIcon: {fileID: 21300000, guid: 195b2e48f9aa7e844955d6ddc2233a36, type: 3}
+  isUsable: 0
+  isConsumable: 0
+  itemPrefab: {fileID: 4435179065484658800, guid: dcef049a2a0679a488cc0beb66926a4a, type: 3}

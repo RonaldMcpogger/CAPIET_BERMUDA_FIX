@@ -10,4 +10,5 @@ public class ItemScriptables : ScriptableObject
     public Sprite itemIcon = null;
     public bool isUsable = false;
     public bool isConsumable = false;
+    public GameObject itemPrefab = null;
 }

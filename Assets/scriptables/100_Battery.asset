@@ -17,3 +17,4 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 336fc248040d38f40b58fb942da1782c, type: 3}
   isUsable: 1
   isConsumable: 1
+  itemPrefab: {fileID: 2758597415418993017, guid: 49a593acb49a2ea4abf6b2fd66269ee6, type: 3}
