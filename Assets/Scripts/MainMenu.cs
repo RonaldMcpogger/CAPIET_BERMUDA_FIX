@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -15,7 +16,9 @@ public class MainMenu : MonoBehaviour
     float alpha = 0;
 
     [SerializeField] GameObject controlsMenu;
+    [SerializeField] GameObject missionMenu;
     bool isActive;
+    bool waitingToStart;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +31,8 @@ public class MainMenu : MonoBehaviour
 
         isActive = true;
         controlsMenu.SetActive(false);
+        missionMenu.SetActive(false);
+        waitingToStart = false;
         Color c = fader.gameObject.GetComponent<Image>().color;
         c.a = alpha;
         fader.gameObject.GetComponent<Image>().color = c;
@@ -115,7 +120,20 @@ public class MainMenu : MonoBehaviour
             switch (index)
             {
                 case 0://start
-                    outroFade = true;
+                    if (!waitingToStart)
+                    {
+                        waitingToStart = true;
+                        missionMenu.SetActive(true);
+                    }
+                    else
+                    {
+                        if (Gamepad.current != null)
+                        {
+                            Gamepad.current.SetMotorSpeeds(0.5f, 0.4f);
+                            Gamepad.current.SetMotorSpeeds(0, 0);
+                        }
+                        outroFade = true;
+                    }
                     break;
                 case 1: //controls
                     controlsMenu.SetActive(true);
