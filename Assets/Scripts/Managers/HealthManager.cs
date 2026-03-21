@@ -65,16 +65,17 @@ public class HealthManager : MonoBehaviour
     public void die()
     {
         Debug.Log(SceneManager.GetActiveScene().name);
-        GameObject fader = GameObject.FindGameObjectWithTag("Player");
-      
+    
+            GameObject fader = GameObject.FindGameObjectWithTag("Player");
+            WorldTransportManager.Instance.setDiedScene(SceneManager.GetActiveScene().name);
 
-        WorldTransportManager.Instance.setDiedScene(SceneManager.GetActiveScene().name);
-
-        //  SceneManager.LoadScene("DeathMenu");
-        fader.GetComponentInChildren<HitboxUI>().startFade("DeathMenu");
-        resetHealthAndBattery();
+            //  SceneManager.LoadScene("DeathMenu");
+            fader.GetComponentInChildren<HitboxUI>().startFade("DeathMenu");
+            resetHealthAndBattery();
+        
+     
     }
-    void Update()
+    void FixedUpdate()
     {
         if(Health <= 0)
         {
