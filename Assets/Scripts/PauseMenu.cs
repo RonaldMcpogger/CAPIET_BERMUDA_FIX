@@ -11,7 +11,10 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] List<GameObject> boxes;
     int index = 0;
     bool pressed;
-    float fade;
+    [SerializeField] float fade;
+
+    bool isActive;
+    [SerializeField] GameObject controlsMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,59 +23,75 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         pressed = false;
         fade = 0.2f;
+
+        isActive = true;
+        controlsMenu.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (ControllerScan.Instance.startAction.WasPressedThisFrame() && canPause) {
-            paused = !paused;
+        if (isActive)
+        {
+            if (ControllerScan.Instance.startAction.WasPressedThisFrame() && canPause)
+            {
+                paused = !paused;
+
+                if (paused)
+                {
+                    Time.timeScale = 0;
+                    pauseMenu.SetActive(true);
+                    AudioListener.pause = true; //in case audio is added
+                    index = 0;
+                    resetCol();
+                    changeColor(boxes[index].gameObject.GetComponent<Button>(), fade);
+                }
+                else
+                {
+                    Time.timeScale = 1;
+                    pauseMenu.SetActive(false);
+                    AudioListener.pause = false;
+                }
+            }
 
             if (paused)
             {
-                Time.timeScale = 0;
-                pauseMenu.SetActive(true);
-                AudioListener.pause = true; //in case audio is added
-                index = 0;
-                resetCol();
-                changeColor(boxes[index].gameObject.GetComponent<Button>(), fade);
-            } else
-            {
-                Time.timeScale = 1;
-                pauseMenu.SetActive(false);
-                AudioListener.pause = false;
+                if (ControllerScan.Instance.leftAction.WasPressedThisFrame() == true)
+                {
+                    if (index > 0)
+                    {
+                        index--;
+                        pressed = true;
+                    }
+
+                }
+                if (ControllerScan.Instance.rightAction.WasPressedThisFrame() == true)
+                {
+                    if (index < 2)
+                    {
+                        index++;
+                        pressed = true;
+                    }
+
+                }
+
+                if (pressed)
+                {
+                    resetCol();
+                    changeColor(boxes[index].gameObject.GetComponent<Button>(), fade);
+                    pressed = false;
+                }
+
+                checkInput();
             }
         }
-
-        if (paused)
+        else
         {
-            if (ControllerScan.Instance.leftAction.WasPressedThisFrame() == true)
+            if (ControllerScan.Instance.interactAction.WasPressedThisFrame())
             {
-                if (index > 0)
-                {
-                    index--;
-                    pressed = true;
-                }
-
+                controlsMenu.SetActive(false);
+                isActive = true;
             }
-            if (ControllerScan.Instance.rightAction.WasPressedThisFrame() == true)
-            {
-                if (index < 1)
-                {
-                    index++;
-                    pressed = true;
-                }
-
-            }
-
-            if (pressed)
-            {
-                resetCol();
-                changeColor(boxes[index].gameObject.GetComponent<Button>(), fade);
-                pressed = false;
-            }
-
-            checkInput();
         }
     }
 
@@ -110,11 +129,15 @@ public class PauseMenu : MonoBehaviour
                     AudioListener.pause = false;
                     break;
                 case 1: //quit
+                    controlsMenu.SetActive(true);
+                    isActive = false;
+                    break;
+                case 2: //quit
                     Application.Quit();
 
-                    #if UNITY_EDITOR
+#if UNITY_EDITOR
                     UnityEditor.EditorApplication.isPlaying = false;
-                    #endif
+#endif
                     break;
 
             }
@@ -135,6 +158,6 @@ public class PauseMenu : MonoBehaviour
         HealthManager.Instance.resetHealthAndBattery();
         GameObject fader = GameObject.FindGameObjectWithTag("Player");
         fader.GetComponentInChildren<HitboxUI>().startFade("MainMenu 2");
-        
+
     }
 }

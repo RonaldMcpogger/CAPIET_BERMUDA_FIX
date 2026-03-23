@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -13,16 +14,25 @@ public class MainMenu : MonoBehaviour
     [SerializeField] List<GameObject> boxes;
     [SerializeField] GameObject fader;
     float alpha = 0;
+
+    [SerializeField] GameObject controlsMenu;
+    [SerializeField] GameObject missionMenu;
+    bool isActive;
+    bool waitingToStart;
     // Start is called before the first frame update
     void Start()
     {
         pressed = false;
         index = 0;
-        fade = 0.8f;
+        fade = 0.2f;
         changeColor(boxes[index].gameObject.GetComponent<Button>(), fade);
         alpha = 0;
         outroFade = false;
 
+        isActive = true;
+        controlsMenu.SetActive(false);
+        missionMenu.SetActive(false);
+        waitingToStart = false;
         Color c = fader.gameObject.GetComponent<Image>().color;
         c.a = alpha;
         fader.gameObject.GetComponent<Image>().color = c;
@@ -31,47 +41,58 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ControllerScan.Instance.leftAction.WasPressedThisFrame() == true)
+        if (isActive)
         {
-            if (index > 0)
+            if (ControllerScan.Instance.leftAction.WasPressedThisFrame() == true)
             {
-                index--;
-                pressed = true;
+                if (index > 0)
+                {
+                    index--;
+                    pressed = true;
+                }
+
+            }
+            if (ControllerScan.Instance.rightAction.WasPressedThisFrame() == true)
+            {
+                if (index < 2)
+                {
+                    index++;
+                    pressed = true;
+                }
+
             }
 
-        }
-        if (ControllerScan.Instance.rightAction.WasPressedThisFrame() == true)
-        {
-            if (index < 1)
+            if (pressed)
             {
-                index++;
-                pressed = true;
+                resetCol();
+                changeColor(boxes[index].gameObject.GetComponent<Button>(), fade);
+                pressed = false;
             }
 
-        }
+            checkInput();
 
-        if (pressed)
-        {
-            resetCol();
-            changeColor(boxes[index].gameObject.GetComponent<Button>(), fade);
-            pressed = false;
+            if (outroFade && alpha <= 1f)
+            {
+                alpha = Mathf.Lerp(alpha, 1.2f, Time.deltaTime * .99f);
+                Color c = fader.gameObject.GetComponent<Image>().color;
+                c.a = alpha;
+                fader.gameObject.GetComponent<Image>().color = c;
+            }
+            else if (outroFade && alpha > 0.99f) //on completion after alpha flag changes
+            {
+                Color c = fader.gameObject.GetComponent<Image>().color;
+                c.a = 1;
+                fader.gameObject.GetComponent<Image>().color = c;
+                SceneManager.LoadScene("Level1-Tutorial");
+            }
         }
-
-        checkInput();
-
-        if (outroFade && alpha <= 1f)
+        else
         {
-            alpha = Mathf.Lerp(alpha, 1.2f, Time.deltaTime * .99f);
-            Color c = fader.gameObject.GetComponent<Image>().color;
-            c.a = alpha;
-            fader.gameObject.GetComponent<Image>().color = c;
-        }
-        else if (outroFade && alpha > 0.99f) //on completion after alpha flag changes
-        {
-            Color c = fader.gameObject.GetComponent<Image>().color;
-            c.a = 1;
-            fader.gameObject.GetComponent<Image>().color = c;
-            SceneManager.LoadScene("Level1-Tutorial");
+            if (ControllerScan.Instance.interactAction.WasPressedThisFrame())
+            {
+                controlsMenu.SetActive(false);
+                isActive = true;
+            }
         }
     }
 
@@ -99,27 +120,47 @@ public class MainMenu : MonoBehaviour
             switch (index)
             {
                 case 0://start
-                    outroFade = true;
+                    if (!waitingToStart)
+                    {
+                        waitingToStart = true;
+                        missionMenu.SetActive(true);
+                    }
+                    else
+                    {
+                        if (Gamepad.current != null)
+                        {
+                            Gamepad.current.SetMotorSpeeds(0.5f, 0.4f);
+                            Gamepad.current.SetMotorSpeeds(0, 0);
+                        }
+                        outroFade = true;
+                    }
                     break;
-                case 1: //quit
+                case 1: //controls
+                    controlsMenu.SetActive(true);
+                    isActive = false;
+                    break;
+                case 2: //quit
                     Application.Quit();
 
-                    #if UNITY_EDITOR
+#if UNITY_EDITOR
                     UnityEditor.EditorApplication.isPlaying = false;
-                    #endif
+#endif
                     break;
 
             }
         }
     }
-
-    public void  mouseStart()
+    public void setActive(bool active)
     {
-        outroFade =true;
-       
+        isActive = active;
+    }
+    public void mouseStart()
+    {
+        outroFade = true;
+
     }
     public void mouseQuit()
     {
-               Application.Quit();
+        Application.Quit();
     }
 }
