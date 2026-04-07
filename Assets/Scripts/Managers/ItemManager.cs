@@ -458,15 +458,20 @@ public float getShipIntegrity()
         }
         if (!debug)
         {
-            if (OxygenLife <= 0f) // if oxygen meter is now 0
-            {
-                OxygenLife = 0f;
-                HealthManager.Instance.setO2Status(true); // set o2 damage status to true
-            }
+           
             if (inSub == false)
             {
-                OxygenLife -= (OxydrainRate) * Time.deltaTime;
-                HealthManager.Instance.setO2Status(false);
+                if (OxygenLife <= 0f) // if oxygen meter is now 0
+                {
+                    OxygenLife = 0f;
+                    HealthManager.Instance.setO2Status(true); // set o2 damage status to true
+                }
+                else
+                {
+                    OxygenLife -= (OxydrainRate) * Time.deltaTime;
+                    HealthManager.Instance.setO2Status(false);
+                }
+                    
 
             }
          
