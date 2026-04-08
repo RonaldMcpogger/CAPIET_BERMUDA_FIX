@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,13 +8,14 @@ using UnityEngine.UI;
 public class HandScript : MonoBehaviour
 {
     //testing
-  
+
     CharacterController controller;
     bool validLeft;
     bool validRight;
 
     [SerializeField] bool holdingLeft;
     [SerializeField] bool holdingRight;
+    [SerializeField] GameObject objText;
 
     bool cooldownActive = false;
     float cooldownDuration = .5f; // Cooldown duration in seconds
@@ -29,13 +31,14 @@ public class HandScript : MonoBehaviour
         holdingLeft = false; holdingRight = false;
         idLeft = -1;
         idRight = -1;
+        objText.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         RaycastHit hit;
-        if(ItemManager.Instance.getItemInHand(0)!=null)
+        if (ItemManager.Instance.getItemInHand(0) != null)
         {
             holdingLeft = true;
         }
@@ -47,23 +50,27 @@ public class HandScript : MonoBehaviour
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2.0f, LayerMask.GetMask("Item")))
         {
             //Debug.Log(hit.transform.gameObject.name);
-            if(!holdingLeft && ItemManager.Instance.getItemInHand(0)==null)
+            if (!holdingLeft && ItemManager.Instance.getItemInHand(0) == null)
             {
-                validLeft=true; 
+                objText.GetComponent<TextMeshProUGUI>().text = hit.transform.gameObject.name.Replace("(Clone)", "");
+                validLeft = true;
             }
-            if(!holdingRight && ItemManager.Instance.getItemInHand(1) == null)
+            if (!holdingRight && ItemManager.Instance.getItemInHand(1) == null)
             {
-                validRight=true;
+                objText.GetComponent<TextMeshProUGUI>().text = hit.transform.gameObject.name.Replace("(Clone)", "");
+                validRight = true;
             }
-        } else
+        }
+        else
         {
             validLeft = false;
             validRight = false;
+            objText.SetActive(false);
         }
         //update ui based on previous
         UIUpdate();
 
-        
+
         if (cooldownActive == false)
         {
             grabLeft(hit);
@@ -71,22 +78,24 @@ public class HandScript : MonoBehaviour
             useLeft();
             useRight();
         }
-        
+
     }
 
     void UIUpdate()
     {
         if (this.gameObject.GetComponentInChildren<HandUI>() != null)
         {
+            if (validLeft || validRight)
+                objText.SetActive(true);
             this.gameObject.GetComponentInChildren<HandUI>().toggleLeft(validLeft);
             this.gameObject.GetComponentInChildren<HandUI>().toggleRight(validRight);
         }
-        
+
 
     }
     void grabLeft(RaycastHit hit)
     {
-        if (ControllerScan.Instance.grabbedLeft == true )
+        if (ControllerScan.Instance.grabbedLeft == true)
         {
             if (!holdingLeft && ItemManager.Instance.getItemInHand(0) == null)
             {
@@ -119,7 +128,7 @@ public class HandScript : MonoBehaviour
 
     void grabRight(RaycastHit hit)
     {
-        if(ControllerScan.Instance.grabbedRight == true)
+        if (ControllerScan.Instance.grabbedRight == true)
         {
 
             if (!holdingRight && ItemManager.Instance.getItemInHand(1) == null)
@@ -145,7 +154,7 @@ public class HandScript : MonoBehaviour
                     holdingRight = false;
                     idRight = -1;
                 }
-               
+
                 StartCoroutine(startCooldown());
 
             }
@@ -154,7 +163,7 @@ public class HandScript : MonoBehaviour
 
     void useLeft()
     {
-        if(ControllerScan.Instance.usedLeft == true && holdingLeft)
+        if (ControllerScan.Instance.usedLeft == true && holdingLeft)
         {
             if (ItemManager.Instance.isConsumeable(0))
             {

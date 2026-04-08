@@ -76,3 +76,4 @@ crashlytics-build.properties
 InTheDepths.zip
 /InTheDepths
 Assets/ASSETS(Exported)/VCR_OSD_MONO_1.001 SDF.asset
+*.asset

@@ -2542,7 +2542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4435179065484658800, guid: dcef049a2a0679a488cc0beb66926a4a, type: 3}
       propertyPath: m_Name
-      value: Rocks (1)
+      value: Rocks
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3284,7 +3284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9200943285409266721, guid: 32aae230ed205f049a5d8e449dc40598, type: 3}
       propertyPath: m_Name
-      value: Scrapmetal (1)
+      value: Scrapmetal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4777,7 +4777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4435179065484658800, guid: dcef049a2a0679a488cc0beb66926a4a, type: 3}
       propertyPath: m_Name
-      value: Rocks (2)
+      value: Rocks
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5470,7 +5470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6446773473120476783, guid: 8ed2a3c111d10c24e852c00296d08e08, type: 3}
       propertyPath: m_Name
-      value: Medpack (1)
+      value: Medpack
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
