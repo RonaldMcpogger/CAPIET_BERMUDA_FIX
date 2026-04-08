@@ -981,6 +981,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 9
+  decrease: 0
+  up: 1
+  once: 0
+  timerMax: 4.5
+  timer: 0
+  intensity: 2
+  motorIntensity: 0.4
 --- !u!4 &107165026
 Transform:
   m_ObjectHideFlags: 0
@@ -23622,6 +23629,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+  decrease: 1
+  up: 1
+  once: 0
+  timerMax: 10
+  timer: 0
+  intensity: 2
+  motorIntensity: 0.4
 --- !u!4 &1931699611
 Transform:
   m_ObjectHideFlags: 0
