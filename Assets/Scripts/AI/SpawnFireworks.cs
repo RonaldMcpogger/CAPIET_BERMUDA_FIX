@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnFireworks : MonoBehaviour
 {
     [SerializeField] private GameObject fireworksEnemy;
+    [SerializeField] private GameObject earthquakeTrigger;
     [SerializeField] private GameObject coordinates;
 
 
@@ -12,6 +13,7 @@ public class SpawnFireworks : MonoBehaviour
     void Start()
     {
         fireworksEnemy.SetActive(false);
+        earthquakeTrigger.SetActive(false);
     }
 
     // Update is called once per frame
@@ -20,7 +22,8 @@ public class SpawnFireworks : MonoBehaviour
         if (coordinates.activeSelf == false)
         {
             fireworksEnemy.SetActive(true);
-            GlobalScreenShake.Instance.TriggerShake(1f, 4);
+            earthquakeTrigger.SetActive(true);
+            //GlobalScreenShake.Instance.TriggerShake(2.0f, 4);
 
         }
     }
