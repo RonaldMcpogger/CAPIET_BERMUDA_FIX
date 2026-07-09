@@ -560,4 +560,9 @@ public float getShipIntegrity()
         BatteryLife += value;
         BatteryLife = Mathf.Clamp(BatteryLife, 0f, 100f);
     }
+    public void clearHand()
+    {
+        leftHeld = null;
+        Rightheld = null;
+    }
 }

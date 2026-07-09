@@ -80,6 +80,7 @@ public class WorldTransportManager : MonoBehaviour
             {
                 case 1:
                     sceneToLoad = "Level1-Tutorial";
+                   
                     break;
                 case 2:
                     sceneToLoad = "Level2";
@@ -92,6 +93,7 @@ public class WorldTransportManager : MonoBehaviour
                     break;
                 default: break;
             }
+            GlobalScreenShake.Instance.TriggerShake(2, 0.07f);
         }
 
         Debug.Log(found + " " + sceneToLoad);

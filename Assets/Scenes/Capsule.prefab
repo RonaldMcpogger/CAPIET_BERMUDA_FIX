@@ -8163,6 +8163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 10
   highlight: {fileID: 2100000, guid: e74d72c619d73e44395ca7d28b1a3817, type: 2}
+  important: {fileID: 2100000, guid: e139a9182b525a748b829b07423be2b3, type: 2}
   NonScannable: {fileID: 2100000, guid: 3076b54cdd9547449b208e7888babd45, type: 2}
   isScanning: 1
   ScanArea: {fileID: 8044730101726881974}

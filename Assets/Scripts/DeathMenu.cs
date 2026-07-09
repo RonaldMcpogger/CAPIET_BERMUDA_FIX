@@ -117,6 +117,8 @@ public class DeathMenu : MonoBehaviour
     }
     public void mainMenuGame()
     {
+       
+
         HealthManager.Instance.resetHealthAndBattery();
         SceneManager.LoadScene("MainMenu 2");
     }

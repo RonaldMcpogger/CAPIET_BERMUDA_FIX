@@ -133,11 +133,12 @@ public class PauseMenu : MonoBehaviour
                     isActive = false;
                     break;
                 case 2: //quit
-                    Application.Quit();
-
-#if UNITY_EDITOR
-                    UnityEditor.EditorApplication.isPlaying = false;
-#endif
+                    Time.timeScale = 1;
+                    pauseMenu.SetActive(false);
+                    AudioListener.pause = false;
+                    HealthManager.Instance.resetHealthAndBattery();
+                    GameObject fader = GameObject.FindGameObjectWithTag("Player");
+                    fader.GetComponentInChildren<HitboxUI>().startFade("MainMenu 2");
                     break;
 
             }

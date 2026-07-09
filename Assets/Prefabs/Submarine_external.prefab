@@ -69,6 +69,10 @@ PrefabInstance:
       value: Submarine_external
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 097ab2db6a0ec93428ade93f43fb0d7f, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 097ab2db6a0ec93428ade93f43fb0d7f, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}

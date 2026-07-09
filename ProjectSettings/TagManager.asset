@@ -15,6 +15,7 @@ TagManager:
   - RightUi
   - CoordDisplay
   - HVignette
+  - KeyItem
   layers:
   - Default
   - TransparentFX

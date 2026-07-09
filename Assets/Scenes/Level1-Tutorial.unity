@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 32898159}
   m_Layer: 0
   m_Name: AngelHolder (9)
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 65946993}
   m_Layer: 0
   m_Name: AngelHolder (3)
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -560,7 +560,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!224 &105333926
 RectTransform:
@@ -1950,6 +1950,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sea_angel
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0cd9f418faf1d1742a91123f1bb01770, type: 3}
+      propertyPath: m_TagString
+      value: Walls
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2111,6 +2115,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0cd9f418faf1d1742a91123f1bb01770, type: 3}
       propertyPath: m_Name
       value: Sea_angel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0cd9f418faf1d1742a91123f1bb01770, type: 3}
+      propertyPath: m_TagString
+      value: Walls
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2797,7 +2805,7 @@ GameObject:
   - component: {fileID: 812351916}
   m_Layer: 0
   m_Name: AngelHolder (7)
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3764,6 +3772,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sea_angel
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0cd9f418faf1d1742a91123f1bb01770, type: 3}
+      propertyPath: m_TagString
+      value: Walls
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3787,7 +3799,7 @@ GameObject:
   - component: {fileID: 1036467518}
   m_Layer: 0
   m_Name: AngelHolder (8)
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4009,7 +4021,7 @@ GameObject:
   - component: {fileID: 1151758695}
   m_Layer: 0
   m_Name: AngelHolder (5)
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4531,6 +4543,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sea_angel
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0cd9f418faf1d1742a91123f1bb01770, type: 3}
+      propertyPath: m_TagString
+      value: Walls
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4876,6 +4892,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2250026221496896564, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2906397561066140933, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -4943,6 +4963,10 @@ PrefabInstance:
     - target: {fileID: 5971925541064176479, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
       propertyPath: m_TagString
       value: Scanner
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190169320807811718, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6375225555479974305, guid: 67c38b67f144c5843bcce1476a1d0da2, type: 3}
       propertyPath: timer
@@ -5121,7 +5145,7 @@ GameObject:
   - component: {fileID: 1381573176}
   m_Layer: 0
   m_Name: AngelHolder (4)
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6084,6 +6108,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 969756619878813764, guid: 6901042bab77ad542b26a4b18f56d328, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1258716475759365250, guid: 6901042bab77ad542b26a4b18f56d328, type: 3}
       propertyPath: m_Name
       value: PauseMenu
@@ -6126,6 +6154,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6187966809306189074, guid: 6901042bab77ad542b26a4b18f56d328, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143066435861093436, guid: 6901042bab77ad542b26a4b18f56d328, type: 3}
+      propertyPath: m_PresetInfoIsWorld
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6247,7 +6279,7 @@ GameObject:
   - component: {fileID: 1632236891}
   m_Layer: 0
   m_Name: AngelHolder (2)
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6459,6 +6491,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sea_angel
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0cd9f418faf1d1742a91123f1bb01770, type: 3}
+      propertyPath: m_TagString
+      value: Walls
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6540,6 +6576,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0cd9f418faf1d1742a91123f1bb01770, type: 3}
       propertyPath: m_Name
       value: Sea_angel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0cd9f418faf1d1742a91123f1bb01770, type: 3}
+      propertyPath: m_TagString
+      value: Walls
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7022,7 +7062,7 @@ GameObject:
   - component: {fileID: 1906048989}
   m_Layer: 0
   m_Name: AngelHolder (6)
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7418,6 +7458,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sea_angel
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0cd9f418faf1d1742a91123f1bb01770, type: 3}
+      propertyPath: m_TagString
+      value: Walls
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7499,6 +7543,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0cd9f418faf1d1742a91123f1bb01770, type: 3}
       propertyPath: m_Name
       value: Sea_angel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0cd9f418faf1d1742a91123f1bb01770, type: 3}
+      propertyPath: m_TagString
+      value: Walls
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8698,6 +8746,10 @@ PrefabInstance:
     - target: {fileID: 6846263147778888690, guid: d8992cb55f8343348a9c6e6760b99128, type: 3}
       propertyPath: m_Name
       value: AngelHolder (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6846263147778888690, guid: d8992cb55f8343348a9c6e6760b99128, type: 3}
+      propertyPath: m_TagString
+      value: Walls
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

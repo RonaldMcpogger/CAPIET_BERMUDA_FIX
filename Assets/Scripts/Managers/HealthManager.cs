@@ -61,6 +61,7 @@ public class HealthManager : MonoBehaviour
     {
         Health = 100;
         ItemManager.Instance.rechargeAll(100);
+        ItemManager.Instance.clearHand();
     }
     public void die()
     {

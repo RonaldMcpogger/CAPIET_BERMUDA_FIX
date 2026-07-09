@@ -7,6 +7,7 @@ public class Scanner : MonoBehaviour
 {
     [SerializeField] private float timer = 10f;
     [SerializeField] public Material highlight;
+    [SerializeField] public Material important;
     [SerializeField] public Material NonScannable;
     [SerializeField] public bool isScanning = false;
     [SerializeField] private Collider ScanArea;
@@ -131,6 +132,27 @@ public class Scanner : MonoBehaviour
                 for (int i = 0; i < wallMaterials.Length; i++)
                 {
                     wallMaterials[i] = NonScannable;
+                }
+                objRenderer.materials = wallMaterials;
+            }
+        }
+
+        // importantObject
+        else if (isScanning && other.gameObject.CompareTag("KeyItem"))
+        {
+            Debug.Log("KeyItem scanned");
+            Renderer objRenderer = other.gameObject.GetComponent<Renderer>();
+            if (objRenderer != null)
+            {
+                if (!originalMaterials.ContainsKey(other.gameObject))
+                {
+                    originalMaterials[other.gameObject] = objRenderer.materials;
+                }
+
+                Material[] wallMaterials = new Material[objRenderer.materials.Length];
+                for (int i = 0; i < wallMaterials.Length; i++)
+                {
+                    wallMaterials[i] = important;
                 }
                 objRenderer.materials = wallMaterials;
             }
